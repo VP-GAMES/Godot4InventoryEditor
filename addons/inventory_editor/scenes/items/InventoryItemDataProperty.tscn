@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.gd" type="Script" id=1]
+[ext_resource path="res://addons/inventory_editor/icons/Trash.png" type="Texture" id=2]
+[ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItemDataPropertyPut.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[node name="InventoryItemDataProperty" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="LineEdit" parent="."]
+margin_right = 510.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+
+[node name="HBox" type="HBoxContainer" parent="."]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+
+[node name="Put" parent="HBox" instance=ExtResource( 4 )]
+
+[node name="Value" type="LineEdit" parent="HBox"]
+margin_left = 24.0
+margin_right = 484.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+
+[node name="Del" type="Button" parent="HBox"]
+margin_left = 488.0
+margin_right = 510.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 20, 20 )
+hint_tooltip = "Delete property"
+icon = ExtResource( 2 )

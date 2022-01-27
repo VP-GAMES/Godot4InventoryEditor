@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/inventory_editor/ui/InventoryItemUIIcon.gd" type="Script" id=1]
+[ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://addons/inventory_editor/ui/PopupDescription.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 2 )
+
+[node name="Icon" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" parent="." instance=ExtResource( 3 )]
+
+[node name="Quantity" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -26.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

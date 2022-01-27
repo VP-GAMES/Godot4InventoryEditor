@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/inventory_editor/scenes/craft/InventoryCraftDataIngredient.gd" type="Script" id=1]
+[ext_resource path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/inventory_editor/icons/Trash.png" type="Texture" id=3]
+[ext_resource path="res://addons/inventory_editor/icons/Ingredient.png" type="Texture" id=4]
+
+[node name="InventoryCraftDataIngredient" type="HBoxContainer"]
+margin_top = 238.0
+margin_right = 1024.0
+margin_bottom = 262.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_top = 5.0
+margin_right = 31.0
+margin_bottom = 19.0
+text = "Item"
+
+[node name="Texture" type="TextureRect" parent="."]
+margin_left = 35.0
+margin_right = 59.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 4 )
+stretch_mode = 4
+
+[node name="Dropdown" parent="." instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 63.0
+margin_right = 499.0
+margin_bottom = 24.0
+
+[node name="LabelQuantity" type="Label" parent="."]
+margin_left = 503.0
+margin_top = 5.0
+margin_right = 558.0
+margin_bottom = 19.0
+text = "Quantity"
+
+[node name="Quantity" type="LineEdit" parent="."]
+margin_left = 562.0
+margin_right = 998.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Del" type="Button" parent="."]
+margin_left = 1002.0
+margin_right = 1024.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+hint_tooltip = "Delete property"
+icon = ExtResource( 3 )

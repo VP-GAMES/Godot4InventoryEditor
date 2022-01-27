@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryTypes.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryTypesEditorView.gd" type="Script" id=2]
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItemsEditorView.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/inventory_editor/scenes/items/InventoryTypeData.tscn" type="PackedScene" id=4]
+
+[node name="InventoryTypesEditorView" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Split" type="HSplitContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = -297
+
+[node name="Types" parent="Split" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 209.0
+margin_bottom = 600.0
+rect_clip_content = true
+
+[node name="VBoxData" type="VBoxContainer" parent="Split"]
+margin_left = 221.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TypeData" parent="Split/VBoxData" instance=ExtResource( 4 )]
+margin_bottom = 134.0
+
+[node name="HSeparator" type="HSeparator" parent="Split/VBoxData"]
+margin_top = 138.0
+margin_right = 803.0
+margin_bottom = 142.0
+
+[node name="Items" parent="Split/VBoxData" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 146.0
+margin_right = 803.0
+margin_bottom = 600.0

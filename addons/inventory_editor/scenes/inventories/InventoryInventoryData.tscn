@@ -1,0 +1,133 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/inventory_editor/icons/Inventory.png" type="Texture" id=1]
+[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataPut.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataPath.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryData.gd" type="Script" id=4]
+[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataPutScene.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataPathScene.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/inventory_editor/icons/File.png" type="Texture" id=7]
+
+[node name="InventoryInventoryData" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginData" type="MarginContainer" parent="."]
+margin_right = 510.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="MarginData"]
+margin_right = 510.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxStacks" type="HBoxContainer" parent="MarginData/VBox"]
+margin_right = 510.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxStacks"]
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 100, 0 )
+text = "Stacks"
+
+[node name="Stacks" type="LineEdit" parent="MarginData/VBox/HBoxStacks"]
+margin_left = 104.0
+margin_right = 510.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="HBoxIcon" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 28.0
+margin_right = 510.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxIcon"]
+margin_top = 8.0
+margin_right = 76.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 76, 0 )
+text = "Icon"
+
+[node name="Put" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( 2 )]
+margin_left = 80.0
+margin_right = 100.0
+margin_bottom = 30.0
+
+[node name="Icon" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_right = 510.0
+margin_bottom = 30.0
+
+[node name="HBoxScene" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 62.0
+margin_right = 510.0
+margin_bottom = 92.0
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxScene"]
+margin_top = 8.0
+margin_right = 76.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 76, 0 )
+text = "Scene"
+
+[node name="PutScene" parent="MarginData/VBox/HBoxScene" instance=ExtResource( 5 )]
+margin_left = 80.0
+margin_right = 100.0
+margin_bottom = 30.0
+
+[node name="PathScene" parent="MarginData/VBox/HBoxScene" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_right = 484.0
+margin_bottom = 30.0
+
+[node name="Open" type="Button" parent="MarginData/VBox/HBoxScene"]
+margin_left = 488.0
+margin_right = 510.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 20, 20 )
+hint_tooltip = "Open scene"
+icon = ExtResource( 7 )
+
+[node name="MarginPreview" type="MarginContainer" parent="."]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="MarginPreview"]
+margin_right = 510.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginPreview/VBox"]
+margin_right = 510.0
+margin_bottom = 14.0
+text = "Icon"
+align = 1
+valign = 1
+
+[node name="Texture" type="TextureRect" parent="MarginPreview/VBox"]
+margin_top = 18.0
+margin_right = 510.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+stretch_mode = 6
