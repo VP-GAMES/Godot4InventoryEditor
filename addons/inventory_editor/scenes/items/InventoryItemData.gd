@@ -21,9 +21,9 @@ var localization_editor
 @onready var _properties_ui = $MarginData/VBox/VBoxProperties as VBoxContainer
 @onready var _icon_preview_ui = $MarginPreview/VBox/VBoxIcon/Texture as TextureRect
 @onready var _item_preview_ui = $MarginPreview/VBox/VBoxPreview as VBoxContainer
-@onready var _item2D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D as ViewportContainer
+@onready var _item2D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D as SubViewport
 @onready var _item2D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D/Viewport/Viewport2D as Node
-@onready var _item3D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D as ViewportContainer
+@onready var _item3D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D as SubViewport
 @onready var _item3D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D/Viewport/Viewport3D as Node
 
 const InventoryItemDataProperty = preload("res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.tscn")
