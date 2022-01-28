@@ -8,21 +8,15 @@ var _data: InventoryData
 var localization_editor
 
 @onready var _data_ui = $MarginData
-@onready var _preview_ui = $MarginPreview
-@onready var _stacksize_ui = $MarginData/VBox/HBoxStack/Stacksize as LineEdit
-@onready var _icon_ui = $MarginData/VBox/HBoxIcon/Icon as LineEdit
+@onready var _stacksize_ui = $MarginData/VBox/HBox/VBox/HBoxStack/Stacksize as LineEdit
+@onready var _icon_ui = $MarginData/VBox/HBox/VBox/HBoxIcon/Icon as LineEdit
 @onready var _add_ui = $MarginData/VBox/HBoxAdd/Add as Button
-@onready var _scene_ui = $MarginData/VBox/HBoxScene/Scene as LineEdit
-@onready var _open_ui = $MarginData/VBox/HBoxScene/Open as Button
-@onready var _description_ui =$MarginData/VBox/HBoxDescription/Description as TextEdit
-@onready var _dropdown_description_ui = $MarginData/VBox/HBoxDescription/Dropdown
+@onready var _scene_ui = $MarginData/VBox/HBox/VBox/HBoxScene/Scene as LineEdit
+@onready var _open_ui = $MarginData/VBox/HBox/VBox/HBoxScene/Open as Button
+@onready var _description_ui =$MarginData/VBox/HBox/VBox/HBoxDescription/Description as TextEdit
+@onready var _dropdown_description_ui = $MarginData/VBox/HBox/VBox/HBoxDescription/Dropdown
 @onready var _properties_ui = $MarginData/VBox/VBoxProperties as VBoxContainer
-@onready var _icon_preview_ui = $MarginPreview/VBox/VBoxIcon/Texture as TextureRect
-@onready var _item_preview_ui = $MarginPreview/VBox/VBoxPreview as VBoxContainer
-@onready var _item2D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D as SubViewportContainer
-@onready var _item2D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D/Viewport/Viewport2D as Node
-@onready var _item3D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D as SubViewportContainer
-@onready var _item3D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D/Viewport/Viewport3D as Node
+@onready var _icon_preview_ui = $MarginData/VBox/HBox/VBoxIcon/Texture as TextureRect
 
 const InventoryItemDataProperty = preload("res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.tscn")
 
@@ -74,8 +68,6 @@ func _init_connections() -> void:
 		assert(_description_ui.text_changed.connect(_on_description_text_changed) == OK)
 	if not _add_ui.pressed.is_connected(_on_add_pressed):
 		assert(_add_ui.pressed.connect(_on_add_pressed) == OK)
-	if not _item_preview_ui.resized.is_connected(_on_item_preview_ui_resized):
-		assert(_item_preview_ui.resized.connect(_on_item_preview_ui_resized) == OK)
 	if _data.setting_localization_editor_enabled():
 		if not _dropdown_description_ui.selection_changed.is_connected(_on_selection_changed_description):
 			assert(_dropdown_description_ui.selection_changed.connect(_on_selection_changed_description) == OK)
@@ -90,9 +82,6 @@ func _update_selection_view() -> void:
 	_item = _data.selected_item()
 	_init_connections_item()
 	_draw_view()
-
-func _on_item_preview_ui_resized() -> void:
-	_update_previews()
 
 func _on_selection_changed_description(item) -> void:
 	_item.description = item.value
@@ -123,7 +112,7 @@ func _on_open_pressed() -> void:
 		var scene = load(_item.scene).instantiate()
 		if scene:
 			var mainscreen
-			if scene.is_class("Spatial"):
+			if scene.is_class("Node3D"):
 				mainscreen = "3D"
 			elif scene.is_class("Control") or scene.is_class("Node2D"):
 				mainscreen = "2D"
@@ -154,15 +143,12 @@ func _draw_view() -> void:
 		_draw_view_description_ui()
 		_draw_view_properties_ui()
 		_draw_view_icon_preview_ui()
-		_update_previews()
 
 func check_view_visibility() -> void:
 	if _item:
 		_data_ui.show()
-		_preview_ui.show()
 	else:
 		_data_ui.hide()
-		_preview_ui.hide()
 
 func _update_view_data() -> void:
 	_icon_ui.set_data(_item, _data)
@@ -199,34 +185,3 @@ func _draw_view_icon_preview_ui() -> void:
 		t = load(_item.icon)
 		t = _data.resize_texture(t, Vector2(100, 100))
 	_icon_preview_ui.texture = t
-
-func _update_previews() -> void:
-	_item2D_preview_ui.hide()
-	_item3D_preview_ui.hide()
-	if _item != null and _item.scene != null and not _item.scene.is_empty():
-		if _data.resource_exists(_item.scene):
-			var scene = load(_item.scene).instantiate()
-			if scene != null:
-				if scene is Node2D:
-					_item2D_preview_ui.show()
-					_update_preview2D()
-				if scene is Node3D:
-					_item3D_preview_ui.show()
-					_update_preview3D()
-
-func _update_preview2D() -> void:
-	for child in _item2D_viewport_ui.get_children():
-		_item2D_viewport_ui.remove_child(child)
-		child.queue_free()
-	if _item != null and _item.scene != null:
-		var scene = load(_item.scene).instantiate()
-		scene.position = Vector2(_item_preview_ui.rect_size.x / 2, _item_preview_ui.rect_size.y / 2)
-		_item2D_viewport_ui.add_child(scene)
-
-func _update_preview3D() -> void:
-	for child in _item3D_viewport_ui.get_children():
-		_item3D_viewport_ui.remove_child(child)
-		child.queue_free()
-	if _item != null and _item.scene != null:
-		var scene = load(_item.scene).instantiate()
-		_item3D_viewport_ui.add_child(scene)

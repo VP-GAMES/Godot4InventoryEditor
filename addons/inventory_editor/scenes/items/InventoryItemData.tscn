@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dhc2m24gbwp23" path="res://addons/inventory_editor/icons/Item.png" id="2"]
 [ext_resource type="Script" path="res://addons/inventory_editor/scenes/items/InventoryItemData.gd" id="3"]
 [ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryItemDataPath.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://coiuo7hagef4s" path="res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryItemDataPathScene.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://bsbdtbgy66s7k" path="res://addons/inventory_editor/icons/File.png" id="9"]
 [ext_resource type="PackedScene" uid="uid://cf8spgpdsxfdb" path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" id="10"]
@@ -20,6 +20,8 @@ data/0 = ExtResource( "11" )
 data/0 = ExtResource( "11" )
 
 [node name="InventoryItemData" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( "3" )
@@ -28,116 +30,156 @@ __meta__ = {
 }
 
 [node name="MarginData" type="MarginContainer" parent="."]
-offset_right = 170.0
-offset_bottom = 339.0
+offset_right = 1024.0
+offset_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox" type="VBoxContainer" parent="MarginData"]
-offset_right = 170.0
-offset_bottom = 339.0
+offset_right = 1024.0
+offset_bottom = 600.0
 
-[node name="HBoxStack" type="HBoxContainer" parent="MarginData/VBox"]
-offset_right = 170.0
+[node name="HBox" type="HBoxContainer" parent="MarginData/VBox"]
+offset_right = 1024.0
+offset_bottom = 222.0
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="MarginData/VBox/HBox"]
+offset_right = 510.0
+offset_bottom = 222.0
+size_flags_horizontal = 3
+
+[node name="HBoxStack" type="HBoxContainer" parent="MarginData/VBox/HBox/VBox"]
+offset_right = 510.0
 offset_bottom = 31.0
 
-[node name="Label" type="Label" parent="MarginData/VBox/HBoxStack"]
+[node name="Label" type="Label" parent="MarginData/VBox/HBox/VBox/HBoxStack"]
 offset_top = 2.0
 offset_right = 90.0
 offset_bottom = 28.0
 rect_min_size = Vector2(90, 0)
 text = "Stacksize"
 
-[node name="Stacksize" type="LineEdit" parent="MarginData/VBox/HBoxStack"]
+[node name="Stacksize" type="LineEdit" parent="MarginData/VBox/HBox/VBox/HBoxStack"]
 offset_left = 94.0
-offset_right = 170.0
+offset_right = 510.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 
-[node name="HBoxIcon" type="HBoxContainer" parent="MarginData/VBox"]
+[node name="HBoxIcon" type="HBoxContainer" parent="MarginData/VBox/HBox/VBox"]
 offset_top = 35.0
-offset_right = 170.0
+offset_right = 510.0
 offset_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginData/VBox/HBoxIcon"]
+[node name="Label" type="Label" parent="MarginData/VBox/HBox/VBox/HBoxIcon"]
 offset_top = 1.0
 offset_right = 90.0
 offset_bottom = 27.0
 rect_min_size = Vector2(90, 0)
 text = "Icon"
 
-[node name="Icon" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( "5" )]
+[node name="Icon" parent="MarginData/VBox/HBox/VBox/HBoxIcon" instance=ExtResource( "5" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 94.0
-offset_right = 170.0
+offset_right = 510.0
 offset_bottom = 28.0
 theme_override_fonts/font = SubResource( "1" )
 
-[node name="HBoxScene" type="HBoxContainer" parent="MarginData/VBox"]
+[node name="HBoxScene" type="HBoxContainer" parent="MarginData/VBox/HBox/VBox"]
 offset_top = 67.0
-offset_right = 170.0
+offset_right = 510.0
 offset_bottom = 98.0
 
-[node name="Label" type="Label" parent="MarginData/VBox/HBoxScene"]
+[node name="Label" type="Label" parent="MarginData/VBox/HBox/VBox/HBoxScene"]
 offset_top = 2.0
 offset_right = 90.0
 offset_bottom = 28.0
 rect_min_size = Vector2(90, 0)
 text = "Scene"
 
-[node name="Scene" parent="MarginData/VBox/HBoxScene" instance=ExtResource( "8" )]
+[node name="Scene" parent="MarginData/VBox/HBox/VBox/HBoxScene" instance=ExtResource( "8" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 94.0
-offset_right = 146.0
+offset_right = 486.0
 offset_bottom = 31.0
 theme_override_fonts/font = SubResource( "Font_2qbj8" )
 
-[node name="Open" type="Button" parent="MarginData/VBox/HBoxScene"]
-offset_left = 150.0
-offset_right = 170.0
+[node name="Open" type="Button" parent="MarginData/VBox/HBox/VBox/HBoxScene"]
+offset_left = 490.0
+offset_right = 510.0
 offset_bottom = 31.0
 rect_min_size = Vector2(20, 20)
 hint_tooltip = "Open scene"
 icon = ExtResource( "9" )
 
-[node name="HBoxDescription" type="HBoxContainer" parent="MarginData/VBox"]
+[node name="HBoxDescription" type="HBoxContainer" parent="MarginData/VBox/HBox/VBox"]
 offset_top = 102.0
-offset_right = 170.0
+offset_right = 510.0
 offset_bottom = 222.0
 rect_min_size = Vector2(0, 5)
 
-[node name="Label" type="Label" parent="MarginData/VBox/HBoxDescription"]
+[node name="Label" type="Label" parent="MarginData/VBox/HBox/VBox/HBoxDescription"]
 offset_right = 90.0
 offset_bottom = 120.0
 rect_min_size = Vector2(90, 0)
 size_flags_vertical = 5
 text = "Description"
 
-[node name="Description" type="TextEdit" parent="MarginData/VBox/HBoxDescription"]
+[node name="Description" type="TextEdit" parent="MarginData/VBox/HBox/VBox/HBoxDescription"]
 offset_left = 94.0
-offset_right = 130.0
+offset_right = 300.0
 offset_bottom = 120.0
 rect_min_size = Vector2(0, 120)
 size_flags_horizontal = 3
 theme_override_fonts/font = SubResource( "Font_qu67l" )
 
-[node name="Dropdown" parent="MarginData/VBox/HBoxDescription" instance=ExtResource( "10" )]
+[node name="Dropdown" parent="MarginData/VBox/HBox/VBox/HBoxDescription" instance=ExtResource( "10" )]
 anchor_right = 0.0
-offset_left = 134.0
-offset_right = 170.0
+offset_left = 304.0
+offset_right = 510.0
 offset_bottom = 120.0
+
+[node name="VBoxIcon" type="VBoxContainer" parent="MarginData/VBox/HBox"]
+offset_left = 514.0
+offset_right = 1024.0
+offset_bottom = 222.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBox/VBoxIcon"]
+offset_right = 510.0
+offset_bottom = 26.0
+text = "Icon"
+
+[node name="Texture" type="TextureRect" parent="MarginData/VBox/HBox/VBoxIcon"]
+offset_top = 30.0
+offset_right = 510.0
+offset_bottom = 193.0
+rect_min_size = Vector2(100, 100)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( "2" )
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginData/VBox/HBox/VBoxIcon"]
+offset_top = 197.0
+offset_right = 510.0
+offset_bottom = 222.0
+rect_min_size = Vector2(0, 25)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 226.0
-offset_right = 170.0
+offset_right = 1024.0
 offset_bottom = 231.0
 rect_min_size = Vector2(0, 5)
 
 [node name="HBoxAdd" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 235.0
-offset_right = 170.0
+offset_right = 1024.0
 offset_bottom = 266.0
 
 [node name="Add" type="Button" parent="MarginData/VBox/HBoxAdd"]
@@ -156,121 +198,34 @@ text = "Properties"
 
 [node name="HBoxNames" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 270.0
-offset_right = 170.0
+offset_right = 1024.0
 offset_bottom = 296.0
 
 [node name="Name" type="Label" parent="MarginData/VBox/HBoxNames"]
-offset_right = 83.0
+offset_right = 510.0
 offset_bottom = 26.0
 size_flags_horizontal = 3
 text = "Name"
 
 [node name="Value" type="Label" parent="MarginData/VBox/HBoxNames"]
-offset_left = 87.0
-offset_right = 170.0
+offset_left = 514.0
+offset_right = 1024.0
 offset_bottom = 26.0
 size_flags_horizontal = 3
 text = "Value"
 
 [node name="HSeparator" type="HSeparator" parent="MarginData/VBox"]
 offset_top = 300.0
-offset_right = 170.0
+offset_right = 1024.0
 offset_bottom = 304.0
 
 [node name="VBoxProperties" type="VBoxContainer" parent="MarginData/VBox"]
 offset_top = 308.0
-offset_right = 170.0
+offset_right = 1024.0
 offset_bottom = 339.0
 
 [node name="InventoryItemDataProperty" parent="MarginData/VBox/VBoxProperties" instance=ExtResource( "6" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 170.0
+offset_right = 1024.0
 offset_bottom = 31.0
-
-[node name="MarginPreview" type="MarginContainer" parent="."]
-offset_left = 174.0
-offset_right = 274.0
-offset_bottom = 339.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VBox" type="VBoxContainer" parent="MarginPreview"]
-offset_right = 100.0
-offset_bottom = 339.0
-
-[node name="VBoxIcon" type="VBoxContainer" parent="MarginPreview/VBox"]
-offset_right = 100.0
-offset_bottom = 159.0
-
-[node name="Label" type="Label" parent="MarginPreview/VBox/VBoxIcon"]
-offset_right = 100.0
-offset_bottom = 26.0
-text = "Icon"
-
-[node name="Texture" type="TextureRect" parent="MarginPreview/VBox/VBoxIcon"]
-offset_top = 30.0
-offset_right = 100.0
-offset_bottom = 130.0
-rect_min_size = Vector2(100, 100)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( "2" )
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginPreview/VBox/VBoxIcon"]
-offset_top = 134.0
-offset_right = 100.0
-offset_bottom = 159.0
-rect_min_size = Vector2(0, 25)
-
-[node name="HSeparator" type="HSeparator" parent="MarginPreview/VBox"]
-offset_top = 163.0
-offset_right = 100.0
-offset_bottom = 167.0
-
-[node name="VBoxPreview" type="VBoxContainer" parent="MarginPreview/VBox"]
-offset_top = 171.0
-offset_right = 100.0
-offset_bottom = 339.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ViewportContainer2D" type="SubViewportContainer" parent="MarginPreview/VBox/VBoxPreview"]
-offset_right = 100.0
-offset_bottom = 168.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-stretch = true
-
-[node name="Viewport" type="SubViewport" parent="MarginPreview/VBox/VBoxPreview/ViewportContainer2D"]
-handle_input_locally = false
-size = Vector2i(100, 168)
-render_target_update_mode = 4
-
-[node name="Viewport2D" type="SubViewport" parent="MarginPreview/VBox/VBoxPreview/ViewportContainer2D/Viewport"]
-
-[node name="ViewportContainer3D" type="SubViewportContainer" parent="MarginPreview/VBox/VBoxPreview"]
-visible = false
-offset_top = 86.0
-offset_right = 100.0
-offset_bottom = 168.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="SubViewport" parent="MarginPreview/VBox/VBoxPreview/ViewportContainer3D"]
-handle_input_locally = false
-size = Vector2i(100, 82)
-render_target_update_mode = 0
-
-[node name="Camera" type="Camera3D" parent="MarginPreview/VBox/VBoxPreview/ViewportContainer3D/Viewport"]
-transform = Transform3D(1, 0, 0, 0, 0.962156, 0.272499, 0, -0.272499, 0.962156, 0, 6.38085, 19.7363)
-current = true
-near = 0.09
-
-[node name="Viewport3D" type="SubViewport" parent="MarginPreview/VBox/VBoxPreview/ViewportContainer3D/Viewport"]
