@@ -85,7 +85,7 @@ func _on_popup_hide(root, dialog) -> void:
 func can_drop_data(position, data) -> bool:
 	var path_value = data["files"][0]
 	var path_extension = _data.file_extension(path_value)
-	for extension in _data.supported_file_extensions():
+	for extension in _data.SUPPORTED_IMAGE_RESOURCES:
 		if path_extension == extension:
 			return true
 	return false
