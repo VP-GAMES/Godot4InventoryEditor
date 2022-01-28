@@ -1,0 +1,193 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://addons/inventory_example/3d/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/inventory_example/3d/Level1.gd" type="Script" id=2]
+[ext_resource path="res://addons/inventory_example/inventories/simple/InventoryUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://addons/inventory_example/textures/inventories/Chest.png" type="Texture" id=5]
+[ext_resource path="res://addons/inventory_editor/InventoryItem3D.gd" type="Script" id=6]
+[ext_resource path="res://addons/inventory_example/3d/items/HealthNormal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://addons/inventory_example/3d/items/ManaNormal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://addons/inventory_example/3d/items/SwordDestroyer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://addons/inventory_example/3d/items/SwordDragonhunter.tscn" type="PackedScene" id=10]
+[ext_resource path="res://addons/inventory_example/3d/items/HealthBig.tscn" type="PackedScene" id=11]
+[ext_resource path="res://addons/inventory_example/3d/items/ManaBig.tscn" type="PackedScene" id=12]
+
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.133333, 0.823529, 0.0745098, 1 )
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.0194099, 3.9239, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+font_data = ExtResource( 4 )
+
+[node name="Level" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Background" type="MeshInstance" parent="."]
+transform = Transform( 35, 0, 0, 0, 1, 0, 0, 0, 35, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Ground" type="StaticBody" parent="Background"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Background/Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.15939, 0 )
+shape = SubResource( 3 )
+
+[node name="WallXNegative" type="StaticBody" parent="Background"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Background/WallXNegative"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01813, 1.75066, 0 )
+shape = SubResource( 4 )
+
+[node name="WallXPositive" type="StaticBody" parent="Background"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Background/WallXPositive"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01813, 1.75066, 0 )
+shape = SubResource( 4 )
+
+[node name="WallZNegative" type="StaticBody" parent="Background"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Background/WallZNegative"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01813, 1.75066, 0 )
+shape = SubResource( 4 )
+
+[node name="WallZPositive" type="StaticBody" parent="Background"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Background/WallZPositive"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01813, 1.75066, 0 )
+shape = SubResource( 4 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Background"]
+transform = Transform( 0.0285714, 0, 0, 0, -1.62921e-07, 1, 0, -0.0285714, -4.65488e-09, 0, 20, 0 )
+light_energy = 3.0
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -21, 0, -21 )
+
+[node name="CanvasError" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasError"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 5 )
+text = "To support dialogues you have to autoload res://addons/dialogue_editor/DialogueManager.gd"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasInventory" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="CanvasInventory" instance=ExtResource( 3 )]
+margin_left = 720.0
+margin_top = 110.0
+margin_right = 1020.0
+margin_bottom = 410.0
+
+[node name="CanvasButton" type="CanvasLayer" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="CanvasButton"]
+margin_left = 920.0
+margin_top = 5.0
+margin_right = 960.0
+margin_bottom = 45.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="Spatial" parent="."]
+
+[node name="Item3D" type="Spatial" parent="Items"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 15 )
+script = ExtResource( 6 )
+item_put = "5a340c0a-19f0-4827-ad81-d0cfbab5c575"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
+
+[node name="InventoryItem_5a340c0a-19f0-4827-ad81-d0cfbab5c575" parent="Items/Item3D" instance=ExtResource( 8 )]
+
+[node name="Item3D7" type="Spatial" parent="Items"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 0 )
+script = ExtResource( 6 )
+item_put = "5e7ebf21-abad-4c18-bce7-915ae9e57a31"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
+
+[node name="InventoryItem_5e7ebf21-abad-4c18-bce7-915ae9e57a31" parent="Items/Item3D7" instance=ExtResource( 12 )]
+
+[node name="Item3D2" type="Spatial" parent="Items"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -15 )
+script = ExtResource( 6 )
+item_put = "5a340c0a-19f0-4827-ad81-d0cfbab5c575"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
+
+[node name="InventoryItem_5a340c0a-19f0-4827-ad81-d0cfbab5c575" parent="Items/Item3D2" instance=ExtResource( 8 )]
+
+[node name="Item3D3" type="Spatial" parent="Items"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -15 )
+script = ExtResource( 6 )
+item_put = "84993f8a-a25d-48f2-8a90-975f79f8995d"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
+
+[node name="InventoryItem_84993f8a-a25d-48f2-8a90-975f79f8995d" parent="Items/Item3D3" instance=ExtResource( 7 )]
+
+[node name="Item3D4" type="Spatial" parent="Items"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 15 )
+script = ExtResource( 6 )
+item_put = "84993f8a-a25d-48f2-8a90-975f79f8995d"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
+
+[node name="InventoryItem_84993f8a-a25d-48f2-8a90-975f79f8995d" parent="Items/Item3D4" instance=ExtResource( 7 )]
+
+[node name="Item3D8" type="Spatial" parent="Items"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0 )
+script = ExtResource( 6 )
+item_put = "f2d2172d-9c78-4b5a-bd50-710cb914e578"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
+
+[node name="InventoryItem_f2d2172d-9c78-4b5a-bd50-710cb914e578" parent="Items/Item3D8" instance=ExtResource( 11 )]
+
+[node name="Item3D5" type="Spatial" parent="Items"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 3.5, 25 )
+script = ExtResource( 6 )
+item_put = "52d0a7fa-b133-45f1-9b75-b9818c8599d2"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
+
+[node name="InventoryItem_52d0a7fa-b133-45f1-9b75-b9818c8599d2" parent="Items/Item3D5" instance=ExtResource( 9 )]
+
+[node name="Item3D6" type="Spatial" parent="Items"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 3.5, -25 )
+script = ExtResource( 6 )
+item_put = "38a142cc-57cb-4f07-8e61-3b7c6601f3b8"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+quantity = 1
+remove_collected = true
+
+[node name="InventoryItem_38a142cc-57cb-4f07-8e61-3b7c6601f3b8" parent="Items/Item3D6" instance=ExtResource( 10 )]

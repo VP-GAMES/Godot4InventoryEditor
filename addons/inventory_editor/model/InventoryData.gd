@@ -613,12 +613,11 @@ func resource_exists(resource_path) -> bool:
 	var file = File.new()
 	return file.file_exists(resource_path)
 
-func resize_texture(t: Texture, size: Vector2):
-	var itex = t
-	if itex:
-		var texture = t.get_data()
-		if size.x > 0 && size.y > 0:
-			texture.resize(size.x, size.y)
-		itex = ImageTexture.new()
-		itex.create_from_image(texture)
+func resize_texture(t: Texture2D, size: Vector2) -> Texture:
+	if t == null:
+		return null
+	var tx = t.duplicate()
+	var itex = ImageTexture.new()
+	itex.create_from_image(tx.get_image())
+	itex.set_size_override(size)
 	return itex

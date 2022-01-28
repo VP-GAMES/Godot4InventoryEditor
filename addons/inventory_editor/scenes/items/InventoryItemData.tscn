@@ -228,7 +228,8 @@ rect_min_size = Vector2(100, 100)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( "2" )
-stretch_mode = 6
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginPreview/VBox/VBoxIcon"]
 offset_top = 134.0

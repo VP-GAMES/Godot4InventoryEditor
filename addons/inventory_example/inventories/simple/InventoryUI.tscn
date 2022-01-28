@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackground.png" type="Texture" id=1]
+[ext_resource path="res://addons/inventory_example/inventories/simple/InventoryUI.gd" type="Script" id=2]
+[ext_resource path="res://addons/inventory_example/inventories/simple/ItemUI.tscn" type="PackedScene" id=3]
+
+[node name="Inventory" type="Control"]
+margin_right = 300.0
+margin_bottom = 300.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+Item = ExtResource( 3 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 300.0
+margin_bottom = 300.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="NinePatchRect/Margin"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 290.0
+margin_bottom = 290.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4

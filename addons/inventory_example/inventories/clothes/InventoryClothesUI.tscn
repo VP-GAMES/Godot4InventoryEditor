@@ -1,0 +1,210 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackground.png" type="Texture" id=1]
+[ext_resource path="res://addons/inventory_editor/ui/InventoryItemUIIcon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackgroundItemArmor.png" type="Texture" id=3]
+[ext_resource path="res://addons/inventory_editor/ui/InventoryItemUI.gd" type="Script" id=4]
+[ext_resource path="res://addons/inventory_editor/ui/InventoryInventoryUI.gd" type="Script" id=5]
+[ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackgroundItemBoots.png" type="Texture" id=6]
+[ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackgroundItemHelmet.png" type="Texture" id=7]
+[ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackgroundItemGlovesRight.png" type="Texture" id=8]
+[ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackgroundItemGlovesLeft.png" type="Texture" id=9]
+[ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackgroundItemWeapon.png" type="Texture" id=10]
+[ext_resource path="res://addons/inventory_example/textures/inventories/InventoryBackgroundItemShield.png" type="Texture" id=11]
+
+[node name="Control" type="Control"]
+margin_right = 225.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 225, 225 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="NinePatchRect/Margin"]
+margin_right = 205.0
+margin_bottom = 205.0
+columns = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/Margin/Grid"]
+margin_right = 65.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Helmet" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
+margin_left = 69.0
+margin_right = 134.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+expand = true
+script = ExtResource( 4 )
+
+[node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/Helmet" instance=ExtResource( 2 )]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
+type = "ea7090ff-4387-4787-ba15-7c84da7490b7"
+index = 0
+has_popup = true
+show_quantity = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/Margin/Grid"]
+margin_left = 138.0
+margin_right = 203.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GlovesLeft" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
+margin_top = 69.0
+margin_right = 65.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 9 )
+expand = true
+script = ExtResource( 4 )
+
+[node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/GlovesLeft" instance=ExtResource( 2 )]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
+type = "98c9bfd3-e544-4ccc-b683-5f587a245822"
+index = 1
+has_popup = true
+show_quantity = false
+
+[node name="Armor" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
+margin_left = 69.0
+margin_top = 69.0
+margin_right = 134.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+expand = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/Armor" instance=ExtResource( 2 )]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
+type = "4afbc41f-004c-4386-84d6-5432aaec720b"
+index = 2
+has_popup = true
+show_quantity = false
+
+[node name="GlovesRight" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
+margin_left = 138.0
+margin_top = 69.0
+margin_right = 203.0
+margin_bottom = 134.0
+texture = ExtResource( 8 )
+expand = true
+script = ExtResource( 4 )
+
+[node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/GlovesRight" instance=ExtResource( 2 )]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
+type = "dec3fedd-91f4-4dd0-9aed-9c52bc25da81"
+index = 3
+has_popup = true
+show_quantity = false
+
+[node name="Weapon" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
+margin_top = 138.0
+margin_right = 65.0
+margin_bottom = 203.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 10 )
+expand = true
+script = ExtResource( 4 )
+
+[node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/Weapon" instance=ExtResource( 2 )]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
+type = "947b1cbf-7c4f-4eaa-8853-058ef1784615"
+index = 4
+has_popup = true
+show_quantity = false
+
+[node name="Boots" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
+margin_left = 69.0
+margin_top = 138.0
+margin_right = 134.0
+margin_bottom = 203.0
+texture = ExtResource( 6 )
+expand = true
+script = ExtResource( 4 )
+
+[node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/Boots" instance=ExtResource( 2 )]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
+type = "8ed9b27f-3026-4b4a-847e-2f2e4253e656"
+index = 5
+has_popup = true
+show_quantity = false
+
+[node name="Shield" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
+margin_left = 138.0
+margin_top = 138.0
+margin_right = 203.0
+margin_bottom = 203.0
+texture = ExtResource( 11 )
+expand = true
+script = ExtResource( 4 )
+
+[node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/Shield" instance=ExtResource( 2 )]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
+type = "8a5228fe-9585-48be-87bf-77575b061b45"
+index = 6
+has_popup = true
+show_quantity = false

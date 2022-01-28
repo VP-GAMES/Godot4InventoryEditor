@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dskmudl737vey"]
+
+[ext_resource type="PackedScene" uid="uid://cryti6ry7m1rr" path="res://addons/inventory_example/3d/items/HealthBig.glb" id="1"]
+
+[sub_resource type="SphereShape3D" id="1"]
+radius = 0.951896
+
+[node name="HealthBig" type="Area3D"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.816891, 0)
+shape = SubResource( "1" )
+
+[node name="HealthBig" parent="." instance=ExtResource( "1" )]

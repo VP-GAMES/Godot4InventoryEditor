@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://mb1auoxfd821"]
+
+[ext_resource type="PackedScene" uid="uid://qxdtodfbwqvy" path="res://addons/inventory_example/3d/items/SwordDragonhunter.glb" id="1"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(1.27091, 0.231624, 8.01234)
+
+[node name="SwordDragonhunter" type="Area3D"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 2.77856, 0)
+shape = SubResource( "1" )
+
+[node name="SwordDragonhunter" parent="." instance=ExtResource( "1" )]

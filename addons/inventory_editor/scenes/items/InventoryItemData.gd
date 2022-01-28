@@ -17,7 +17,7 @@ var localization_editor
 @onready var _scene_ui = $MarginData/VBox/HBoxScene/Scene as LineEdit
 @onready var _open_ui = $MarginData/VBox/HBoxScene/Open as Button
 @onready var _description_ui =$MarginData/VBox/HBoxDescription/Description as TextEdit
-@onready var _dropdown_description_ui = $MarginData/VBox/HBoxDescription/Dropdown as LineEdit
+@onready var _dropdown_description_ui = $MarginData/VBox/HBoxDescription/Dropdown
 @onready var _properties_ui = $MarginData/VBox/VBoxProperties as VBoxContainer
 @onready var _icon_preview_ui = $MarginPreview/VBox/VBoxIcon/Texture as TextureRect
 @onready var _item_preview_ui = $MarginPreview/VBox/VBoxPreview as VBoxContainer

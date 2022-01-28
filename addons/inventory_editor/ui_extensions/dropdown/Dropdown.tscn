@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cf8spgpdsxfdb"]
 
-[ext_resource type="Script" path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.gd" id="1_85ajt"]
+[ext_resource type="Script" path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.gd" id="1_wq5x0"]
 [ext_resource type="Texture2D" uid="uid://djxyaxf1fbq8u" path="res://addons/inventory_editor/ui_extensions/dropdown/Arrow.svg" id="2_16dxe"]
 [ext_resource type="Texture2D" uid="uid://dob6kvdq3q3to" path="res://addons/inventory_editor/ui_extensions/dropdown/Cancel.svg" id="3_ph0xc"]
 
@@ -8,7 +8,7 @@
 anchor_right = 1.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
-script = ExtResource( "1_85ajt" )
+script = ExtResource( "1_wq5x0" )
 __meta__ = {
 "_edit_use_anchors_": false
 }

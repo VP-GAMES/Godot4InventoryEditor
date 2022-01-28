@@ -1,0 +1,256 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://addons/inventory_example/textures/Background.png" type="Texture" id=1]
+[ext_resource path="res://addons/inventory_example/2d/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/inventory_example/2d/Level.gd" type="Script" id=3]
+[ext_resource path="res://addons/inventory_example/textures/BackgroundSide.png" type="Texture" id=4]
+[ext_resource path="res://addons/inventory_editor/InventoryItem2D.gd" type="Script" id=5]
+[ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://addons/inventory_example/2d/items/HelmetViking.tscn" type="PackedScene" id=7]
+[ext_resource path="res://addons/inventory_example/2d/items/HelmetKnight.tscn" type="PackedScene" id=8]
+[ext_resource path="res://addons/inventory_example/2d/items/GloveLeftViking.tscn" type="PackedScene" id=9]
+[ext_resource path="res://addons/inventory_example/2d/items/ArmorKnight.tscn" type="PackedScene" id=10]
+[ext_resource path="res://addons/inventory_example/2d/items/SwordDestroyer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://addons/inventory_example/2d/items/SwordDragonhunter.tscn" type="PackedScene" id=12]
+[ext_resource path="res://addons/inventory_example/inventories/simple/InventoryUI.tscn" type="PackedScene" id=13]
+[ext_resource path="res://addons/inventory_example/textures/inventories/Chest.png" type="Texture" id=14]
+[ext_resource path="res://addons/inventory_example/2d/items/GloveLeftKnight.tscn" type="PackedScene" id=15]
+[ext_resource path="res://addons/inventory_example/2d/items/ArmorViking.tscn" type="PackedScene" id=16]
+[ext_resource path="res://addons/inventory_example/2d/items/GloveRightKnight.tscn" type="PackedScene" id=17]
+[ext_resource path="res://addons/inventory_example/2d/items/BootsKnight.tscn" type="PackedScene" id=18]
+[ext_resource path="res://addons/inventory_example/2d/items/BootsViking.tscn" type="PackedScene" id=19]
+[ext_resource path="res://addons/inventory_example/2d/items/ShieldKnight.tscn" type="PackedScene" id=20]
+[ext_resource path="res://addons/inventory_example/2d/items/ShieldViking.tscn" type="PackedScene" id=21]
+[ext_resource path="res://addons/inventory_example/2d/items/GloveRightViking.tscn" type="PackedScene" id=22]
+[ext_resource path="res://addons/inventory_example/inventories/clothes/InventoryClothesUI.tscn" type="PackedScene" id=23]
+[ext_resource path="res://addons/inventory_example/textures/inventories/Clothes.png" type="Texture" id=24]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 958.173, 30.1941 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 341.202 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 6 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 920, 235 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Floor" type="StaticBody2D" parent="Background"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Floor"]
+position = Vector2( 0, 350 )
+shape = SubResource( 1 )
+
+[node name="Left" type="StaticBody2D" parent="Background"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Left"]
+position = Vector2( -870, 0 )
+shape = SubResource( 2 )
+
+[node name="Right" type="StaticBody2D" parent="Background"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Right"]
+position = Vector2( 870, 0 )
+shape = SubResource( 2 )
+
+[node name="BackgroundSideRight" type="Sprite" parent="Background"]
+position = Vector2( 1920, 0 )
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="BackgroundSideLeft" type="Sprite" parent="Background"]
+position = Vector2( -1920, 0 )
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 220, 540 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="CanvasError" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasError"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.5874
+margin_right = 1.5874
+custom_colors/font_color = Color( 0.823529, 0.533333, 0.121569, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "To support dialogues you have to autoload res://addons/dialogue_editor/DialogueManager.gd"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Item2D" type="Node2D" parent="Items"]
+position = Vector2( 500, 500 )
+script = ExtResource( 5 )
+item_put = "cf240703-26ac-4a2a-88a7-1441ff6c6a0c"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_cf240703-26ac-4a2a-88a7-1441ff6c6a0c" parent="Items/Item2D" instance=ExtResource( 11 )]
+
+[node name="Item2D2" type="Node2D" parent="Items"]
+position = Vector2( 400, 500 )
+script = ExtResource( 5 )
+item_put = "5fa70d8d-c0d0-43d9-8260-6efa4fde008b"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_5fa70d8d-c0d0-43d9-8260-6efa4fde008b" parent="Items/Item2D2" instance=ExtResource( 12 )]
+
+[node name="Item2D3" type="Node2D" parent="Items"]
+position = Vector2( 600, 400 )
+script = ExtResource( 5 )
+item_put = "8274191e-eaac-4605-9f3e-f55492b5a4b9"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_8274191e-eaac-4605-9f3e-f55492b5a4b9" parent="Items/Item2D3" instance=ExtResource( 8 )]
+
+[node name="Item2D4" type="Node2D" parent="Items"]
+position = Vector2( 700, 400 )
+script = ExtResource( 5 )
+item_put = "a20c35ce-bcc8-4344-9840-dc0783ebb2e4"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_a20c35ce-bcc8-4344-9840-dc0783ebb2e4" parent="Items/Item2D4" instance=ExtResource( 7 )]
+
+[node name="Item2D5" type="Node2D" parent="Items"]
+position = Vector2( 800, 500 )
+script = ExtResource( 5 )
+item_put = "677586f9-55cc-40c2-bd87-7c54430c629d"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_677586f9-55cc-40c2-bd87-7c54430c629d" parent="Items/Item2D5" instance=ExtResource( 10 )]
+
+[node name="Item2D6" type="Node2D" parent="Items"]
+position = Vector2( 900, 500 )
+script = ExtResource( 5 )
+item_put = "3b6f1acc-6616-4af8-aba3-0fe78c57da13"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_3b6f1acc-6616-4af8-aba3-0fe78c57da13" parent="Items/Item2D6" instance=ExtResource( 16 )]
+
+[node name="Item2D7" type="Node2D" parent="Items"]
+position = Vector2( 1000, 400 )
+script = ExtResource( 5 )
+item_put = "8d1e1f40-99d4-4054-9891-af6342dab146"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_8d1e1f40-99d4-4054-9891-af6342dab146" parent="Items/Item2D7" instance=ExtResource( 15 )]
+
+[node name="Item2D8" type="Node2D" parent="Items"]
+position = Vector2( 1100, 400 )
+script = ExtResource( 5 )
+item_put = "4f73839a-9671-4ff0-94f7-8db09d3566a2"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_4f73839a-9671-4ff0-94f7-8db09d3566a2" parent="Items/Item2D8" instance=ExtResource( 9 )]
+
+[node name="Item2D9" type="Node2D" parent="Items"]
+position = Vector2( 1200, 500 )
+script = ExtResource( 5 )
+item_put = "a71930cb-0732-4420-a182-7bbfd93b3d21"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_a71930cb-0732-4420-a182-7bbfd93b3d21" parent="Items/Item2D9" instance=ExtResource( 17 )]
+
+[node name="Item2D10" type="Node2D" parent="Items"]
+position = Vector2( 1300, 500 )
+script = ExtResource( 5 )
+item_put = "bf6722f3-fbeb-4929-904c-511daa8b120b"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_bf6722f3-fbeb-4929-904c-511daa8b120b" parent="Items/Item2D10" instance=ExtResource( 22 )]
+
+[node name="Item2D11" type="Node2D" parent="Items"]
+position = Vector2( 1400, 400 )
+script = ExtResource( 5 )
+item_put = "e4b10f53-f1ef-437d-9d19-f877e7a7075c"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_e4b10f53-f1ef-437d-9d19-f877e7a7075c" parent="Items/Item2D11" instance=ExtResource( 18 )]
+
+[node name="Item2D12" type="Node2D" parent="Items"]
+position = Vector2( 1500, 400 )
+script = ExtResource( 5 )
+item_put = "04c54b13-060a-452b-a5df-96b49d276cb1"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_04c54b13-060a-452b-a5df-96b49d276cb1" parent="Items/Item2D12" instance=ExtResource( 19 )]
+
+[node name="Item2D13" type="Node2D" parent="Items"]
+position = Vector2( 1600, 500 )
+script = ExtResource( 5 )
+item_put = "9802268f-f635-4469-8c6a-b12f0720da6a"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_9802268f-f635-4469-8c6a-b12f0720da6a" parent="Items/Item2D13" instance=ExtResource( 20 )]
+
+[node name="Item2D14" type="Node2D" parent="Items"]
+position = Vector2( 1700, 500 )
+script = ExtResource( 5 )
+item_put = "921213e4-4daf-4221-809b-2bfe4a69ccf1"
+to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+
+[node name="InventoryItem_921213e4-4daf-4221-809b-2bfe4a69ccf1" parent="Items/Item2D14" instance=ExtResource( 21 )]
+
+[node name="CanvasInventory" type="CanvasLayer" parent="."]
+
+[node name="Inventories" type="Control" parent="CanvasInventory"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryAny" parent="CanvasInventory/Inventories" instance=ExtResource( 13 )]
+margin_left = 720.0
+margin_top = 110.0
+margin_right = 1020.0
+margin_bottom = 410.0
+
+[node name="InventoryClothes" parent="CanvasInventory/Inventories" instance=ExtResource( 23 )]
+margin_left = 6.12247
+margin_top = 108.878
+margin_right = 231.122
+margin_bottom = 333.878
+
+[node name="CanvasButton" type="CanvasLayer" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="CanvasButton"]
+margin_left = 920.0
+margin_top = 5.0
+margin_right = 1020.0
+margin_bottom = 105.0
+texture_normal = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButtonClouthes" type="TextureButton" parent="CanvasButton"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 105.0
+margin_bottom = 105.0
+texture_normal = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
