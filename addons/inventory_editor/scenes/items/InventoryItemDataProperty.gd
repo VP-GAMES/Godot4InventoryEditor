@@ -7,14 +7,12 @@ var _property
 var _item: InventoryItem
 
 @onready var _name_ui = $Name
-@onready var _put_ui = $HBox/Put
 @onready var _value_ui = $HBox/Value
 @onready var _del_ui = $HBox/Del
 
 func set_data(property, item: InventoryItem) -> void:
 	_property = property
 	_item = item
-	_put_ui.set_data(_property, _item)
 	_init_connections()
 	_draw_view()
 

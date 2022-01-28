@@ -10,10 +10,8 @@ var localization_editor
 @onready var _data_ui = $MarginData
 @onready var _preview_ui = $MarginPreview
 @onready var _stacksize_ui = $MarginData/VBox/HBoxStack/Stacksize as LineEdit
-@onready var _put_ui = $MarginData/VBox/HBoxIcon/Put as TextureRect
 @onready var _icon_ui = $MarginData/VBox/HBoxIcon/Icon as LineEdit
 @onready var _add_ui = $MarginData/VBox/HBoxAdd/Add as Button
-@onready var _put_scene_ui = $MarginData/VBox/HBoxScene/PutScene as TextureRect
 @onready var _scene_ui = $MarginData/VBox/HBoxScene/Scene as LineEdit
 @onready var _open_ui = $MarginData/VBox/HBoxScene/Open as Button
 @onready var _description_ui =$MarginData/VBox/HBoxDescription/Description as TextEdit
@@ -167,9 +165,7 @@ func check_view_visibility() -> void:
 		_preview_ui.hide()
 
 func _update_view_data() -> void:
-	_put_ui.set_data(_item, _data)
 	_icon_ui.set_data(_item, _data)
-	_put_scene_ui.set_data(_item, _data)
 	_scene_ui.set_data(_item, _data)
 
 func _draw_view_stacksize_ui() -> void:

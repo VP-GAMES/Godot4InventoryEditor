@@ -8,7 +8,6 @@ var _data: InventoryData
 
 @onready var _data_ui = $MarginData as MarginContainer
 @onready var _preview_ui = $MarginPreview as MarginContainer
-@onready var _put_ui = $MarginData/VBox/HBoxIcon/Put as TextureRect
 @onready var _icon_ui = $MarginData/VBox/HBoxIcon/Icon as LineEdit
 @onready var _icon_preview_ui = $MarginData/VBox/HBoxContainer/Texture as TextureRect
 
@@ -41,7 +40,6 @@ func _draw_view() -> void:
 		_draw_view_icon_preview_ui()
 
 func _update_view_data() -> void:
-	_put_ui.set_data(_type, _data)
 	_icon_ui.set_data(_type, _data)
 
 func _draw_view_icon_preview_ui() -> void:

@@ -1,12 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bfm4a862uxyag"]
+[gd_scene load_steps=13 format=3 uid="uid://bfm4a862uxyag"]
 
 [ext_resource type="Texture2D" uid="uid://dnw1xbg83c5pu" path="res://addons/inventory_editor/icons/Add.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://dhc2m24gbwp23" path="res://addons/inventory_editor/icons/Item.png" id="2"]
 [ext_resource type="Script" path="res://addons/inventory_editor/scenes/items/InventoryItemData.gd" id="3"]
-[ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryItemDataPut.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryItemDataPath.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryItemDataPutScene.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryItemDataPathScene.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://bsbdtbgy66s7k" path="res://addons/inventory_editor/icons/File.png" id="9"]
 [ext_resource type="PackedScene" uid="uid://cf8spgpdsxfdb" path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" id="10"]
@@ -30,85 +28,75 @@ __meta__ = {
 }
 
 [node name="MarginData" type="MarginContainer" parent="."]
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 339.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox" type="VBoxContainer" parent="MarginData"]
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 339.0
 
 [node name="HBoxStack" type="HBoxContainer" parent="MarginData/VBox"]
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 31.0
 
 [node name="Label" type="Label" parent="MarginData/VBox/HBoxStack"]
 offset_top = 2.0
-offset_right = 100.0
+offset_right = 90.0
 offset_bottom = 28.0
-rect_min_size = Vector2(100, 0)
+rect_min_size = Vector2(90, 0)
 text = "Stacksize"
 
 [node name="Stacksize" type="LineEdit" parent="MarginData/VBox/HBoxStack"]
-offset_left = 104.0
-offset_right = 180.0
+offset_left = 94.0
+offset_right = 170.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="HBoxIcon" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 35.0
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 63.0
 
 [node name="Label" type="Label" parent="MarginData/VBox/HBoxIcon"]
 offset_top = 1.0
-offset_right = 76.0
+offset_right = 90.0
 offset_bottom = 27.0
-rect_min_size = Vector2(76, 0)
+rect_min_size = Vector2(90, 0)
 text = "Icon"
-
-[node name="Put" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( "4" )]
-offset_left = 80.0
-offset_right = 100.0
-offset_bottom = 28.0
 
 [node name="Icon" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( "5" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 104.0
-offset_right = 180.0
+offset_left = 94.0
+offset_right = 170.0
 offset_bottom = 28.0
 theme_override_fonts/font = SubResource( "1" )
 
 [node name="HBoxScene" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 67.0
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 98.0
 
 [node name="Label" type="Label" parent="MarginData/VBox/HBoxScene"]
 offset_top = 2.0
-offset_right = 76.0
+offset_right = 90.0
 offset_bottom = 28.0
-rect_min_size = Vector2(76, 0)
+rect_min_size = Vector2(90, 0)
 text = "Scene"
-
-[node name="PutScene" parent="MarginData/VBox/HBoxScene" instance=ExtResource( "7" )]
-offset_left = 80.0
-offset_right = 100.0
-offset_bottom = 31.0
 
 [node name="Scene" parent="MarginData/VBox/HBoxScene" instance=ExtResource( "8" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 104.0
-offset_right = 156.0
+offset_left = 94.0
+offset_right = 146.0
 offset_bottom = 31.0
 theme_override_fonts/font = SubResource( "Font_2qbj8" )
 
 [node name="Open" type="Button" parent="MarginData/VBox/HBoxScene"]
-offset_left = 160.0
-offset_right = 180.0
+offset_left = 150.0
+offset_right = 170.0
 offset_bottom = 31.0
 rect_min_size = Vector2(20, 20)
 hint_tooltip = "Open scene"
@@ -116,20 +104,20 @@ icon = ExtResource( "9" )
 
 [node name="HBoxDescription" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 102.0
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 222.0
 rect_min_size = Vector2(0, 5)
 
 [node name="Label" type="Label" parent="MarginData/VBox/HBoxDescription"]
-offset_right = 100.0
+offset_right = 90.0
 offset_bottom = 120.0
-rect_min_size = Vector2(100, 0)
+rect_min_size = Vector2(90, 0)
 size_flags_vertical = 5
 text = "Description"
 
 [node name="Description" type="TextEdit" parent="MarginData/VBox/HBoxDescription"]
-offset_left = 104.0
-offset_right = 140.0
+offset_left = 94.0
+offset_right = 130.0
 offset_bottom = 120.0
 rect_min_size = Vector2(0, 120)
 size_flags_horizontal = 3
@@ -137,19 +125,19 @@ theme_override_fonts/font = SubResource( "Font_qu67l" )
 
 [node name="Dropdown" parent="MarginData/VBox/HBoxDescription" instance=ExtResource( "10" )]
 anchor_right = 0.0
-offset_left = 144.0
-offset_right = 180.0
+offset_left = 134.0
+offset_right = 170.0
 offset_bottom = 120.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 226.0
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 231.0
 rect_min_size = Vector2(0, 5)
 
 [node name="HBoxAdd" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 235.0
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 266.0
 
 [node name="Add" type="Button" parent="MarginData/VBox/HBoxAdd"]
@@ -168,41 +156,41 @@ text = "Properties"
 
 [node name="HBoxNames" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 270.0
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 296.0
 
 [node name="Name" type="Label" parent="MarginData/VBox/HBoxNames"]
-offset_right = 88.0
+offset_right = 83.0
 offset_bottom = 26.0
 size_flags_horizontal = 3
 text = "Name"
 
 [node name="Value" type="Label" parent="MarginData/VBox/HBoxNames"]
-offset_left = 92.0
-offset_right = 180.0
+offset_left = 87.0
+offset_right = 170.0
 offset_bottom = 26.0
 size_flags_horizontal = 3
 text = "Value"
 
 [node name="HSeparator" type="HSeparator" parent="MarginData/VBox"]
 offset_top = 300.0
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 304.0
 
 [node name="VBoxProperties" type="VBoxContainer" parent="MarginData/VBox"]
 offset_top = 308.0
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 339.0
 
 [node name="InventoryItemDataProperty" parent="MarginData/VBox/VBoxProperties" instance=ExtResource( "6" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 31.0
 
 [node name="MarginPreview" type="MarginContainer" parent="."]
-offset_left = 184.0
-offset_right = 284.0
+offset_left = 174.0
+offset_right = 274.0
 offset_bottom = 339.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
