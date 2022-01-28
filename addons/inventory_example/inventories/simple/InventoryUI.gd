@@ -1,11 +1,11 @@
 # Example implementation for inventory to demonstrate functionality of InventoryEditor : MIT License
 # @author Vladimir Petrenko
-tool
+@tool
 extends InventoryUI
 
-onready var _grid_ui = $NinePatchRect/Margin/Grid as GridContainer
+@onready var _grid_ui = $NinePatchRect/Margin/Grid as GridContainer
 
-export(PackedScene) var Item
+@export var Item: PackedScene
 
 func set_inventory_manager(inv_uuid, manager) -> void:
 	inventory = inv_uuid
@@ -32,7 +32,7 @@ func _draw_view() -> void:
 		var inventory_db = _inventoryManager.get_inventory_db(inventory) as InventoryInventory
 		if inventory_db:
 			for index in range(inventory_db.stacks):
-				var item_ui = Item.instance()
+				var item_ui = Item.instantiate()
 				_grid_ui.add_child(item_ui)
 				item_ui.set_index(index)
 			_set_inventory_manager_to_stacks(self)

@@ -45,7 +45,7 @@ func get_inventory_by_name_items(inventory_name: String) -> Array:
 	return get_inventory_items(inventory.uuid)
 
 func get_inventory_items(inventory_uuid: String) -> Array:
-	var items
+	var items = []
 	if _data.inventories.has(inventory_uuid):
 		items = _data.inventories[inventory_uuid]
 	return items

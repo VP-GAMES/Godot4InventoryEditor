@@ -8,8 +8,6 @@ var _data: InventoryData
 
 var _path_ui_style_resource: StyleBoxFlat
 
-const InventoryItemDataResourceDialogFile = preload("res://addons/inventory_editor/scenes/items/InventoryItemDataResourceDialogFile.tscn")
-
 func set_data(item: InventoryItem, data: InventoryData) -> void:
 	_item = item
 	_data = data

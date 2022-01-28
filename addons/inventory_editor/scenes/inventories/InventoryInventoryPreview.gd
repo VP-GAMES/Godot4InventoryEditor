@@ -10,7 +10,6 @@ var _item_selected
 var _items: Array
 
 @onready var _dropdown_ui = $ItemHandler/HBoxContainer/Dropdown
-@onready var _icon_ui = $ItemHandler/HBoxContainer/Icon as TextureRect
 @onready var _quantity_ui = $ItemHandler/HBoxContainer/Quantity as LineEdit
 @onready var _add_ui = $ItemHandler/HBoxContainer/Add as Button
 @onready var _del_ui = $ItemHandler/HBoxContainer/Del as Button
@@ -72,14 +71,9 @@ func _on_item_removed(item: InventoryItem) -> void:
 func _on_text_changed(new_text: String) -> void:
 	_check_view()
 
-func _on_selection_changed(item: Dictionary):
+func _on_selection_changed(item: InventoryItem):
 	_item_selected = item
-	var item_icon
-	if _item_selected:
-		if _item_selected.icon:
-			item_icon = load(_item_selected.icon)
-			_icon_ui.texture = _data.resize_texture(item_icon, Vector2(16, 16))
-			_check_view()
+	_check_view()
 
 func _on_add_pressed() -> void:
 	_manager.add_item(_inventory.uuid, _item_selected.value, int(_quantity_ui.text), false)
@@ -96,7 +90,10 @@ func _update_items_ui() -> void:
 	_items = _data.all_items()
 	_dropdown_ui.clear()
 	for item in _items:
-		var item_d = {"text": item.name, "value": item.uuid, "icon": item.icon }
+		var icon = null
+		if item.icon != null and _data.resource_exists(item.icon):
+			icon = load(item.icon)
+		var item_d = DropdownItem.new(item.name, item.uuid, item.description, icon)
 		_dropdown_ui.add_item(item_d)
 
 func _clear_preview() -> void:

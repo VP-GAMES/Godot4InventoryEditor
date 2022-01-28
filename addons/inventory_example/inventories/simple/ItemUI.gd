@@ -1,6 +1,6 @@
 # Example implementation for inventory item to demonstrate functionality of InventoryEditor : MIT License
 # @author Vladimir Petrenko
-tool
+@tool
 extends ItemUI
 
 func set_index(index) -> void:

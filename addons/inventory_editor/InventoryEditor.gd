@@ -9,11 +9,11 @@ var _data:= InventoryData.new()
 @onready var _save_ui = $VBox/Margin/HBox/Save as Button
 @onready var _tabs_ui = $VBox/Tabs as TabContainer
 @onready var _items_ui = $VBox/Tabs/Items
-#@onready var _inventories_ui = $VBox/Tabs/Inventories
+@onready var _inventories_ui = $VBox/Tabs/Inventories
 #@onready var _craft_ui = $VBox/Tabs/Craft
 
 const IconResourceItem = preload("res://addons/inventory_editor/icons/Item.png")
-#const IconResourceInventory = preload("res://addons/inventory_editor/icons/Inventory.png")
+const IconResourceInventory = preload("res://addons/inventory_editor/icons/Inventory.png")
 #const IconResourceCraft = preload("res://addons/inventory_editor/icons/Craft.png")
 
 func _ready() -> void:
@@ -49,5 +49,5 @@ func _on_tab_changed(tab: int) -> void:
 
 func _data_to_childs() -> void:
 	_items_ui.set_data(_data)
-#	_inventories_ui.set_data(_data)
+	_inventories_ui.set_data(_data)
 #	_craft_ui.set_data(_data)

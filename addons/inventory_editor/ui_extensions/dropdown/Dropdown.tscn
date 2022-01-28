@@ -18,7 +18,6 @@ offset_right = 1024.0
 offset_bottom = 31.0
 
 [node name="Icon" type="TextureRect" parent="HBox"]
-visible = false
 offset_right = 30.0
 offset_bottom = 31.0
 rect_min_size = Vector2(30, 0)
@@ -26,6 +25,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Selector" type="Button" parent="HBox"]
+offset_left = 34.0
 offset_right = 1024.0
 offset_bottom = 31.0
 size_flags_horizontal = 3

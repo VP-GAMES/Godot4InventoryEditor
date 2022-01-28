@@ -10,8 +10,6 @@ var _data: InventoryData
 
 var _path_ui_style_resource: StyleBoxFlat
 
-const InventoryInventoryDataResourceDialogFile = preload("res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataResourceDialogFile.tscn")
-
 func set_data(inventory: InventoryInventory, data: InventoryData) -> void:
 	_inventory = inventory
 	_data = data
@@ -32,8 +30,6 @@ func _init_connections() -> void:
 		assert(focus_exited.connect(_on_focus_exited) == OK)
 	if not text_changed.is_connected(_path_value_changed):
 		assert(text_changed.connect(_path_value_changed) == OK)
-	if not gui_input.is_connected(_on_gui_input):
-		assert(gui_input.connect(_on_gui_input) == OK)
 
 func _on_icon_changed() -> void:
 	_draw_view()
@@ -61,27 +57,6 @@ func _on_focus_exited() -> void:
 func _path_value_changed(path_value) -> void:
 	_inventory.set_icon(path_value)
 	_data.emit_inventory_icon_changed(_inventory)
-
-func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.pressed:
-			if event.button_index == MOUSE_BUTTON_MASK_MIDDLE:
-				grab_focus()
-				var file_dialog = InventoryInventoryDataResourceDialogFile.instantiate()
-				if _data.resource_exists(_inventory.icon):
-					file_dialog.current_dir = _data.file_path(_inventory.icon)
-					file_dialog.current_file = _data.filename(_inventory.icon)
-				for extension in _data.SUPPORTED_IMAGE_RESOURCES:
-					file_dialog.add_filter("*." + extension)
-				var root = get_tree().get_root()
-				root.add_child(file_dialog)
-				assert(file_dialog.file_selected.connect(_path_value_changed) == OK)
-				assert(file_dialog.popup_hide.connect(_on_popup_hide, [root, file_dialog]) == OK)
-				file_dialog.popup_centered()
-
-func _on_popup_hide(root, dialog) -> void:
-	root.remove_child(dialog)
-	dialog.queue_free()
 
 func can_drop_data(position, data) -> bool:
 	var path_value = data["files"][0]

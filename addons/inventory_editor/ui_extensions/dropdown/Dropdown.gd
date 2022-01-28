@@ -139,6 +139,7 @@ func _init_check_box(index: int) -> CheckBox:
 	check_box.set_button_group(_group)
 	check_box.text = _items[index].text
 	if _items[index].icon != null:
+		check_box.expand_icon = true
 		check_box.icon = _items[index].icon
 	check_box.hint_tooltip = _items[index].tooltip
 	if index == _selected:

@@ -9,9 +9,7 @@ var _data: InventoryData
 @onready var _data_ui = $MarginData
 @onready var _preview_ui = $MarginPreview
 @onready var _stacks_ui = $MarginData/VBox/HBoxStacks/Stacks as LineEdit
-@onready var _put_ui = $MarginData/VBox/HBoxIcon/Put as TextureRect
 @onready var _icon_ui = $MarginData/VBox/HBoxIcon/Icon as LineEdit
-@onready var _put_scene_ui = $MarginData/VBox/HBoxScene/PutScene as TextureRect
 @onready var _path_scene_ui = $MarginData/VBox/HBoxScene/PathScene as LineEdit
 @onready var _open_ui = $MarginData/VBox/HBoxScene/Open as Button
 @onready var _preview_texture_ui = $MarginPreview/VBox/Texture as TextureRect
@@ -69,9 +67,7 @@ func _draw_view() -> void:
 
 
 func _update_view_data() -> void:
-	_put_ui.set_data(_inventory, _data)
 	_icon_ui.set_data(_inventory, _data)
-	_put_scene_ui.set_data(_inventory, _data)
 	_path_scene_ui.set_data(_inventory, _data)
 
 func _draw_view_stacks_ui() -> void:

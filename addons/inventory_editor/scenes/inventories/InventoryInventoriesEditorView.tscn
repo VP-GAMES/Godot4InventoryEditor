@@ -1,50 +1,54 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://ore5wnc3tdpq"]
 
-[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoriesEditorView.gd" type="Script" id=1]
-[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventories.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryPreview.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryData.tscn" type="PackedScene" id=4]
+[ext_resource type="Script" path="res://addons/inventory_editor/scenes/inventories/InventoryInventoriesEditorView.gd" id="1"]
+[ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/inventories/InventoryInventories.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://b5ko610clbu87" path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryPreview.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://l03mugb48y86" path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryData.tscn" id="4"]
 
 [node name="InventoryInventoriesEditorView" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 1 )
+script = ExtResource( "1" )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Split" type="HSplitContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+offset_right = 1024.0
+offset_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 split_offset = -297
 
-[node name="Inventories" parent="Split" instance=ExtResource( 2 )]
+[node name="Inventories" parent="Split" instance=ExtResource( "2" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 209.0
-margin_bottom = 600.0
+offset_right = 209.0
+offset_bottom = 600.0
 rect_clip_content = true
 
 [node name="VBoxData" type="VBoxContainer" parent="Split"]
-margin_left = 221.0
-margin_right = 1024.0
-margin_bottom = 600.0
+offset_left = 221.0
+offset_right = 1024.0
+offset_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InventoryData" parent="Split/VBoxData" instance=ExtResource( 4 )]
+[node name="InventoryData" parent="Split/VBoxData" instance=ExtResource( "4" )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 803.0
-margin_bottom = 100.0
+offset_right = 803.0
+offset_bottom = 100.0
 
 [node name="HSeparator" type="HSeparator" parent="Split/VBoxData"]
-margin_top = 104.0
-margin_right = 803.0
-margin_bottom = 108.0
+offset_top = 104.0
+offset_right = 803.0
+offset_bottom = 108.0
 
-[node name="PreviewData" parent="Split/VBoxData" instance=ExtResource( 3 )]
+[node name="PreviewData" parent="Split/VBoxData" instance=ExtResource( "3" )]
+anchor_right = 0.0
+offset_top = 112.0
+offset_right = 803.0
+offset_bottom = 600.0

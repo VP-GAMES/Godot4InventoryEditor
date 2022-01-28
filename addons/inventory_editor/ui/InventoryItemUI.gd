@@ -9,7 +9,7 @@ var _item_ui_icon
 const ItemUIIcon = preload("res://addons/inventory_editor/ui/InventoryItemUIIcon.tscn")
 
 func _process(delta: float) -> void:
-	if Engine.editor_hint:
+	if Engine.is_editor_hint():
 		if not has_node("ItemUIIcon"):
 			_add_item_ui_icon()
 

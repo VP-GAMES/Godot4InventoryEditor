@@ -32,8 +32,8 @@ func _ready() -> void:
 
 func _init_connections() -> void:
 	if _inventoryManager:
-		if not _inventoryManager.is_connected("inventory_changed", self, "_on_inventory_changed"):
-			_inventoryManager.connect("inventory_changed", self, "_on_inventory_changed")
+		if not _inventoryManager.inventory_changed.is_connected(_on_inventory_changed):
+			_inventoryManager.inventory_changed.connect(_on_inventory_changed)
 
 func _on_inventory_changed(inv_uuid: String) -> void:
 	if inventory == inv_uuid:
