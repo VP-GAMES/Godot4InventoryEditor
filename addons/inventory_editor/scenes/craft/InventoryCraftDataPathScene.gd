@@ -66,15 +66,15 @@ func _on_gui_input(event: InputEvent) -> void:
 		if event.pressed:
 			if event.button_index == MOUSE_BUTTON_MASK_MIDDLE:
 				grab_focus()
-				var file_dialog = InventoryCraftDataResourceDialogFile.instance()
+				var file_dialog = InventoryCraftDataResourceDialogFile.instantiate()
 				if _data.resource_exists(_recipe.scene):
 					file_dialog.current_dir = _data.file_path(_recipe.scene)
 					file_dialog.current_file = _data.filename(_recipe.scene)
 				file_dialog.add_filter("*.tscn")
 				var root = get_tree().get_root()
 				root.add_child(file_dialog)
-				assert(file_dialog.connect("file_selected", self, "_path_value_changed") == OK)
-				assert(file_dialog.connect("popup_hide", self, "_on_popup_hide", [root, file_dialog]) == OK)
+				assert(file_dialog.file_selected.connect(_path_value_changed) == OK)
+				assert(file_dialog.popup_hide.connect(_on_popup_hide, [root, file_dialog]) == OK)
 				file_dialog.popup_centered()
 
 func _on_popup_hide(root, dialog) -> void:

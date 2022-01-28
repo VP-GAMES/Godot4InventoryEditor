@@ -1,119 +1,166 @@
 # UI Extension Filter Dropdown : MIT License
 # @author Vladimir Petrenko
 @tool
-extends LineEdit
+extends VBoxContainer
 
-signal selection_changed(item)
+signal selection_changed(item: DropdownItem)
 
-var selected = -1
-@export var popup_maxheight = 0
-
+var _disabled: bool = false
+var _selected = -1
 var _group = ButtonGroup.new()
-var _filter: String = ""
-var _items = [] # item {"text": null, "value": null, "icon": null }
+var _items: Array[DropdownItem] = []
 
+@export var ignore_case: bool = true
+@export var popup_maxheight_count: int = 5
+@onready var _icon: TextureRect = $HBox/Icon
+@onready var _selector: Button = $HBox/Selector
+@onready var _clear: Button= $HBox/Clear
 @onready var _popup_panel: PopupPanel= $PopupPanel
-@onready var _popup_panel_vbox: VBoxContainer= $PopupPanel/Scroll/VBox
+@onready var _filter: LineEdit= $PopupPanel/VBoxPanel/Filter
+@onready var _popup_panel_vbox: VBoxContainer= $PopupPanel/VBoxPanel/Scroll/ScrollVBox/VBox
 
-const DropdownCheckBox = preload("DropdownCheckBox.tscn")
+func set_disabled(value: bool) -> void:
+	_disabled = value
+	_selector.disabled = _disabled
+	_clear.disabled = _disabled
+
+func is_disabled() -> bool:
+	return _disabled
+
+func items() -> Array:
+	return _items
+
+func add_item_as_string(value: String) -> void:
+	add_item(DropdownItem.new(value, value))
+
+func add_item(item: DropdownItem) -> void:
+	_items.append(item)
 
 func clear() -> void:
 	_items.clear()
 
-func items() -> Array[String]:
-	return _items
+func erase_item_by_string(value: String) -> void:
+	erase_item(DropdownItem.new(value, value))
 
-func add_item(item: Dictionary) -> void:
-	_items.append(item)
+func erase_item(item: DropdownItem) -> void:
+	_items.erase(item)
 
-func get_selected() -> int:
-	return selected
+func set_selected_item(item: DropdownItem) -> void:
+	_on_selection_changed(_items.find(item))
 
-func set_selected(index: int) -> void:
-	selected = index
-	text = _items[selected].text
+func set_selected_index(index: int) -> void:
+	_on_selection_changed(index)
 
 func set_selected_by_value(value) -> void:
-	text = ""
-	for index in range(_items.size()):
-		if _items[index].value == value:
-			selected = index
-			text = _items[selected].text
+	for item in _items:
+		if item.value == value:
+			set_selected_item(item)
+			return
+
+func get_selected_index() -> int:
+	return _selected
+
+func get_selected_item():
+	if _selected >=0:
+		return _items[_selected]
+	return null
+
+func get_selected_value():
+	if _selected >=0:
+		return _items[_selected].value
+	return null
 
 func _ready() -> void:
 	_group.resource_local_to_scene = false
+	_update_view()
 	_init_connections()
 
+func _update_view() -> void:
+	_update_view_icon()
+	_update_view_button()
+
+func _update_view_icon() -> void:
+	_icon.visible = _selected >= 0 and _items[_selected].icon != null
+
+func _update_view_button() -> void:
+	_clear.visible = _selected >= 0
+
 func _init_connections() -> void:
-	if gui_input.connect(_line_edit_gui_input) != OK:
-		push_warning("_popup_panel gui_input not connected")
-	if text_changed.connect(_on_text_changed) != OK:
-		push_warning("_popup_panel text_changed not connected")
- 
-func _popup_panel_focus_entered() -> void:
-	grab_focus()
+	_selector.pressed.connect(_update_popup_view)
+	_clear.pressed.connect(_clear_pressed)
+	_filter.text_changed.connect(_filter_changed)
 
-func _popup_panel_index_pressed(index: int) -> void:
-	var text = _popup_panel.get_item_text(index)
-	text = text
-	_filter = text
-	selected = _items.find(text)
-
-func _line_edit_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
-			_update_popup_view()
-
-func _on_text_changed(filter: String) -> void:
-	_filter = filter
-	_update_popup_view(_filter)
-
-func _update_popup_view(filter = "") -> void:
-	_update_items_view(filter)
+func _update_popup_view() -> void:
+	if _disabled:
+		return
+	_update_items_view()
 	var rect = get_global_rect()
-	var position =  Vector2(rect.position.x, rect.position.y + rect.size.y)
-	var size = Vector2(rect.size.x, popup_maxheight)
-	_popup_panel.popup(Rect2(position, size))
-	grab_focus()
+	var position =  Vector2(rect.position.x, rect.position.y + rect.size.y + 2)
+	if Engine.is_editor_hint():
+		position = get_viewport().canvas_transform * rect_global_position + Vector2(get_viewport().position)
+		position.y += rect_size.y
+	_popup_panel.position = position
+	_popup_panel.popup()
 
-func _update_items_view(filter = "") -> void:
+func _update_items_view() -> void:
 	for child in _popup_panel_vbox.get_children():
 		_popup_panel_vbox.remove_child(child)
 		child.queue_free()
 	for index in range(_items.size()):
-		if filter.empty():
+		if _filter.text.length() <= 0:
 			_popup_panel_vbox.add_child(_init_check_box(index))
 		else:
-			if filter in _items[index].text:
+			var filter_text = _filter.text
+			var item_text = _items[index].text
+			if ignore_case:
+				filter_text = filter_text.to_upper()
+				item_text = item_text.to_upper()
+			if filter_text in item_text:
 				_popup_panel_vbox.add_child(_init_check_box(index))
+	var rect = get_global_rect()
+	var size = Vector2(rect.size.x, _popup_calc_height())
+	_popup_panel.set_size(size)
+
+func _popup_calc_height() -> int:
+	var child_count = _popup_panel_vbox.get_child_count()
+	if child_count > 0:
+		var single_height: int = _popup_panel_vbox.get_child(0).rect_size.y + 5
+		if child_count >= popup_maxheight_count:
+			return (popup_maxheight_count + 1) * single_height
+		else:
+			if Engine.is_editor_hint():
+				return (child_count + 1) * single_height + single_height / 2 
+			else:
+				return (child_count + 1) * single_height
+	return 0
 
 func _init_check_box(index: int) -> CheckBox:
-	var check_box = DropdownCheckBox.instance()
+	var check_box = CheckBox.new()
 	check_box.set_button_group(_group)
 	check_box.text = _items[index].text
-	if _items[index].has("icon") and _items[index].icon:
-		var item_icon = load(_items[index].icon)
-		item_icon = resize_texture(item_icon, Vector2(16, 16))
-		check_box.icon = item_icon
-	if index == selected:
+	if _items[index].icon != null:
+		check_box.icon = _items[index].icon
+	check_box.hint_tooltip = _items[index].tooltip
+	if index == _selected:
 		check_box.set_pressed(true)
-	check_box.connect("pressed", self, "_on_selection_changed", [index])
+	check_box.connect("pressed", _on_selection_changed, [index])
 	return check_box
 
 func _on_selection_changed(index: int) -> void:
-	if selected != index:
-		selected = index
-		_filter = _items[selected].text
-		text = _filter
-		emit_signal("selection_changed", _items[selected])
+	if index < 0:
+		_selected = -1
+		_selector.text = ""
+	elif _selected != index:
+		_selected = index
+		_selector.text = _items[_selected].text
+		if _items[_selected].icon != null:
+			_icon.texture = _items[_selected].icon
+		emit_signal("selection_changed", _items[_selected])
 	_popup_panel.hide()
-	
-func resize_texture(t: Texture, size: Vector2):
-	var itex = t
-	if itex:
-		var texture = t.get_data()
-		if size.x > 0 && size.y > 0:
-			texture.resize(size.x, size.y)
-		itex = ImageTexture.new()
-		itex.create_from_image(texture)
-	return itex
+	_update_view()
+
+func _clear_pressed() -> void:
+	set_selected_index(-1)
+
+func _filter_changed(_text: String) -> void:
+	_update_items_view()

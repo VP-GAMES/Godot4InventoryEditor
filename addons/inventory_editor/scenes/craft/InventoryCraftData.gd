@@ -115,7 +115,7 @@ func _on_stacksize_text_changed(new_text: String) -> void:
 
 func _on_open_pressed() -> void:
 	if _recipe != null and _recipe.scene != null:
-		var scene = load(_recipe.scene).instance()
+		var scene = load(_recipe.scene).instantiate()
 		if scene:
 			var mainscreen
 			if scene.is_class("Spatial"):
@@ -209,7 +209,7 @@ func _draw_view_ingredients() -> void:
 		_draw_ingredient(ingredient)
 
 func _draw_ingredient(ingredient) -> void:
-	var ingredient_ui = InventoryCraftDataIngredient.instance()
+	var ingredient_ui = InventoryCraftDataIngredient.instantiate()
 	_ingredients_ui.add_child(ingredient_ui)
 	ingredient_ui.set_data(ingredient, _recipe, _data)
 

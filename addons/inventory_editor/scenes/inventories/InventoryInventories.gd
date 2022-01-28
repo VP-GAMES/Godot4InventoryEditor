@@ -46,6 +46,6 @@ func _draw_view() -> void:
 		_draw_inventory(inventory)
 
 func _draw_inventory(inventory: InventoryInventory) -> void:
-	var inventory_ui = InventoryInventoryUI.instance()
+	var inventory_ui = InventoryInventoryUI.instantiate()
 	_inventories_ui.add_child(inventory_ui)
 	inventory_ui.set_data(inventory, _data)

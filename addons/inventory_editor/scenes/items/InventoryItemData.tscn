@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryItemDataPutScene.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryItemDataPathScene.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://bsbdtbgy66s7k" path="res://addons/inventory_editor/icons/File.png" id="9"]
-[ext_resource type="PackedScene" path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://cf8spgpdsxfdb" path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" id="10"]
 [ext_resource type="FontData" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="11"]
 
 [sub_resource type="Font" id="1"]
@@ -129,7 +129,7 @@ text = "Description"
 
 [node name="Description" type="TextEdit" parent="MarginData/VBox/HBoxDescription"]
 offset_left = 104.0
-offset_right = 112.0
+offset_right = 140.0
 offset_bottom = 120.0
 rect_min_size = Vector2(0, 120)
 size_flags_horizontal = 3
@@ -137,8 +137,7 @@ theme_override_fonts/font = SubResource( "Font_qu67l" )
 
 [node name="Dropdown" parent="MarginData/VBox/HBoxDescription" instance=ExtResource( "10" )]
 anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 116.0
+offset_left = 144.0
 offset_right = 180.0
 offset_bottom = 120.0
 
@@ -265,6 +264,9 @@ render_target_update_mode = 4
 
 [node name="ViewportContainer3D" type="SubViewportContainer" parent="MarginPreview/VBox/VBoxPreview"]
 visible = false
+offset_top = 86.0
+offset_right = 100.0
+offset_bottom = 168.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
@@ -274,7 +276,7 @@ __meta__ = {
 
 [node name="Viewport" type="SubViewport" parent="MarginPreview/VBox/VBoxPreview/ViewportContainer3D"]
 handle_input_locally = false
-size = Vector2i(400, 441)
+size = Vector2i(100, 82)
 render_target_update_mode = 0
 
 [node name="Camera" type="Camera3D" parent="MarginPreview/VBox/VBoxPreview/ViewportContainer3D/Viewport"]

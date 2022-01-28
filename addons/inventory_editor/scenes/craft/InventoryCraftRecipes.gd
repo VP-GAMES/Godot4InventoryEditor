@@ -46,6 +46,6 @@ func _draw_view() -> void:
 		_draw_recipe(recipe)
 
 func _draw_recipe(recipe: InventoryRecipe) -> void:
-	var recipe_ui = InventoryCraftRecipeUI.instance()
+	var recipe_ui = InventoryCraftRecipeUI.instantiate()
 	_recipes_ui.add_child(recipe_ui)
 	recipe_ui.set_data(recipe, _data)

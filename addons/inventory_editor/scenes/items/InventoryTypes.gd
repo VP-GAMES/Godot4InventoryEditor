@@ -46,6 +46,6 @@ func _draw_view() -> void:
 		_draw_type(type)
 
 func _draw_type(type: InventoryType) -> void:
-	var type_ui = InventoryTypeUI.instance()
+	var type_ui = InventoryTypeUI.instantiate()
 	_types_ui.add_child(type_ui)
 	type_ui.set_data(type, _data)

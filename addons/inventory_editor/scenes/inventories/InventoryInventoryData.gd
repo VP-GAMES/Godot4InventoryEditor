@@ -50,7 +50,7 @@ func _on_stacks_text_changed(new_text: String) -> void:
 
 func _on_open_pressed() -> void:
 	if _inventory != null and _inventory.scene != null:
-		var scene = load(_inventory.scene).instance()
+		var scene = load(_inventory.scene).instantiate()
 		if scene:
 			var mainscreen
 			if scene.is_class("Spatial"):

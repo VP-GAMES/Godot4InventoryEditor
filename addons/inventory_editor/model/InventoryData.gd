@@ -531,11 +531,11 @@ func init_data() -> void:
 	var file = File.new()
 	if file.file_exists(PATH_TO_SAVE):
 		var resource = ResourceLoader.load(PATH_TO_SAVE) as InventoryData
-		if resource.types and not resource.types.empty():
+		if resource.types != null and not resource.types.is_empty():
 			types = resource.types
-		if resource.inventories and not resource.inventories.empty():
+		if resource.inventories != null and not resource.inventories.is_empty():
 			inventories = resource.inventories
-		if resource.recipes and not resource.recipes.empty():
+		if resource.recipes != null and not resource.recipes.is_empty():
 			recipes = resource.recipes
 
 func save(update_script_classes = false) -> void:

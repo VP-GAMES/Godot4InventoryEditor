@@ -1,26 +1,81 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://cf8spgpdsxfdb"]
 
-[ext_resource path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.gd" id="1_85ajt"]
+[ext_resource type="Texture2D" uid="uid://djxyaxf1fbq8u" path="res://addons/inventory_editor/ui_extensions/dropdown/Arrow.svg" id="2_16dxe"]
+[ext_resource type="Texture2D" uid="uid://dob6kvdq3q3to" path="res://addons/inventory_editor/ui_extensions/dropdown/Cancel.svg" id="3_ph0xc"]
 
-[node name="Dropdown" type="LineEdit"]
+[node name="DropdownContent" type="VBoxContainer"]
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
-script = ExtResource( 1 )
+script = ExtResource( "1_85ajt" )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-popup_maxheight = 150
+
+[node name="HBox" type="HBoxContainer" parent="."]
+offset_right = 1024.0
+offset_bottom = 31.0
+
+[node name="Icon" type="TextureRect" parent="HBox"]
+visible = false
+offset_right = 30.0
+offset_bottom = 31.0
+rect_min_size = Vector2(30, 0)
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Selector" type="Button" parent="HBox"]
+offset_right = 1024.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+icon = ExtResource( "2_16dxe" )
+alignment = 0
+icon_alignment = 2
+
+[node name="Clear" type="Button" parent="HBox"]
+visible = false
+offset_left = 1250.0
+offset_right = 1280.0
+offset_bottom = 31.0
+rect_min_size = Vector2(30, 0)
+size_flags_vertical = 3
+icon = ExtResource( "3_ph0xc" )
+icon_alignment = 1
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
-margin_right = 8.0
-margin_bottom = 8.0
 
-[node name="Scroll" type="ScrollContainer" parent="PopupPanel"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 4.0
-margin_bottom = 4.0
-
-[node name="VBox" type="VBoxContainer" parent="PopupPanel/Scroll"]
+[node name="VBoxPanel" type="VBoxContainer" parent="PopupPanel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 96.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Filter" type="LineEdit" parent="PopupPanel/VBoxPanel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 35.0
+
+[node name="Scroll" type="ScrollContainer" parent="PopupPanel/VBoxPanel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollVBox" type="VBoxContainer" parent="PopupPanel/VBoxPanel/Scroll"]
+offset_right = 92.0
+offset_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="PopupPanel/VBoxPanel/Scroll/ScrollVBox"]
+offset_right = 40.0
+offset_bottom = 40.0

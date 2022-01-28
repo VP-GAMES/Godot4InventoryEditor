@@ -9,7 +9,7 @@ const ItemIcon = preload("res://addons/inventory_editor/icons/Item.png")
 var updating = false
 var hBox = HBoxContainer.new()
 var textureRect = TextureRect.new()
-var dropdown = Dropdown.instance()
+var dropdown = Dropdown.instantiate()
 var _data: InventoryData
 var _items: Array
 var _object
@@ -23,7 +23,7 @@ func _update_items() -> void:
 	_items = []
 	for item in _data.all_items():
 		if item and item.scene:
-			var scene = load(item.scene).instance()
+			var scene = load(item.scene).instantiate()
 			if _object is Item2D and scene is Node2D:
 				_items.append(item)
 			if _object is Item3D and scene is Node3D:
@@ -35,8 +35,7 @@ func _init():
 	hBox.add_child(dropdown)
 	add_child(hBox)
 	add_focusable(dropdown)
-	dropdown.connect("gui_input", self, "_on_gui_input")
-	dropdown.connect("selection_changed", self, "_on_selection_changed")
+	dropdown.selection_changed.connect(_on_selection_changed)
 
 func _on_gui_input(event: InputEvent) -> void:
 	_update_items()

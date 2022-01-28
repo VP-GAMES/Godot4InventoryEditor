@@ -39,8 +39,8 @@ func _process(delta: float) -> void:
 				root.add_child(manager)
 				manager.set_owner(get_tree().edited_scene_root)
 				var item_db = manager.get_item_db(item_put)
-				if item_db and not item_db.scene.empty():
-					var scene = load(item_db.scene).instance()
+				if item_db and not item_db.scene.is_empty():
+					var scene = load(item_db.scene).instantiate()
 					if scene:
 						scene.name = "InventoryItem_" + item_db.uuid
 						add_child(scene)

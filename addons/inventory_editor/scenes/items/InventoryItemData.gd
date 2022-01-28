@@ -21,9 +21,9 @@ var localization_editor
 @onready var _properties_ui = $MarginData/VBox/VBoxProperties as VBoxContainer
 @onready var _icon_preview_ui = $MarginPreview/VBox/VBoxIcon/Texture as TextureRect
 @onready var _item_preview_ui = $MarginPreview/VBox/VBoxPreview as VBoxContainer
-@onready var _item2D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D as SubViewport
+@onready var _item2D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D as SubViewportContainer
 @onready var _item2D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer2D/Viewport/Viewport2D as Node
-@onready var _item3D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D as SubViewport
+@onready var _item3D_preview_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D as SubViewportContainer
 @onready var _item3D_viewport_ui = $MarginPreview/VBox/VBoxPreview/ViewportContainer3D/Viewport/Viewport3D as Node
 
 const InventoryItemDataProperty = preload("res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.tscn")
@@ -122,7 +122,7 @@ func _on_stacksize_text_changed(new_text: String) -> void:
 
 func _on_open_pressed() -> void:
 	if _item != null and _item.scene != null:
-		var scene = load(_item.scene).instance()
+		var scene = load(_item.scene).instantiate()
 		if scene:
 			var mainscreen
 			if scene.is_class("Spatial"):
@@ -188,7 +188,7 @@ func _draw_view_properties() -> void:
 		_draw_property(property)
 
 func _draw_property(property) -> void:
-	var property_ui = InventoryItemDataProperty.instance()
+	var property_ui = InventoryItemDataProperty.instantiate()
 	_properties_ui.add_child(property_ui)
 	property_ui.set_data(property, _item)
 
@@ -208,20 +208,22 @@ func _update_previews() -> void:
 	_item2D_preview_ui.hide()
 	_item3D_preview_ui.hide()
 	if _item != null and _item.scene != null and not _item.scene.is_empty():
-		var scene = load(_item.scene).instance()
-		if scene is Node2D:
-			_item2D_preview_ui.show()
-			_update_preview2D()
-		if scene is Node3D:
-			_item3D_preview_ui.show()
-			_update_preview3D()
+		if _data.resource_exists(_item.scene):
+			var scene = load(_item.scene).instantiate()
+			if scene != null:
+				if scene is Node2D:
+					_item2D_preview_ui.show()
+					_update_preview2D()
+				if scene is Node3D:
+					_item3D_preview_ui.show()
+					_update_preview3D()
 
 func _update_preview2D() -> void:
 	for child in _item2D_viewport_ui.get_children():
 		_item2D_viewport_ui.remove_child(child)
 		child.queue_free()
 	if _item != null and _item.scene != null:
-		var scene = load(_item.scene).instance()
+		var scene = load(_item.scene).instantiate()
 		scene.position = Vector2(_item_preview_ui.rect_size.x / 2, _item_preview_ui.rect_size.y / 2)
 		_item2D_viewport_ui.add_child(scene)
 
@@ -230,5 +232,5 @@ func _update_preview3D() -> void:
 		_item3D_viewport_ui.remove_child(child)
 		child.queue_free()
 	if _item != null and _item.scene != null:
-		var scene = load(_item.scene).instance()
+		var scene = load(_item.scene).instantiate()
 		_item3D_viewport_ui.add_child(scene)

@@ -10,7 +10,7 @@ const TypeIcon = preload(TypeIconPath)
 var updating = false
 var hBox = HBoxContainer.new()
 var textureRect = TextureRect.new()
-var dropdown = Dropdown.instance()
+var dropdown = Dropdown.instantiate()
 var _data: InventoryData
 var _items: Array
 
@@ -24,8 +24,7 @@ func _init():
 	hBox.add_child(dropdown)
 	add_child(hBox)
 	add_focusable(dropdown)
-	dropdown.connect("gui_input", self, "_on_gui_input")
-	dropdown.connect("selection_changed", self, "_on_selection_changed")
+	dropdown.selection_changed.connect(_on_selection_changed)
 
 func _on_gui_input(event: InputEvent) -> void:
 	_items = _data.types
