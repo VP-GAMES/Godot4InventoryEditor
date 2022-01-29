@@ -1,7 +1,5 @@
 # Path scene UI LineEdit for InventoryEditor : MIT License
 # @author Vladimir Petrenko
-# Drag and drop not work just now, see Workaround -> InventoryInventoryDataPut
-# https://github.com/godotengine/godot/issues/30480
 @tool
 extends LineEdit
 
@@ -58,14 +56,14 @@ func _path_value_changed(path_value) -> void:
 	_inventory.set_scene(path_value)
 	_data.emit_inventory_scene_changed(_inventory)
 
-func can_drop_data(position, data) -> bool:
+func _can_drop_data(position, data) -> bool:
 	var path_value = data["files"][0]
 	var path_extension = _data.file_extension(path_value)
 	if path_extension == "tscn":
 		return true
 	return false
 
-func drop_data(position, data) -> void:
+func _drop_data(position, data) -> void:
 	var path_value = data["files"][0]
 	_path_value_changed(path_value)
 

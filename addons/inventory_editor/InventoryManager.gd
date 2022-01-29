@@ -149,8 +149,8 @@ func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, s
 					items[index] = {}
 				if save:
 					save()
-				return index
 				emit_signal("inventory_changed", inventory_uuid)
+				return index
 	return -1
 
 func move_item_by_names(inventory_name_from: String, from_index: int, inventory_name_to: String, to_index: int) -> void:

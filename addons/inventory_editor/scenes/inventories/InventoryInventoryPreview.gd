@@ -5,7 +5,7 @@ extends VBoxContainer
 
 var _inventory: InventoryInventory
 var _data: InventoryData
-var _manager
+var _manager: InventoryManager
 var _item_selected
 var _items: Array
 
@@ -37,6 +37,8 @@ func _init_connections() -> void:
 		assert(_data.inventory_removed.connect(_on_inventory_removed) == OK)
 	if not _data.inventory_selection_changed.is_connected(_on_inventory_selection_changed):
 		assert(_data.inventory_selection_changed.connect(_on_inventory_selection_changed) == OK)
+	if not _data.inventory_scene_changed.is_connected(_on_inventory_scene_changed):
+		assert(_data.inventory_scene_changed.connect(_on_inventory_scene_changed) == OK)
 	if not _data.item_added.is_connected(_on_item_added):
 		_data.item_added.connect(_on_item_added)
 	if not _dropdown_ui.selection_changed.is_connected(_on_selection_changed):
@@ -62,6 +64,10 @@ func _on_inventory_selection_changed(inventory: InventoryInventory) -> void:
 	_inventory = _data.selected_inventory()
 	_draw_view()
 
+func _on_inventory_scene_changed(inventory: InventoryInventory) -> void:
+	_inventory = _data.selected_inventory()
+	_draw_view()
+
 func _on_item_added(item: InventoryItem) -> void:
 	_update_items_ui()
 
@@ -71,15 +77,15 @@ func _on_item_removed(item: InventoryItem) -> void:
 func _on_text_changed(new_text: String) -> void:
 	_check_view()
 
-func _on_selection_changed(item: InventoryItem):
+func _on_selection_changed(item: DropdownItem):
 	_item_selected = item
 	_check_view()
 
 func _on_add_pressed() -> void:
-	_manager.add_item(_inventory.uuid, _item_selected.value, int(_quantity_ui.text), false)
+	_manager.add_item(_inventory.uuid, _item_selected.value, _quantity_ui.text.to_int(), false)
 
 func _on_del_pressed() -> void:
-	_manager.remove_item(_inventory.uuid, _item_selected.value, int(_quantity_ui.text), false)
+	_manager.remove_item(_inventory.uuid, _item_selected.value, _quantity_ui.text.to_int(), false)
 
 func _draw_view() -> void:
 	_update_items_ui()
@@ -110,7 +116,7 @@ func _draw_preview() -> void:
 			inventory_scene.set_inventory_manager(_inventory.uuid, _manager)
 
 func _check_view() -> void:
-	if _item_selected and int(_quantity_ui.text) > 0:
+	if _item_selected != null and _quantity_ui.text.to_int() > 0:
 		_add_ui.disabled = false
 		_del_ui.disabled = false
 	else:

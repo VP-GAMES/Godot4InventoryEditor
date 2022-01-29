@@ -121,10 +121,8 @@ func select_inventory(inventory: InventoryInventory) -> void:
 	emit_signal("inventory_selection_changed", _inventory_selected)
 
 func get_inventory_by_uuid(uuid: String) -> InventoryInventory:
-	print("inventories: ", inventories)
 	for inventory in inventories:
-		print("inventory: ", inventory)
-		if inventory.uuid == uuid:
+		if inventory != null and inventory.uuid != null and inventory.uuid == uuid:
 			return inventory
 	return null
 
