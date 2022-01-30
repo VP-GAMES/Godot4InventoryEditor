@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgb7djfqul8vm"]
+[gd_scene load_steps=8 format=3 uid="uid://dgb7djfqul8vm"]
 
 [ext_resource type="Script" path="res://addons/inventory_editor/InventoryEditor.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bv1gmxjhtcpxk" path="res://addons/inventory_editor/icons/Save.png" id="2"]
 [ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryTypesEditorView.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://dhc2m24gbwp23" path="res://addons/inventory_editor/icons/Item.png" id="4_hpsbx"]
-[ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/inventories/InventoryInventoriesEditorView.tscn" id="5_lwnpv"]
+[ext_resource type="PackedScene" uid="uid://ore5wnc3tdpq" path="res://addons/inventory_editor/scenes/inventories/InventoryInventoriesEditorView.tscn" id="5_lwnpv"]
+[ext_resource type="Texture2D" uid="uid://b1i08s3b1wkj3" path="res://addons/inventory_editor/icons/Inventory.png" id="6_jvhf7"]
+[ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/craft/InventoryCraftEditorView.tscn" id="7_yjglb"]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -68,3 +70,10 @@ anchor_bottom = 0.0
 offset_top = 518.0
 offset_right = 1024.0
 offset_bottom = 673.0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_tab_icon": ExtResource( "6_jvhf7" )
+}
+
+[node name="Craft" parent="VBox/Tabs" instance=ExtResource( "7_yjglb" )]
+visible = false

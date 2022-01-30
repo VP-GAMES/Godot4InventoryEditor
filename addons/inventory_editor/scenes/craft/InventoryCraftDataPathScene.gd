@@ -81,14 +81,14 @@ func _on_popup_hide(root, dialog) -> void:
 	root.remove_child(dialog)
 	dialog.queue_free()
 
-func can_drop_data(position, data) -> bool:
+func _can_drop_data(position, data) -> bool:
 	var path_value = data["files"][0]
 	var resource_extension = _data.file_extension(path_value)
 	if resource_extension == "tscn":
 		return true
 	return false
 
-func drop_data(position, data) -> void:
+func _drop_data(position, data) -> void:
 	var path_value = data["files"][0]
 	_path_value_changed(path_value)
 

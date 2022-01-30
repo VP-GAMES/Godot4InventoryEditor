@@ -7,7 +7,6 @@ var _ingredient
 var _recipe: InventoryRecipe
 var _data: InventoryData
 
-@onready var _texture_item_ui = $Texture
 @onready var _dropdown_ui = $Dropdown
 @onready var _quantity_ui = $Quantity
 @onready var _del_ui = $Del
@@ -43,13 +42,12 @@ func _dropdown_item_update() -> void:
 	if _dropdown_ui:
 		_dropdown_ui.clear()
 		for item in _data.all_items():
-			var item_d = {"text": item.name, "value": item.uuid, "icon": item.icon }
+			var item_d = DropdownItem.new(item.name, item.uuid, item.name, load(item.icon))
 			_dropdown_ui.add_item(item_d)
 		_dropdown_ui.set_selected_by_value(_ingredient.uuid)
 
-func _on_dropdown_item_selection_changed(item: Dictionary):
+func _on_dropdown_item_selection_changed(item: DropdownItem):
 	_ingredient.uuid = item.value
-	_draw_view_texture_item_ui()
 
 func _on_quantity_text_changed(new_text: String) -> void:
 	_ingredient.quantity = new_text.to_int()
@@ -60,14 +58,6 @@ func _on_del_pressed() -> void:
 func _draw_view() -> void:
 	_draw_view_quantity()
 	_dropdown_item_update()
-	_draw_view_texture_item_ui()
-
-func _draw_view_texture_item_ui() -> void:
-	if _ingredient and _ingredient.uuid:
-		var item = _data.get_item_by_uuid(_ingredient.uuid)
-		if item and item.icon:
-			var item_icon = load(item.icon)
-			_texture_item_ui.texture = _data.resize_texture(item_icon, Vector2(16, 16))
 
 func _draw_view_quantity() -> void:
 	_quantity_ui.text = str(_ingredient.quantity)

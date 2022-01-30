@@ -9,15 +9,12 @@ var localization_editor
 
 @onready var _data_ui = $MarginData
 @onready var _stacksize_ui = $MarginData/VBox/HBoxTop/VBox/HBoxStack/Stacksize as LineEdit
-@onready var _put_ui = $MarginData/VBox/HBoxTop/VBox/HBoxIcon/Put as TextureRect
 @onready var _icon_ui = $MarginData/VBox/HBoxTop/VBox/HBoxIcon/Icon as LineEdit
-@onready var _put_scene_ui = $MarginData/VBox/HBoxTop/VBox/HBoxScene/PutScene as TextureRect
 @onready var _scene_ui = $MarginData/VBox/HBoxTop/VBox/HBoxScene/Scene as LineEdit
 @onready var _open_ui = $MarginData/VBox/HBoxTop/VBox/HBoxScene/Open as Button
 @onready var _description_ui =$MarginData/VBox/HBoxTop/VBox/HBoxDescription/Description as TextEdit
-@onready var _dropdown_description_ui = $MarginData/VBox/HBoxTop/VBox/HBoxDescription/Dropdown as LineEdit
-@onready var _texture_item_ui = $MarginData/VBox/HBoxItem/Texture as TextureRect
-@onready var _dropdown_item_ui = $MarginData/VBox/HBoxItem/Item as LineEdit
+@onready var _dropdown_description_ui = $MarginData/VBox/HBoxTop/VBox/HBoxDescription/Dropdown
+@onready var _dropdown_item_ui = $MarginData/VBox/HBoxItem/Item
 @onready var _add_ui = $MarginData/VBox/HBoxAdd/Add as Button
 @onready var _ingredients_ui = $MarginData/VBox/VBoxIngredients as VBoxContainer
 @onready var _icon_preview_ui = $MarginData/VBox/HBoxTop/VBoxPreview/Texture as TextureRect
@@ -68,14 +65,13 @@ func _dropdown_item_update() -> void:
 	if _dropdown_item_ui:
 		_dropdown_item_ui.clear()
 		for item in _data.all_items():
-			var item_d = {"text": item.name, "value": item.uuid, "icon": item.icon }
+			var item_d = DropdownItem.new(item.name, item.uuid, item.name, load(item.icon))
 			_dropdown_item_ui.add_item(item_d)
 		if _recipe:
 			_dropdown_item_ui.set_selected_by_value(_recipe.item)
 
-func _on_dropdown_item_selection_changed(item: Dictionary):
+func _on_dropdown_item_selection_changed(item: DropdownItem):
 	_recipe.item = item.value
-	_draw_view_texture_item_ui()
 
 func _init_connections() -> void:
 	if not _data.item_added.is_connected(_on_item_added):
@@ -168,7 +164,6 @@ func _draw_view() -> void:
 		_update_view_data()
 		_draw_view_stacksize_ui()
 		_draw_view_description_ui()
-		_draw_view_texture_item_ui()
 		_draw_view_ingredients_ui()
 		_draw_view_icon_preview_ui()
 
@@ -179,9 +174,7 @@ func check_view_visibility() -> void:
 		_data_ui.hide()
 
 func _update_view_data() -> void:
-	_put_ui.set_data(_recipe, _data)
 	_icon_ui.set_data(_recipe, _data)
-	_put_scene_ui.set_data(_recipe, _data)
 	_scene_ui.set_data(_recipe, _data)
 	_dropdown_item_update()
 
@@ -190,15 +183,6 @@ func _draw_view_stacksize_ui() -> void:
 
 func _draw_view_description_ui() -> void:
 	_description_ui.text = _recipe.description
-
-func _draw_view_texture_item_ui() -> void:
-	if _recipe != null and _recipe.item != null:
-		var item = _data.get_item_by_uuid(_recipe.item)
-		if item and item.icon:
-			var item_icon = load(item.icon)
-			_texture_item_ui.texture = _data.resize_texture(item_icon, Vector2(16, 16))
-	else:
-		_texture_item_ui.texture = load("res://addons/inventory_editor/icons/Item.png")
 
 func _draw_view_ingredients_ui() -> void:
 	_clear_view_ingredients()
