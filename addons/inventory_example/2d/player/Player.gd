@@ -1,6 +1,6 @@
 # 2D Level player to demonstrate functionality of InventoryEditor : MIT License
 # @author Vladimir Petrenko
-extends KinematicBody2D
+extends CharacterBody2D
 
 const FLOOR_NORMAL: = Vector2.UP
 @export var speed: = Vector2(400.0, 500.0)
@@ -14,7 +14,8 @@ func _physics_process(delta: float) -> void:
 	var direction: = get_direction()
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
 	var snap: Vector2 = Vector2.DOWN * 60.0 if direction.y == 0.0 else Vector2.ZERO
-	_velocity = move_and_slide_with_snap(_velocity, snap, FLOOR_NORMAL, true)
+	motion_velocity = _velocity
+	move_and_slide()
 
 func get_direction() -> Vector2:
 	return Vector2(

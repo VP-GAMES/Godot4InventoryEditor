@@ -61,9 +61,9 @@ func _update_item() -> void:
 				texture = null
 				_quantity_ui.text = "0"
 
-func get_drag_data(position: Vector2):
+func _get_drag_data(position: Vector2):
 	var drag_texture = TextureRect.new()
-	drag_texture.expand = true
+	drag_texture.ignore_texture_size = true
 	drag_texture.rect_size = Vector2(rect_size)
 	drag_texture.texture = texture
 
@@ -82,7 +82,7 @@ func get_drag_data(position: Vector2):
 	}
 	return data
 
-func can_drop_data(position: Vector2, data) -> bool:
+func _can_drop_data(position: Vector2, data) -> bool:
 	if data.has("type") and data["type"] == "InventoryItem":
 		if type == null:
 			return true
@@ -90,7 +90,7 @@ func can_drop_data(position: Vector2, data) -> bool:
 			return type == data["item_db"].type_uuid
 	return false
 
-func drop_data(position: Vector2, data) -> void:
+func _drop_data(position: Vector2, data) -> void:
 	if _inventoryManager and data.has("index"):
 		_inventoryManager.move_item(data["inventory"], data["index"], inventory, index)
 
@@ -100,7 +100,7 @@ func _gui_input(event: InputEvent) -> void:
 			if _item_db != null and _item_db.description != null:
 				_create_properties_popup()
 				_popup_ui.show()
-	if event is InputEventMouseButton and event.pressed and event.doubleclick:
+	if event is InputEventMouseButton and event.pressed and event.double_click:
 		if _item_db is InventoryRecipe:
 			if _inventoryManager.is_craft_possible(inventory, _item_db.uuid):
 				_inventoryManager.craft_item(inventory, _item_db.uuid)

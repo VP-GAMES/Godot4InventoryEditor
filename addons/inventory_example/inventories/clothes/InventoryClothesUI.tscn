@@ -15,7 +15,7 @@
 [node name="Control" type="Control"]
 offset_right = 300.0
 offset_bottom = 300.0
-rect_min_size = Vector2(400, 400)
+rect_min_size = Vector2(300, 300)
 script = ExtResource( "5" )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -44,22 +44,22 @@ __meta__ = {
 }
 
 [node name="Grid" type="GridContainer" parent="NinePatchRect/Margin"]
-offset_right = 376.0
-offset_bottom = 376.0
+offset_right = 282.0
+offset_bottom = 282.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/Margin/Grid"]
-offset_right = 122.0
-offset_bottom = 122.0
+offset_right = 91.0
+offset_bottom = 91.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Helmet" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-offset_left = 126.0
-offset_right = 248.0
-offset_bottom = 122.0
+offset_left = 95.0
+offset_right = 186.0
+offset_bottom = 91.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( "7" )
@@ -67,104 +67,117 @@ ignore_texture_size = true
 script = ExtResource( "4" )
 
 [node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/Helmet" instance=ExtResource( "2" )]
+stretch_mode = 0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "ea7090ff-4387-4787-ba15-7c84da7490b7"
 index = 0
 show_quantity = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/Margin/Grid"]
-offset_left = 252.0
-offset_right = 374.0
-offset_bottom = 122.0
+offset_left = 190.0
+offset_right = 281.0
+offset_bottom = 91.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GlovesLeft" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-offset_top = 126.0
-offset_right = 122.0
-offset_bottom = 248.0
+offset_top = 95.0
+offset_right = 91.0
+offset_bottom = 186.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( "9" )
+ignore_texture_size = true
 script = ExtResource( "4" )
 
 [node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/GlovesLeft" instance=ExtResource( "2" )]
+stretch_mode = 0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "98c9bfd3-e544-4ccc-b683-5f587a245822"
 index = 1
 show_quantity = false
 
 [node name="Armor" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-offset_left = 126.0
-offset_top = 126.0
-offset_right = 248.0
-offset_bottom = 248.0
+offset_left = 95.0
+offset_top = 95.0
+offset_right = 186.0
+offset_bottom = 186.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( "3" )
+ignore_texture_size = true
 script = ExtResource( "4" )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/Armor" instance=ExtResource( "2" )]
+stretch_mode = 0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "4afbc41f-004c-4386-84d6-5432aaec720b"
 index = 2
 show_quantity = false
 
 [node name="GlovesRight" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-offset_left = 252.0
-offset_top = 126.0
-offset_right = 374.0
-offset_bottom = 248.0
+offset_left = 190.0
+offset_top = 95.0
+offset_right = 281.0
+offset_bottom = 186.0
 texture = ExtResource( "8" )
+ignore_texture_size = true
 script = ExtResource( "4" )
 
 [node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/GlovesRight" instance=ExtResource( "2" )]
+stretch_mode = 0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "dec3fedd-91f4-4dd0-9aed-9c52bc25da81"
 index = 3
 show_quantity = false
 
 [node name="Weapon" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-offset_top = 252.0
-offset_right = 122.0
-offset_bottom = 374.0
+offset_top = 190.0
+offset_right = 91.0
+offset_bottom = 281.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( "10" )
+ignore_texture_size = true
 script = ExtResource( "4" )
 
 [node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/Weapon" instance=ExtResource( "2" )]
+stretch_mode = 0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "947b1cbf-7c4f-4eaa-8853-058ef1784615"
 index = 4
 show_quantity = false
 
 [node name="Boots" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-offset_left = 126.0
-offset_top = 252.0
-offset_right = 248.0
-offset_bottom = 374.0
+offset_left = 95.0
+offset_top = 190.0
+offset_right = 186.0
+offset_bottom = 281.0
 texture = ExtResource( "6" )
+ignore_texture_size = true
 script = ExtResource( "4" )
 
 [node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/Boots" instance=ExtResource( "2" )]
+stretch_mode = 0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "8ed9b27f-3026-4b4a-847e-2f2e4253e656"
 index = 5
 show_quantity = false
 
 [node name="Shield" type="TextureRect" parent="NinePatchRect/Margin/Grid"]
-offset_left = 252.0
-offset_top = 252.0
-offset_right = 374.0
-offset_bottom = 374.0
+offset_left = 190.0
+offset_top = 190.0
+offset_right = 281.0
+offset_bottom = 281.0
 texture = ExtResource( "11" )
+ignore_texture_size = true
 script = ExtResource( "4" )
 
 [node name="ItemUIIcon" parent="NinePatchRect/Margin/Grid/Shield" instance=ExtResource( "2" )]
+stretch_mode = 0
 inventory = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 type = "8a5228fe-9585-48be-87bf-77575b061b45"
 index = 6
