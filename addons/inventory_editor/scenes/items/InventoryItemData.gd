@@ -38,10 +38,10 @@ func _dropdown_ui_init() -> void:
 	if localization_editor:
 		var data = localization_editor.get_data()
 		if data:
-			if not data.is_connected("data_changed", self, "_on_localization_data_changed"):
-				data.connect("data_changed", self, "_on_localization_data_changed")
-			if not data.is_connected("data_key_value_changed", self, "_on_localization_data_changed"):
-				data.connect("data_key_value_changed", self, "_on_localization_data_changed")
+			if not data.data_changed.is_connected(_on_localization_data_changed):
+				data.data_changed.connect(_on_localization_data_changed)
+			if not data.data_key_value_changed.is_connected(_on_localization_data_changed):
+				data.data_key_value_changed.connect(_on_localization_data_changed)
 			_on_localization_data_changed()
 
 func _on_localization_data_changed() -> void:
@@ -51,8 +51,7 @@ func _fill_dropdown_description_ui() -> void:
 	if _dropdown_description_ui:
 		_dropdown_description_ui.clear()
 		for key in localization_editor.get_data().data.keys:
-			var item = {"text": key.value, "value": key.value}
-			_dropdown_description_ui.add_item(item)
+			_dropdown_description_ui.add_item_as_string(key.value)
 		_dropdown_description_ui.set_selected_by_value(_item.description)
 
 func _init_connections() -> void:
@@ -83,7 +82,7 @@ func _update_selection_view() -> void:
 	_init_connections_item()
 	_draw_view()
 
-func _on_selection_changed_description(item) -> void:
+func _on_selection_changed_description(item: DropdownItem) -> void:
 	_item.description = item.value
 
 func _init_connections_item() -> void:
