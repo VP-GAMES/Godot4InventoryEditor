@@ -51,7 +51,7 @@ func _update_item() -> void:
 			_item = items[index]
 			if items[index].has("item_uuid"):
 				_item_db = _inventoryManager.get_item_db(items[index].item_uuid)
-				if _item_db.icon:
+				if _item_db != null and _item_db.icon != null:
 					texture = load(_item_db.icon)
 				if _item.quantity:
 					_quantity_ui.text = str(_item.quantity)

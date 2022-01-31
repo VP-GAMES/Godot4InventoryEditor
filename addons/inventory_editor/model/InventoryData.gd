@@ -344,11 +344,12 @@ func select_item(item: InventoryItem) -> void:
 
 func get_item_by_uuid(uuid: String) -> InventoryItem:
 	for type in types:
-		for item in type.items:
-			if item.uuid == uuid:
-				return item
+		if type != null:
+			for item in type.items:
+				if item != null and item.uuid == uuid:
+					return item
 	for recipe in recipes:
-		if recipe.uuid == uuid:
+		if recipe != null and recipe.uuid == uuid:
 			return recipe
 	return null
 
