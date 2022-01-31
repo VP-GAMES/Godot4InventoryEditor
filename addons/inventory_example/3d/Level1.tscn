@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dmntjmeu2sgcu"]
+[gd_scene load_steps=18 format=3 uid="uid://dmntjmeu2sgcu"]
 
 [ext_resource type="PackedScene" path="res://addons/inventory_example/3d/player/Player.tscn" id="1"]
 [ext_resource type="Script" path="res://addons/inventory_example/3d/Level1.gd" id="2"]
@@ -15,6 +15,10 @@
 
 [sub_resource type="PlaneMesh" id="1"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7h4a6"]
+albedo_color = Color(0, 0.298039, 0.0235294, 1)
+metallic_specular = 0.0
+
 [sub_resource type="BoxShape3D" id="3"]
 
 [sub_resource type="BoxShape3D" id="4"]
@@ -29,6 +33,7 @@ script = ExtResource( "2" )
 [node name="Background" type="MeshInstance3D" parent="."]
 transform = Transform3D(35, 0, 0, 0, 1, 0, 0, 0, 35, 0, 0, 0)
 mesh = SubResource( "1" )
+surface_material_override/0 = SubResource( "StandardMaterial3D_7h4a6" )
 
 [node name="Ground" type="StaticBody3D" parent="Background"]
 
@@ -84,10 +89,20 @@ __meta__ = {
 [node name="CanvasInventory" type="CanvasLayer" parent="."]
 
 [node name="Inventory" parent="CanvasInventory" instance=ExtResource( "3" )]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 100.0
+offset_right = 0.0
+rect_min_size = Vector2(300, 300)
 
 [node name="CanvasButton" type="CanvasLayer" parent="."]
 
 [node name="TextureButton" type="TextureButton" parent="CanvasButton"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
 texture_normal = ExtResource( "5" )
 __meta__ = {
 "_edit_use_anchors_": false
