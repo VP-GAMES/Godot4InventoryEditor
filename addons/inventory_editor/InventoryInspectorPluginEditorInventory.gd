@@ -23,7 +23,10 @@ func _init():
 func _update_dropdown() -> void:
 	dropdown.clear()
 	for inventory in _data.inventories:
-		var item_d = DropdownItem.new(inventory.name, inventory.uuid, inventory.icon)
+		var inventory_icon = null
+		if inventory.icon != null and not inventory.icon.is_empty():
+			inventory_icon = load(inventory.icon)
+		var item_d = DropdownItem.new(inventory.name, inventory.uuid, inventory.name, inventory_icon)
 		dropdown.add_item(item_d)
 
 func _on_selection_changed(item: DropdownItem):

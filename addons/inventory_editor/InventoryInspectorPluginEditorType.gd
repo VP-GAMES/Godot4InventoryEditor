@@ -22,10 +22,13 @@ func _init():
 func _update_dropdown() -> void:
 	dropdown.clear()
 	for type in _data.types:
-		var item_d = DropdownItem.new(type.name, type.uuid, type.icon)
+		var type_icon = null
+		if type.icon != null and not type.icon.is_empty():
+			type_icon = load(type.icon)
+		var item_d = DropdownItem.new(type.name, type.uuid, type.name, type_icon)
 		dropdown.add_item(item_d)
 
-func _on_selection_changed(item: Dictionary):
+func _on_selection_changed(item: DropdownItem):
 	if (updating):
 		return
 	emit_changed(get_edited_property(), item.value)

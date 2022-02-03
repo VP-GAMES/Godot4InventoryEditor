@@ -27,18 +27,16 @@ func _update_dropdown() -> void:
 	for item in _data.all_items():
 		if item != null and item.scene != null:
 			var scene = load(item.scene).instantiate()
-			var item_d = DropdownItem.new(item.name, item.uuid, item.icon)
+			var item_icon = null
+			if item.icon != null and not item.icon.is_empty():
+				item_icon = load(item.icon)
+			var item_d = DropdownItem.new(item.name, item.uuid, item.name, item_icon)
 			if _object is Item2D and scene is Node2D:
 				dropdown.add_item(item_d)
 			if _object is Item3D and scene is Node3D:
 				dropdown.add_item(item_d)
-			
-	
-	for item in _data.items:
-		var item_d = DropdownItem.new(item.name, item.uuid, item.icon)
-		dropdown.add_item(item_d)
 
-func _on_selection_changed(item: Dictionary):
+func _on_selection_changed(item: DropdownItem):
 	if (updating):
 		return
 	emit_changed(get_edited_property(), item.value)
