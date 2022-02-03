@@ -182,6 +182,7 @@ offset_left = -300.0
 offset_top = 100.0
 offset_right = 0.0
 rect_min_size = Vector2(300, 300)
+inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
 [node name="CanvasButton" type="CanvasLayer" parent="."]
 

@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://bhu5hq8kx8pov"]
 
 [ext_resource type="Texture2D" uid="uid://ba2q2j3lkloto" path="res://addons/inventory_example/textures/inventories/InventoryBackground.png" id="1"]
-[ext_resource type="Script" path="res://addons/inventory_example/inventories/simple/InventoryUI.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://do5m1vbsy45nd" path="res://addons/inventory_example/inventories/simple/ItemUI.tscn" id="3"]
+[ext_resource type="Script" path="res://addons/inventory_example/inventories/simple/InventoryUI.gd" id="1_x28gn"]
+[ext_resource type="PackedScene" uid="uid://do5m1vbsy45nd" path="res://addons/inventory_example/inventories/simple/ItemUI.tscn" id="2_chjke"]
 
 [node name="Inventory" type="Control"]
 offset_right = 300.0
 offset_bottom = 300.0
 rect_min_size = Vector2(400, 400)
-script = ExtResource( "2" )
+script = ExtResource( "1_x28gn" )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
-Item = ExtResource( "3" )
+inventory = ""
+Item = ExtResource( "2_chjke" )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 anchor_right = 1.0
