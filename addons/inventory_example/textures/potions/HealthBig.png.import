@@ -1,21 +1,23 @@
 [remap]
 
 importer="texture"
-type="StreamTexture2D"
+type="CompressedTexture2D"
 uid="uid://5ll2fa5vyonb"
-path="res://.godot/imported/HealthBig.png-3df5b9397502b71f3e1b84c5f913deb9.stex"
+path.s3tc="res://.godot/imported/HealthBig.png-3df5b9397502b71f3e1b84c5f913deb9.s3tc.ctex"
+path.etc2="res://.godot/imported/HealthBig.png-3df5b9397502b71f3e1b84c5f913deb9.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc", "etc2"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/inventory_example/textures/potions/HealthBig.png"
-dest_files=["res://.godot/imported/HealthBig.png-3df5b9397502b71f3e1b84c5f913deb9.stex"]
+dest_files=["res://.godot/imported/HealthBig.png-3df5b9397502b71f3e1b84c5f913deb9.s3tc.ctex", "res://.godot/imported/HealthBig.png-3df5b9397502b71f3e1b84c5f913deb9.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0
@@ -29,6 +31,6 @@ roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
-process/HDR_as_SRGB=false
+process/hdr_as_srgb=false
 process/size_limit=0
 detect_3d/compress_to=1

@@ -1,21 +1,23 @@
 [remap]
 
 importer="texture"
-type="StreamTexture2D"
+type="CompressedTexture2D"
 uid="uid://bv1gmxjhtcpxk"
-path="res://.godot/imported/Save.png-fe908e0c5e5ab8322ee17b27ad59cf3a.stex"
+path.s3tc="res://.godot/imported/Save.png-fe908e0c5e5ab8322ee17b27ad59cf3a.s3tc.ctex"
+path.etc2="res://.godot/imported/Save.png-fe908e0c5e5ab8322ee17b27ad59cf3a.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc", "etc2"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/inventory_editor/icons/Save.png"
-dest_files=["res://.godot/imported/Save.png-fe908e0c5e5ab8322ee17b27ad59cf3a.stex"]
+dest_files=["res://.godot/imported/Save.png-fe908e0c5e5ab8322ee17b27ad59cf3a.s3tc.ctex", "res://.godot/imported/Save.png-fe908e0c5e5ab8322ee17b27ad59cf3a.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0
@@ -29,6 +31,6 @@ roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
-process/HDR_as_SRGB=false
+process/hdr_as_srgb=false
 process/size_limit=0
 detect_3d/compress_to=1
