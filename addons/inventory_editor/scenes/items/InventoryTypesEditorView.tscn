@@ -27,7 +27,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 209.0
 margin_bottom = 600.0
-rect_clip_content = true
+clip_content = true
 
 [node name="VBoxData" type="VBoxContainer" parent="Split"]
 margin_left = 221.0

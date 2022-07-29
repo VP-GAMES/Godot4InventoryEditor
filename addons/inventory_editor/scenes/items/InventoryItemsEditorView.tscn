@@ -26,7 +26,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 209.0
 margin_bottom = 600.0
-rect_clip_content = true
+clip_content = true
 size_flags_vertical = 1
 
 [node name="ItemsData" parent="Split" instance=ExtResource( 3 )]

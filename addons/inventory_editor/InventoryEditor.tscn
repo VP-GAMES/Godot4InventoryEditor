@@ -44,7 +44,7 @@ offset_bottom = 34.0
 [node name="Save" type="Button" parent="VBox/Margin/HBox"]
 offset_right = 20.0
 offset_bottom = 31.0
-rect_min_size = Vector2(20, 20)
+min_size = Vector2(20, 20)
 hint_tooltip = "Save"
 icon = ExtResource( "2" )
 

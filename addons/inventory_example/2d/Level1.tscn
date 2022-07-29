@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cug2ijbdrdwul"]
+[gd_scene load_steps=16 format=3 uid="uid://cug2ijbdrdwul"]
 
 [ext_resource type="Texture2D" uid="uid://dgset6q225exm" path="res://addons/inventory_example/textures/Background.png" id="1"]
 [ext_resource type="PackedScene" path="res://addons/inventory_example/2d/player/Player.tscn" id="2"]
 [ext_resource type="Script" path="res://addons/inventory_example/2d/Level1.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://yc0j01w34y78" path="res://addons/inventory_example/textures/BackgroundSide.png" id="4"]
 [ext_resource type="Script" path="res://addons/inventory_editor/InventoryItem2D.gd" id="5"]
-[ext_resource type="FontData" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="6"]
 [ext_resource type="PackedScene" path="res://addons/inventory_example/2d/items/HealthNormal.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://addons/inventory_example/2d/items/HealthBig.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://addons/inventory_example/2d/items/ManaNormal.tscn" id="9"]
@@ -21,11 +20,8 @@ size = Vector2(1916.35, 60.3882)
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(20, 682.404)
 
-[sub_resource type="Font" id="3"]
-data/0 = ExtResource( "6" )
-
 [node name="Level" type="Node2D"]
-script = ExtResource( "3" )
+script = ExtResource("3")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -33,40 +29,37 @@ one_shot = true
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(920, 235)
-texture = ExtResource( "1" )
-__meta__ = {
-"_edit_lock_": true
-}
+texture = ExtResource("1")
 
 [node name="Floor" type="StaticBody2D" parent="Background"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Floor"]
 position = Vector2(0, 350)
-shape = SubResource( "1" )
+shape = SubResource("1")
 
 [node name="Left" type="StaticBody2D" parent="Background"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Left"]
 position = Vector2(-870, 0)
-shape = SubResource( "2" )
+shape = SubResource("2")
 
 [node name="Right" type="StaticBody2D" parent="Background"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Right"]
 position = Vector2(870, 0)
-shape = SubResource( "2" )
+shape = SubResource("2")
 
 [node name="BackgroundSideRight" type="Sprite2D" parent="Background"]
 position = Vector2(1920, 0)
-texture = ExtResource( "4" )
+texture = ExtResource("4")
 flip_h = true
 
 [node name="BackgroundSideLeft" type="Sprite2D" parent="Background"]
 position = Vector2(-1920, 0)
-texture = ExtResource( "4" )
+texture = ExtResource("4")
 flip_h = true
 
-[node name="Player" parent="." instance=ExtResource( "2" )]
+[node name="Player" parent="." instance=ExtResource("2")]
 position = Vector2(220, 540)
 scale = Vector2(0.2, 0.2)
 
@@ -76,82 +69,77 @@ scale = Vector2(0.2, 0.2)
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_colors/font_color = Color(0.823529, 0.533333, 0.121569, 1)
-theme_override_fonts/font = SubResource( "3" )
 text = "To support dialogues you have to autoload res://addons/dialogue_editor/DialogueManager.gd"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Item2D" type="Node2D" parent="Items"]
 position = Vector2(500, 500)
-script = ExtResource( "5" )
+script = ExtResource("5")
 item_put = "f4352b3f-8500-419f-9617-9da134d822f5"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_f4352b3f-8500-419f-9617-9da134d822f5" parent="Items/Item2D" instance=ExtResource( "7" )]
+[node name="InventoryItem_f4352b3f-8500-419f-9617-9da134d822f5" parent="Items/Item2D" instance=ExtResource("7")]
 
 [node name="Item2D2" type="Node2D" parent="Items"]
 position = Vector2(600, 400)
-script = ExtResource( "5" )
+script = ExtResource("5")
 item_put = "f4352b3f-8500-419f-9617-9da134d822f5"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_f4352b3f-8500-419f-9617-9da134d822f5" parent="Items/Item2D2" instance=ExtResource( "7" )]
+[node name="InventoryItem_f4352b3f-8500-419f-9617-9da134d822f5" parent="Items/Item2D2" instance=ExtResource("7")]
 
 [node name="Item2D3" type="Node2D" parent="Items"]
 position = Vector2(800, 500)
-script = ExtResource( "5" )
+script = ExtResource("5")
 item_put = "63015407-55c9-4729-887f-493fe2a624b7"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_63015407-55c9-4729-887f-493fe2a624b7" parent="Items/Item2D3" instance=ExtResource( "8" )]
+[node name="InventoryItem_63015407-55c9-4729-887f-493fe2a624b7" parent="Items/Item2D3" instance=ExtResource("8")]
 
 [node name="Item2D4" type="Node2D" parent="Items"]
 position = Vector2(900, 400)
-script = ExtResource( "5" )
+script = ExtResource("5")
 item_put = "f4352b3f-8500-419f-9617-9da134d822f5"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_f4352b3f-8500-419f-9617-9da134d822f5" parent="Items/Item2D4" instance=ExtResource( "7" )]
+[node name="InventoryItem_f4352b3f-8500-419f-9617-9da134d822f5" parent="Items/Item2D4" instance=ExtResource("7")]
 
 [node name="Item2D5" type="Node2D" parent="Items"]
 position = Vector2(1200, 400)
-script = ExtResource( "5" )
+script = ExtResource("5")
 item_put = "af0ab25b-4add-4834-ad96-555efd2e629d"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_af0ab25b-4add-4834-ad96-555efd2e629d" parent="Items/Item2D5" instance=ExtResource( "9" )]
+[node name="InventoryItem_af0ab25b-4add-4834-ad96-555efd2e629d" parent="Items/Item2D5" instance=ExtResource("9")]
 
 [node name="Item2D6" type="Node2D" parent="Items"]
 position = Vector2(1250, 500)
-script = ExtResource( "5" )
+script = ExtResource("5")
 item_put = "a9f24ca6-b213-4f07-a690-2185ffd6ec1d"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_a9f24ca6-b213-4f07-a690-2185ffd6ec1d" parent="Items/Item2D6" instance=ExtResource( "10" )]
+[node name="InventoryItem_a9f24ca6-b213-4f07-a690-2185ffd6ec1d" parent="Items/Item2D6" instance=ExtResource("10")]
 
 [node name="Item2D7" type="Node2D" parent="Items"]
 position = Vector2(1500, 500)
-script = ExtResource( "5" )
+script = ExtResource("5")
 item_put = "cf240703-26ac-4a2a-88a7-1441ff6c6a0c"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_cf240703-26ac-4a2a-88a7-1441ff6c6a0c" parent="Items/Item2D7" instance=ExtResource( "11" )]
+[node name="InventoryItem_cf240703-26ac-4a2a-88a7-1441ff6c6a0c" parent="Items/Item2D7" instance=ExtResource("11")]
 
 [node name="Item2D8" type="Node2D" parent="Items"]
 position = Vector2(1650, 400)
-script = ExtResource( "5" )
+script = ExtResource("5")
 item_put = "5fa70d8d-c0d0-43d9-8260-6efa4fde008b"
 to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
-[node name="InventoryItem_5fa70d8d-c0d0-43d9-8260-6efa4fde008b" parent="Items/Item2D8" instance=ExtResource( "12" )]
+[node name="InventoryItem_5fa70d8d-c0d0-43d9-8260-6efa4fde008b" parent="Items/Item2D8" instance=ExtResource("12")]
 
 [node name="CanvasInventory" type="CanvasLayer" parent="."]
 
-[node name="InventoryAny" parent="CanvasInventory" instance=ExtResource( "13" )]
-rect_min_size = Vector2(300, 300)
+[node name="InventoryAny" parent="CanvasInventory" instance=ExtResource("13")]
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -300.0
@@ -163,13 +151,9 @@ inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 [node name="CanvasButton" type="CanvasLayer" parent="."]
 
 [node name="TextureButton" type="TextureButton" parent="CanvasButton"]
-rect_min_size = Vector2(100, 100)
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -100.0
 offset_bottom = 100.0
-texture_normal = ExtResource( "14" )
+texture_normal = ExtResource("14")
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}

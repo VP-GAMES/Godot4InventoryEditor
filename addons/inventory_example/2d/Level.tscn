@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://addons/inventory_example/2d/Level.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://yc0j01w34y78" path="res://addons/inventory_example/textures/BackgroundSide.png" id="4"]
 [ext_resource type="Script" path="res://addons/inventory_editor/InventoryItem2D.gd" id="5"]
-[ext_resource type="FontData" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="6"]
+[ext_resource type="FontFile" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="6"]
 [ext_resource type="PackedScene" path="res://addons/inventory_example/2d/items/HelmetViking.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://addons/inventory_example/2d/items/HelmetKnight.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://addons/inventory_example/2d/items/GloveLeftViking.tscn" id="9"]
@@ -30,9 +30,6 @@ size = Vector2(1916.35, 60.3882)
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(20, 682.404)
-
-[sub_resource type="Font" id="3"]
-data/0 = ExtResource( "6" )
 
 [node name="Level" type="Node2D"]
 script = ExtResource( "3" )
@@ -86,7 +83,7 @@ scale = Vector2(0.2, 0.2)
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_colors/font_color = Color(0.823529, 0.533333, 0.121569, 1)
-theme_override_fonts/font = SubResource( "3" )
+theme_override_fonts/font = ExtResource( "6" )
 text = "To support dialogues you have to autoload res://addons/dialogue_editor/DialogueManager.gd"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -222,14 +219,14 @@ offset_left = -300.0
 offset_top = 100.0
 offset_right = 0.0
 offset_bottom = 400.0
-rect_min_size = Vector2(300, 300)
+min_size = Vector2(300, 300)
 inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
 [node name="InventoryClothes" parent="CanvasInventory/Inventories" instance=ExtResource( "23" )]
 offset_top = 100.0
 offset_right = 225.0
 offset_bottom = 325.0
-rect_min_size = Vector2(225, 225)
+min_size = Vector2(225, 225)
 
 [node name="CanvasButton" type="CanvasLayer" parent="."]
 

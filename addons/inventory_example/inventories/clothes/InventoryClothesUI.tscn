@@ -15,7 +15,7 @@
 [node name="Control" type="Control"]
 offset_right = 300.0
 offset_bottom = 300.0
-rect_min_size = Vector2(300, 300)
+min_size = Vector2(300, 300)
 script = ExtResource( "5" )
 __meta__ = {
 "_edit_use_anchors_": false
