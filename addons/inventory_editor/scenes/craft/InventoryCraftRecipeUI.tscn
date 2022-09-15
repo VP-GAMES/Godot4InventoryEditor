@@ -40,7 +40,7 @@ __meta__ = {
 [node name="Texture" type="TextureRect" parent="HBox"]
 margin_right = 20.0
 margin_bottom = 30.0
-rect_min_size = Vector2( 20, 20 )
+min_size = Vector2( 20, 20 )
 texture = ExtResource( 2 )
 stretch_mode = 6
 
@@ -55,6 +55,6 @@ custom_fonts/font = SubResource( 1 )
 margin_left = 1002.0
 margin_right = 1024.0
 margin_bottom = 30.0
-rect_min_size = Vector2( 20, 20 )
+min_size = Vector2( 20, 20 )
 hint_tooltip = "Delete item"
 icon = ExtResource( 1 )

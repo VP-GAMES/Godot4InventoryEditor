@@ -46,7 +46,7 @@ size_flags_horizontal = 3
 [node name="Add" type="Button" parent="Margin/VBox/HBox"]
 margin_right = 22.0
 margin_bottom = 20.0
-rect_min_size = Vector2( 20, 20 )
+min_size = Vector2( 20, 20 )
 hint_tooltip = "Add new type / group"
 size_flags_horizontal = 0
 size_flags_vertical = 0

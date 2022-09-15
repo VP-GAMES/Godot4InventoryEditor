@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwsamhofo763c"]
+[gd_scene load_steps=5 format=3 uid="uid://dwsamhofo763c"]
 
 [ext_resource type="Texture2D" uid="uid://b6dj156g11bmf" path="res://addons/inventory_editor/icons/Type.png" id="1"]
 [ext_resource type="Script" path="res://addons/inventory_editor/scenes/items/InventoryTypeData.gd" id="2"]
 [ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/items/InventoryTypeDataPath.tscn" id="3"]
-[ext_resource type="FontData" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="4_ebia0"]
-
-[sub_resource type="Font" id="1"]
-data/0 = ExtResource( "4_ebia0" )
+[ext_resource type="FontFile" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="4"]
 
 [node name="InventoryTypeData" type="HBoxContainer"]
 size_flags_horizontal = 3
@@ -35,7 +32,7 @@ offset_bottom = 28.0
 offset_top = 1.0
 offset_right = 76.0
 offset_bottom = 27.0
-rect_min_size = Vector2(76, 0)
+min_size = Vector2(76, 0)
 text = "Icon"
 
 [node name="Icon" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( "3" )]
@@ -44,7 +41,7 @@ anchor_bottom = 0.0
 offset_left = 80.0
 offset_right = 204.0
 offset_bottom = 28.0
-theme_override_fonts/font = SubResource( "1" )
+theme_override_fonts/font = ExtResource( "4")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 32.0
@@ -55,13 +52,13 @@ offset_bottom = 132.0
 offset_top = 38.0
 offset_right = 100.0
 offset_bottom = 61.0
-rect_min_size = Vector2(100, 0)
+min_size = Vector2(100, 0)
 
 [node name="Texture" type="TextureRect" parent="MarginData/VBox/HBoxContainer"]
 offset_left = 104.0
 offset_right = 204.0
 offset_bottom = 100.0
-rect_min_size = Vector2(100, 100)
+min_size = Vector2(100, 100)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( "1" )

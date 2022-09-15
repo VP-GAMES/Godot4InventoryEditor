@@ -27,7 +27,7 @@ size_flags_horizontal = 3
 offset_top = 2.0
 offset_right = 76.0
 offset_bottom = 28.0
-rect_min_size = Vector2(76, 0)
+min_size = Vector2(76, 0)
 text = "Item"
 
 [node name="Dropdown" parent="ItemHandler/HBoxContainer" instance=ExtResource( "3" )]
@@ -45,7 +45,7 @@ text = "1"
 offset_left = 466.0
 offset_right = 486.0
 offset_bottom = 31.0
-rect_min_size = Vector2(20, 20)
+min_size = Vector2(20, 20)
 hint_tooltip = "Add item to inventory"
 icon = ExtResource( "1" )
 
@@ -53,7 +53,7 @@ icon = ExtResource( "1" )
 offset_left = 490.0
 offset_right = 510.0
 offset_bottom = 31.0
-rect_min_size = Vector2(20, 20)
+min_size = Vector2(20, 20)
 hint_tooltip = "Delete item from inventory"
 icon = ExtResource( "4" )
 

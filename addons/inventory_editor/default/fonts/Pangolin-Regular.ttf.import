@@ -1,7 +1,7 @@
 [remap]
 
 importer="font_data_dynamic"
-type="FontData"
+type="FontFile"
 uid="uid://dk0uyb3ayyxtk"
 path="res://.godot/imported/Pangolin-Regular.ttf-26fe2c4828a27d582072dd995c0fe47d.fontdata"
 
@@ -12,19 +12,21 @@ dest_files=["res://.godot/imported/Pangolin-Regular.ttf-26fe2c4828a27d582072dd99
 
 [params]
 
+Rendering=null
 antialiased=true
+generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
 force_autohinter=false
 hinting=1
+subpixel_positioning=1
 oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
 compress=true
-opentype_feature_overrides={}
-preload/char_ranges=PackedStringArray()
-preload/glyph_ranges=PackedStringArray()
-preload/configurations=PackedStringArray()
-support_overrides/language_enabled=PackedStringArray()
-support_overrides/language_disabled=PackedStringArray()
-support_overrides/script_enabled=PackedStringArray()
-support_overrides/script_disabled=PackedStringArray()
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

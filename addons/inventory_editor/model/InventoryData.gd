@@ -618,7 +618,6 @@ func resize_texture(t: Texture2D, size: Vector2) -> Texture:
 	if t == null:
 		return null
 	var tx = t.duplicate()
-	var itex = ImageTexture.new()
-	itex.create_from_image(tx.get_image())
+	var itex = ImageTexture.create_from_image(tx.get_image())
 	itex.set_size_override(size)
 	return itex

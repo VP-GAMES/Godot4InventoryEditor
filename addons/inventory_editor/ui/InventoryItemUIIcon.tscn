@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://1txirr45vbrf"]
+[gd_scene load_steps=4 format=3 uid="uid://1txirr45vbrf"]
 
 [ext_resource type="Script" path="res://addons/inventory_editor/ui/InventoryItemUIIcon.gd" id="1"]
-[ext_resource type="FontData" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="2"]
+[ext_resource type="FontFile" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="2"]
 [ext_resource type="PackedScene" path="res://addons/inventory_editor/ui/PopupDescription.tscn" id="3"]
-
-[sub_resource type="Font" id="1"]
-data/0 = ExtResource( "2" )
 
 [node name="Icon" type="TextureRect"]
 anchor_right = 1.0
@@ -29,7 +26,7 @@ anchor_top = 0.99
 anchor_right = 0.995
 anchor_bottom = 0.99
 offset_top = -23.0
-theme_override_fonts/font = SubResource( "1" )
+theme_override_fonts/font = ExtResource( "2" )
 text = "0"
 horizontal_alignment = 2
 __meta__ = {

@@ -64,12 +64,12 @@ func _update_item() -> void:
 func _get_drag_data(position: Vector2):
 	var drag_texture = TextureRect.new()
 	drag_texture.ignore_texture_size = true
-	drag_texture.rect_size = Vector2(rect_size)
+	drag_texture.size = Vector2(size)
 	drag_texture.texture = texture
 
 	var preview = Control.new()
 	preview.add_child(drag_texture)
-	drag_texture.rect_position = -0.5 * drag_texture.rect_size
+	drag_texture.position = -0.5 * drag_texture.size
 	# https://godotengine.org/qa/30298/drag_preview-get-hide-under-canvaslayer
 	set_drag_preview(preview)
 	
@@ -108,4 +108,4 @@ func _gui_input(event: InputEvent) -> void:
 func _create_properties_popup() -> void:
 	_popup_ui.update_item_data(_item_db)
 	var transform =  get_global_transform_with_canvas()
-	_popup_ui.popup(Rect2(transform.origin.x + rect_size.x, transform.origin.y, 100, 100))
+	_popup_ui.popup(Rect2(transform.origin.x + size.x, transform.origin.y, 100, 100))

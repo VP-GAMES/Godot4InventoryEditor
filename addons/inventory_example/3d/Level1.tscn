@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmntjmeu2sgcu"]
+[gd_scene load_steps=17 format=3 uid="uid://dmntjmeu2sgcu"]
 
 [ext_resource type="PackedScene" path="res://addons/inventory_example/3d/player/Player.tscn" id="1"]
 [ext_resource type="Script" path="res://addons/inventory_example/3d/Level1.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://bhu5hq8kx8pov" path="res://addons/inventory_example/inventories/simple/InventoryUI.tscn" id="3"]
-[ext_resource type="FontData" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="4"]
+[ext_resource type="FontFile" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="4"]
 [ext_resource type="Texture2D" uid="uid://yxnjmxcqgl2u" path="res://addons/inventory_example/textures/inventories/Chest.png" id="5"]
 [ext_resource type="Script" path="res://addons/inventory_editor/InventoryItem3D.gd" id="6"]
 [ext_resource type="PackedScene" path="res://addons/inventory_example/3d/items/HealthNormal.tscn" id="7"]
@@ -23,9 +23,6 @@ metallic_specular = 0.0
 
 [sub_resource type="BoxShape3D" id="4"]
 size = Vector3(0.0388198, 7.8478, 2)
-
-[sub_resource type="Font" id="5"]
-data/0 = ExtResource( "4" )
 
 [node name="Level" type="Node3D"]
 script = ExtResource( "2" )
@@ -80,7 +77,7 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 [node name="Label" type="Label" parent="CanvasError"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = SubResource( "5" )
+theme_override_fonts/font = ExtResource( "4" )
 text = "To support dialogues you have to autoload res://addons/dialogue_editor/DialogueManager.gd"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -94,7 +91,7 @@ anchor_right = 1.0
 offset_left = -300.0
 offset_top = 100.0
 offset_right = 0.0
-rect_min_size = Vector2(300, 300)
+min_size = Vector2(300, 300)
 inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
 [node name="CanvasButton" type="CanvasLayer" parent="."]

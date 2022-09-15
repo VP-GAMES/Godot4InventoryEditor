@@ -7,7 +7,7 @@
 [node name="Inventory" type="Control"]
 offset_right = 300.0
 offset_bottom = 300.0
-rect_min_size = Vector2(400, 400)
+min_size = Vector2(400, 400)
 script = ExtResource( "1_x28gn" )
 __meta__ = {
 "_edit_use_anchors_": false
