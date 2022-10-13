@@ -29,16 +29,19 @@ func _on_inventory_stacks_changed(inventory) -> void:
 	emit_signal("inventory_changed", inventory.uuid)
 
 func load_data() -> void:
-	var file = File.new()
-	if file.file_exists(_path_to_type):
+	if FileAccess.file_exists(_path_to_type):
 		var loaded_data = load(_path_to_type)
 		if loaded_data:
 			_data.inventories = loaded_data.inventories
 
 func save() -> void:
-	var state = ResourceSaver.save(_path_to_type, _data)
+	var state = ResourceSaver.save(_data, _path_to_type)
 	if state != OK:
 		printerr("Can't save inventories data")
+
+func reset_data() -> void:
+	_data.reset()
+	save()
 
 func get_inventory_by_name_items(inventory_name: String) -> Array:
 	var inventory = _db.get_inventory_by_name(inventory_name)

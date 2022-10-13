@@ -19,7 +19,7 @@ func _enter_tree() -> void:
 	add_autoload_singleton("InventoryManager", "res://addons/inventory_editor/InventoryManager.gd")
 	_inventory_editor = InventoryEditor.instantiate()
 	_inventory_editor.name = "InventoryEditor"
-	get_editor_interface().get_editor_main_control().add_child(_inventory_editor)
+	get_editor_interface().get_editor_main_screen().add_child(_inventory_editor)
 	_inventory_editor.set_editor(self)
 	_make_visible(false)
 	add_custom_type("Item2D", "Node2D", InventoryItem2D, InventoryItemIcon)

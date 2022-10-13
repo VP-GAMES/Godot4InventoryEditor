@@ -36,8 +36,9 @@ func _process(delta: float) -> void:
 
 func _dropdown_description_ui_init() -> void:
 	if not localization_editor:
-		var localizationEditorPath = "../../../../../../../../../LocalizationEditor"
+		var localizationEditorPath = "../LocalizationEditor"
 		if has_node(localizationEditorPath):
+			print("GO")
 			localization_editor = get_node(localizationEditorPath)
 	if localization_editor:
 		var data = localization_editor.get_data()

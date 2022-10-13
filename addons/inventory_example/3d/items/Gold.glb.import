@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/Gold.glb-af3c8372897b15d7bead3d26c4a3715c.scn
 
 nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfm4a862uxyag"]
+[gd_scene load_steps=13 format=3 uid="uid://bfm4a862uxyag"]
 
 [ext_resource type="Texture2D" uid="uid://dnw1xbg83c5pu" path="res://addons/inventory_editor/icons/Add.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://dhc2m24gbwp23" path="res://addons/inventory_editor/icons/Item.png" id="2"]
@@ -8,7 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://bpng247b4f7aa" path="res://addons/inventory_editor/scenes/items/InventoryItemDataPathScene.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://bsbdtbgy66s7k" path="res://addons/inventory_editor/icons/File.png" id="9"]
 [ext_resource type="PackedScene" uid="uid://cf8spgpdsxfdb" path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" id="10"]
-[ext_resource type="FontFile" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="11"]
+[ext_resource type="FontData" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="11"]
+
+[sub_resource type="Font" id="1"]
+data/0 = ExtResource( "11" )
+
+[sub_resource type="Font" id="Font_2qbj8"]
+data/0 = ExtResource( "11" )
+
+[sub_resource type="Font" id="Font_qu67l"]
+data/0 = ExtResource( "11" )
 
 [node name="InventoryItemData" type="HBoxContainer"]
 anchor_right = 1.0
@@ -48,7 +57,7 @@ offset_bottom = 31.0
 offset_top = 2.0
 offset_right = 90.0
 offset_bottom = 28.0
-min_size = Vector2(90, 0)
+rect_min_size = Vector2(90, 0)
 text = "Stacksize"
 
 [node name="Stacksize" type="LineEdit" parent="MarginData/VBox/HBox/VBox/HBoxStack"]
@@ -68,7 +77,7 @@ size_flags_vertical = 3
 offset_top = 1.0
 offset_right = 90.0
 offset_bottom = 27.0
-min_size = Vector2(90, 0)
+rect_min_size = Vector2(90, 0)
 text = "Icon"
 
 [node name="Icon" parent="MarginData/VBox/HBox/VBox/HBoxIcon" instance=ExtResource( "5" )]
@@ -77,7 +86,7 @@ anchor_bottom = 0.0
 offset_left = 94.0
 offset_right = 510.0
 offset_bottom = 28.0
-theme_override_fonts/font = ExtResource( "11" )
+theme_override_fonts/font = SubResource( "1" )
 
 [node name="HBoxScene" type="HBoxContainer" parent="MarginData/VBox/HBox/VBox"]
 offset_top = 67.0
@@ -88,7 +97,7 @@ offset_bottom = 98.0
 offset_top = 2.0
 offset_right = 90.0
 offset_bottom = 28.0
-min_size = Vector2(90, 0)
+rect_min_size = Vector2(90, 0)
 text = "Scene"
 
 [node name="Scene" parent="MarginData/VBox/HBox/VBox/HBoxScene" instance=ExtResource( "8" )]
@@ -97,13 +106,13 @@ anchor_bottom = 0.0
 offset_left = 94.0
 offset_right = 486.0
 offset_bottom = 31.0
-theme_override_fonts/font = ExtResource( "11" )
+theme_override_fonts/font = SubResource( "Font_2qbj8" )
 
 [node name="Open" type="Button" parent="MarginData/VBox/HBox/VBox/HBoxScene"]
 offset_left = 490.0
 offset_right = 510.0
 offset_bottom = 31.0
-min_size = Vector2(20, 20)
+rect_min_size = Vector2(20, 20)
 hint_tooltip = "Open scene"
 icon = ExtResource( "9" )
 
@@ -111,12 +120,12 @@ icon = ExtResource( "9" )
 offset_top = 102.0
 offset_right = 510.0
 offset_bottom = 222.0
-min_size = Vector2(0, 5)
+rect_min_size = Vector2(0, 5)
 
 [node name="Label" type="Label" parent="MarginData/VBox/HBox/VBox/HBoxDescription"]
 offset_right = 90.0
 offset_bottom = 120.0
-min_size = Vector2(90, 0)
+rect_min_size = Vector2(90, 0)
 size_flags_vertical = 5
 text = "Description"
 
@@ -124,9 +133,9 @@ text = "Description"
 offset_left = 94.0
 offset_right = 300.0
 offset_bottom = 120.0
-min_size = Vector2(0, 120)
+rect_min_size = Vector2(0, 120)
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource( "11" )
+theme_override_fonts/font = SubResource( "Font_qu67l" )
 
 [node name="Dropdown" parent="MarginData/VBox/HBox/VBox/HBoxDescription" instance=ExtResource( "10" )]
 anchor_right = 0.0
@@ -149,7 +158,7 @@ text = "Icon"
 offset_top = 30.0
 offset_right = 510.0
 offset_bottom = 193.0
-min_size = Vector2(100, 100)
+rect_min_size = Vector2(100, 100)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( "2" )
@@ -160,13 +169,13 @@ stretch_mode = 5
 offset_top = 197.0
 offset_right = 510.0
 offset_bottom = 222.0
-min_size = Vector2(0, 25)
+rect_min_size = Vector2(0, 25)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 226.0
 offset_right = 1024.0
 offset_bottom = 231.0
-min_size = Vector2(0, 5)
+rect_min_size = Vector2(0, 5)
 
 [node name="HBoxAdd" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 235.0
@@ -176,7 +185,7 @@ offset_bottom = 266.0
 [node name="Add" type="Button" parent="MarginData/VBox/HBoxAdd"]
 offset_right = 20.0
 offset_bottom = 31.0
-min_size = Vector2(20, 20)
+rect_min_size = Vector2(20, 20)
 hint_tooltip = "Add property"
 icon = ExtResource( "1" )
 

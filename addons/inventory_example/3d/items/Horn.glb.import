@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/Horn.glb-30129bd18a6c37b544ead9a16ce6b70f.scn
 
 nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true

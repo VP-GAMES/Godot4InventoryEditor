@@ -66,6 +66,7 @@ scale = Vector2(0.2, 0.2)
 [node name="CanvasError" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasError"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_colors/font_color = Color(0.823529, 0.533333, 0.121569, 1)
@@ -140,6 +141,8 @@ to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 [node name="CanvasInventory" type="CanvasLayer" parent="."]
 
 [node name="InventoryAny" parent="CanvasInventory" instance=ExtResource("13")]
+layout_mode = 3
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -300.0
@@ -151,6 +154,7 @@ inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 [node name="CanvasButton" type="CanvasLayer" parent="."]
 
 [node name="TextureButton" type="TextureButton" parent="CanvasButton"]
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -100.0

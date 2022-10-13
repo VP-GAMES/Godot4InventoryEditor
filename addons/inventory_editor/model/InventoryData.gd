@@ -529,8 +529,7 @@ func setting_localization_editor_enabled() -> bool:
 
 # ***** LOAD SAVE *****
 func init_data() -> void:
-	var file = File.new()
-	if file.file_exists(PATH_TO_SAVE):
+	if FileAccess.file_exists(PATH_TO_SAVE):
 		var resource = ResourceLoader.load(PATH_TO_SAVE) as InventoryData
 		if resource.types != null and not resource.types.is_empty():
 			types = resource.types
@@ -540,18 +539,17 @@ func init_data() -> void:
 			recipes = resource.recipes
 
 func save(update_script_classes = false) -> void:
-	ResourceSaver.save(PATH_TO_SAVE, self)
+	ResourceSaver.save(self, PATH_TO_SAVE)
 	_save_data_inventories()
 	_save_data_items()
 	if update_script_classes:
 		_editor.get_editor_interface().get_resource_filesystem().update_script_classes()
 
 func _save_data_inventories() -> void:
-	var directory = Directory.new()
+	var directory:= DirAccess.open(default_path)
 	if not directory.dir_exists(default_path):
 		directory.make_dir(default_path)
-	var file = File.new()
-	file.open(default_path + "InventoryManagerInventory.gd", File.WRITE)
+	var file = FileAccess.open(default_path + "InventoryManagerInventory.gd", FileAccess.WRITE)
 	var source_code = "# List of creted inventories for InventoryManger to use in source code: MIT License\n"
 	source_code += AUTHOR
 	source_code += "@tool\n"
@@ -570,13 +568,18 @@ func _save_data_inventories() -> void:
 	file.close()
 
 func _save_data_items() -> void:
-	var file = File.new()
-	file.open(default_path + "InventoryManagerItem.gd", File.WRITE)
+	var file = FileAccess.open(default_path + "InventoryManagerItem.gd", FileAccess.WRITE)
 	var source_code = "# List of creted items for InventoryManger to use in source code: MIT License\n"
 	source_code += AUTHOR
 	source_code += "@tool\n"
 	source_code += "class_name InventoryManagerItem\n\n"
 	var items = all_items()
+	source_code += "\nenum ItemEnum { NONE, "
+	for index in range(items.size()):
+		source_code += " " + items[index].name
+		if index != items.size() - 1:
+			source_code += ","
+	source_code += "}\n\n"
 	for item in items:
 		var namePrepared = item.name.replace(" ", "")
 		namePrepared = namePrepared.to_upper()
@@ -586,7 +589,14 @@ func _save_data_items() -> void:
 		source_code += " \"" + items[index].name + "\""
 		if index != items.size() - 1:
 			source_code += ",\n"
-	source_code += "\n]"
+	source_code += "\n]\n\n"
+	source_code += "static func item_by_enum(item_enum: ItemEnum) -> String:\n"
+	source_code += "	match item_enum:\n"
+	for index in range(items.size()):
+		source_code += "		ItemEnum." + items[index].name + ":\n"
+		source_code += "			return InventoryManagerItem." + (items[index].name).to_upper() + "\n"
+	source_code += "		_:\n"
+	source_code += "			return \"\"\n"
 	file.store_string(source_code)
 	file.close()
 
@@ -611,13 +621,4 @@ func file_extension(value: String):
 	return value.substr(index + 1)
 
 func resource_exists(resource_path) -> bool:
-	var file = File.new()
-	return file.file_exists(resource_path)
-
-func resize_texture(t: Texture2D, size: Vector2) -> Texture:
-	if t == null:
-		return null
-	var tx = t.duplicate()
-	var itex = ImageTexture.create_from_image(tx.get_image())
-	itex.set_size_override(size)
-	return itex
+	return FileAccess.file_exists(resource_path)

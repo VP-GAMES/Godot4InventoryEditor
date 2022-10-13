@@ -14,7 +14,7 @@ __meta__ = {
 offset_top = 2.0
 offset_right = 100.0
 offset_bottom = 28.0
-min_size = Vector2(100, 0)
+rect_min_size = Vector2(100, 0)
 text = "Item"
 
 [node name="Dropdown" parent="." instance=ExtResource( "2" )]
@@ -27,7 +27,7 @@ offset_left = 132.0
 offset_top = 2.0
 offset_right = 232.0
 offset_bottom = 28.0
-min_size = Vector2(100, 0)
+rect_min_size = Vector2(100, 0)
 text = "Quantity"
 
 [node name="Quantity" type="LineEdit" parent="."]
@@ -40,6 +40,6 @@ size_flags_horizontal = 3
 offset_left = 304.0
 offset_right = 324.0
 offset_bottom = 31.0
-min_size = Vector2(20, 20)
+rect_min_size = Vector2(20, 20)
 hint_tooltip = "Delete property"
 icon = ExtResource( "3" )

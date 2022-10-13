@@ -1,21 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://l03mugb48y86"]
+[gd_scene load_steps=6 format=3 uid="uid://l03mugb48y86"]
 
 [ext_resource type="Texture2D" uid="uid://b1i08s3b1wkj3" path="res://addons/inventory_editor/icons/Inventory.png" id="1"]
 [ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataPath.tscn" id="3"]
-[ext_resource type="FontFile" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="3_brcpr"]
 [ext_resource type="Script" path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryData.gd" id="4"]
-[ext_resource type="PackedScene" path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataPathScene.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://diwd5k2ssotp5" path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryDataPathScene.tscn" id="6"]
 [ext_resource type="Texture2D" uid="uid://bsbdtbgy66s7k" path="res://addons/inventory_editor/icons/File.png" id="7"]
 
 [node name="InventoryInventoryData" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-min_size = Vector2(0, 100)
 size_flags_horizontal = 3
-script = ExtResource( "4" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("4")
 
 [node name="MarginData" type="MarginContainer" parent="."]
 offset_right = 510.0
@@ -35,13 +30,12 @@ offset_bottom = 31.0
 
 [node name="Label" type="Label" parent="MarginData/VBox/HBoxStacks"]
 offset_top = 2.0
-offset_right = 76.0
+offset_right = 50.0
 offset_bottom = 28.0
-min_size = Vector2(76, 0)
 text = "Stacks"
 
 [node name="Stacks" type="LineEdit" parent="MarginData/VBox/HBoxStacks"]
-offset_left = 80.0
+offset_left = 54.0
 offset_right = 510.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
@@ -49,50 +43,45 @@ size_flags_horizontal = 3
 [node name="HBoxIcon" type="HBoxContainer" parent="MarginData/VBox"]
 offset_top = 35.0
 offset_right = 510.0
-offset_bottom = 63.0
+offset_bottom = 66.0
 
 [node name="Label" type="Label" parent="MarginData/VBox/HBoxIcon"]
-offset_top = 1.0
-offset_right = 76.0
-offset_bottom = 27.0
-min_size = Vector2(76, 0)
+offset_top = 2.0
+offset_right = 33.0
+offset_bottom = 28.0
 text = "Icon"
 
-[node name="Icon" parent="MarginData/VBox/HBoxIcon" instance=ExtResource( "3" )]
+[node name="Icon" parent="MarginData/VBox/HBoxIcon" instance=ExtResource("3")]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 80.0
+offset_left = 37.0
 offset_right = 510.0
-offset_bottom = 28.0
-theme_override_fonts/font = ExtResource( "3_brcpr" )
+offset_bottom = 31.0
 
 [node name="HBoxScene" type="HBoxContainer" parent="MarginData/VBox"]
-offset_top = 67.0
+offset_top = 70.0
 offset_right = 510.0
-offset_bottom = 98.0
+offset_bottom = 101.0
 
 [node name="Label" type="Label" parent="MarginData/VBox/HBoxScene"]
 offset_top = 2.0
-offset_right = 76.0
+offset_right = 46.0
 offset_bottom = 28.0
-min_size = Vector2(76, 0)
 text = "Scene"
 
-[node name="PathScene" parent="MarginData/VBox/HBoxScene" instance=ExtResource( "6" )]
+[node name="PathScene" parent="MarginData/VBox/HBoxScene" instance=ExtResource("6")]
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 80.0
-offset_right = 486.0
+offset_left = 50.0
+offset_right = 488.0
 offset_bottom = 31.0
-theme_override_fonts/font = ExtResource( "3_brcpr" )
 
 [node name="Open" type="Button" parent="MarginData/VBox/HBoxScene"]
-offset_left = 490.0
+offset_left = 492.0
 offset_right = 510.0
 offset_bottom = 31.0
-min_size = Vector2(20, 20)
 hint_tooltip = "Open scene"
-icon = ExtResource( "7" )
+icon = ExtResource("7")
 
 [node name="MarginPreview" type="MarginContainer" parent="."]
 offset_left = 514.0
@@ -118,6 +107,6 @@ offset_right = 510.0
 offset_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( "1" )
+texture = ExtResource("1")
 ignore_texture_size = true
 stretch_mode = 5

@@ -14,6 +14,7 @@ const questManagerName = "QuestManager"
 @export var to_inventory: String # inventory_uuid
 @export var quantity: int = 1
 @export var remove_collected: bool = true
+@export var autosave: bool = true
 
 func _ready() -> void:
 	if get_tree().get_root().has_node(InventoryManagerName):
@@ -58,7 +59,7 @@ func _on_body_entered(body: Node) -> void:
 	if _inventoryManager.player != body:
 		return
 	inside = true
-	var remainder = _inventoryManager.add_item(to_inventory, item_put, quantity)
+	var remainder = _inventoryManager.add_item(to_inventory, item_put, quantity, autosave)
 	if remove_collected and remainder == 0:
 		queue_free()
 		if questManager and questManager.is_quest_started():

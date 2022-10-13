@@ -54,7 +54,8 @@ func _fill_dropdown_description_ui() -> void:
 		_dropdown_description_ui.clear()
 		for key in localization_editor.get_data().data.keys:
 			_dropdown_description_ui.add_item_as_string(key.value)
-		_dropdown_description_ui.set_selected_by_value(_item.description)
+		if _item and not _item.description.is_empty():
+			_dropdown_description_ui.set_selected_by_value(_item.description)
 
 func _init_connections() -> void:
 	if not _data.type_selection_changed.is_connected(_on_type_selection_changed):
@@ -184,5 +185,4 @@ func _draw_view_icon_preview_ui() -> void:
 	var t = load("res://addons/inventory_editor/icons/Item.png")
 	if _item != null and _item.icon != null and _data.resource_exists(_item.icon):
 		t = load(_item.icon)
-		t = _data.resize_texture(t, Vector2(100, 100))
 	_icon_preview_ui.texture = t

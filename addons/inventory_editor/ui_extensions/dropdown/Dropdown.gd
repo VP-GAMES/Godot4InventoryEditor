@@ -141,10 +141,10 @@ func _init_check_box(index: int) -> CheckBox:
 	if _items[index].icon != null:
 		check_box.expand_icon = true
 		check_box.icon = _items[index].icon
-	check_box.hint_tooltip = _items[index].tooltip
+	check_box.tooltip_text = _items[index].tooltip
 	if index == _selected:
 		check_box.set_pressed(true)
-	check_box.connect("pressed", _on_selection_changed, [index])
+	check_box.pressed.connect(_on_selection_changed.bind(index))
 	return check_box
 
 func _on_selection_changed(index: int) -> void:

@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djxyaxf1fbq8u"
-path.s3tc="res://.godot/imported/Arrow.svg-816d4443297a52708a870f9505b7455d.s3tc.ctex"
-path.etc2="res://.godot/imported/Arrow.svg-816d4443297a52708a870f9505b7455d.etc2.ctex"
+path="res://.godot/imported/Arrow.svg-816d4443297a52708a870f9505b7455d.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://addons/inventory_editor/ui_extensions/dropdown/Arrow.svg"
-dest_files=["res://.godot/imported/Arrow.svg-816d4443297a52708a870f9505b7455d.s3tc.ctex", "res://.godot/imported/Arrow.svg-816d4443297a52708a870f9505b7455d.etc2.ctex"]
+dest_files=["res://.godot/imported/Arrow.svg-816d4443297a52708a870f9505b7455d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0
@@ -35,3 +33,5 @@ process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
 svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

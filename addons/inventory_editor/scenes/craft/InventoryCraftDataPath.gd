@@ -94,8 +94,8 @@ func _drop_data(position, data) -> void:
 
 func _check_path_ui() -> void:
 	if _recipe.icon != null and not _data.resource_exists(_recipe.icon):
-		set("custom_styles/normal", _path_ui_style_resource)
-		hint_tooltip =  "Your resource path: \"" + _recipe.icon + "\" does not exists"
+		add_theme_stylebox_override("normal", _path_ui_style_resource)
+		tooltip_text =  "Your resource path: \"" + _recipe.icon + "\" does not exists"
 	else:
-		set("custom_styles/normal", null)
-		hint_tooltip =  ""
+		remove_theme_stylebox_override("normal")
+		tooltip_text =  ""

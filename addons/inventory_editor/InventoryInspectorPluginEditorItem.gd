@@ -25,7 +25,7 @@ func _init():
 func _update_dropdown() -> void:
 	dropdown.clear()
 	for item in _data.all_items():
-		if item != null and item.scene != null:
+		if item != null and item.scene != null and not item.scene.is_empty():
 			var scene = load(item.scene).instantiate()
 			var item_icon = null
 			if item.icon != null and not item.icon.is_empty():

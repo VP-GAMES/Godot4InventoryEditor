@@ -68,8 +68,8 @@ func _drop_data(position, data) -> void:
 
 func _check_path_ui() -> void:
 	if _item.scene != null and not _data.resource_exists(_item.scene):
-		set("custom_styles/normal", _path_ui_style_resource)
-		hint_tooltip =  "Your resource path: \"" + _item.scene + "\" does not exists"
+		add_theme_stylebox_override("normal", _path_ui_style_resource)
+		tooltip_text =  "Your resource path: \"" + _item.scene + "\" does not exists"
 	else:
-		set("custom_styles/normal", null)
-		hint_tooltip =  ""
+		remove_theme_stylebox_override("normal")
+		tooltip_text =  ""

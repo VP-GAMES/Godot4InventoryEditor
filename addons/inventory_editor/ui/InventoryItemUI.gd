@@ -6,7 +6,7 @@ class_name ItemUI
 
 var _item_ui_icon
 
-const ItemUIIcon = preload("res://addons/inventory_editor/ui/InventoryItemUIIcon.tscn")
+@export var ItemUIIcon: PackedScene
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():

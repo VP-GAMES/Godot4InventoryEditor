@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpng247b4f7aa"]
+[gd_scene load_steps=4 format=3 uid="uid://bpng247b4f7aa"]
 
-[ext_resource type="FontFile" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="1"]
+[ext_resource type="FontData" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="1"]
 [ext_resource type="Script" path="res://addons/inventory_editor/scenes/items/InventoryItemDataPathScene.gd" id="2"]
+
+[sub_resource type="Font" id="1"]
+data/0 = ExtResource( "1" )
 
 [node name="DialogueActorDataPath" type="LineEdit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource( "1" )
+theme_override_fonts/font = SubResource( "1" )
 script = ExtResource( "2" )
 __meta__ = {
 "_edit_use_anchors_": false

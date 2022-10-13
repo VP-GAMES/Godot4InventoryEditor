@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Pangolin-Regular.ttf-26fe2c4828a27d582072dd99
 [params]
 
 Rendering=null
-antialiased=true
+antialiasing=1
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8

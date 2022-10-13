@@ -70,9 +70,9 @@ func _on_gui_input(event: InputEvent) -> void:
 					_data.select_item(_item)
 					_del_ui.grab_focus()
 				else:
-					_name_ui.set("custom_styles/normal", null)
+					_name_ui.remove_theme_stylebox_override("normal")
 	if event is InputEventKey and event.pressed:
-		if event.scancode == KEY_ENTER or event.scancode == KEY_KP_ENTER:
+		if event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
 			if _name_ui.has_focus():
 				_del_ui.grab_focus()
 
@@ -93,13 +93,12 @@ func _draw_texture() -> void:
 	var texture
 	if _item.icon != null and not _item.icon.is_empty() and _data.resource_exists(_item.icon):
 		texture = load(_item.icon)
-		texture = _data.resize_texture(texture, Vector2(16, 16))
 	else:
 		texture = load("res://addons/inventory_editor/icons/Item.png")
 	_texture_ui.texture = texture
 
 func _draw_style() -> void:
 	if _data.selected_item() == _item:
-		_name_ui.set("custom_styles/normal", _ui_style_selected)
+		_name_ui.add_theme_stylebox_override("normal", _ui_style_selected)
 	else:
-		_name_ui.set("custom_styles/normal", null)
+		_name_ui.remove_theme_stylebox_override("normal")

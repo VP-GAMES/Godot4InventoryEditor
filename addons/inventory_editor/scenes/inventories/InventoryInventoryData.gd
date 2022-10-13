@@ -77,5 +77,4 @@ func _draw_view_preview_texture_ui() -> void:
 	var t = load("res://addons/inventory_editor/icons/Inventory.png")
 	if _inventory != null and _inventory.icon != null and _data.resource_exists(_inventory.icon):
 		t = load(_inventory.icon)
-		t = _data.resize_texture(t, Vector2(100, 100))
 	_preview_texture_ui.texture = t
