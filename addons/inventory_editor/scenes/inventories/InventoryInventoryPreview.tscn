@@ -2,72 +2,78 @@
 
 [ext_resource type="Texture2D" uid="uid://dnw1xbg83c5pu" path="res://addons/inventory_editor/icons/Add.png" id="1"]
 [ext_resource type="Script" path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryPreview.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://cf8spgpdsxfdb" path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cf8spgpdsxfdb" path="res://addons/quest_editor/ui_extensions/dropdown/Dropdown.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://csnxfw6mmjma6" path="res://addons/inventory_editor/icons/Del.png" id="4"]
 
 [node name="PreviewData" type="VBoxContainer"]
+anchors_preset = 10
 anchor_right = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( "2" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("2")
 
 [node name="ItemHandler" type="HBoxContainer" parent="."]
-offset_right = 1024.0
+layout_mode = 2
+offset_right = 1152.0
 offset_bottom = 31.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ItemHandler"]
-offset_right = 510.0
+layout_mode = 2
+offset_right = 574.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="ItemHandler/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
 offset_top = 2.0
-offset_right = 76.0
+offset_right = 120.0
 offset_bottom = 28.0
-rect_min_size = Vector2(76, 0)
 text = "Item"
 
-[node name="Dropdown" parent="ItemHandler/HBoxContainer" instance=ExtResource( "3" )]
+[node name="Dropdown" parent="ItemHandler/HBoxContainer" instance=ExtResource("3")]
+layout_mode = 2
 anchor_right = 0.0
-offset_left = 80.0
-offset_right = 394.0
+offset_left = 124.0
+offset_right = 459.0
 
 [node name="Quantity" type="LineEdit" parent="ItemHandler/HBoxContainer"]
-offset_left = 398.0
-offset_right = 462.0
+layout_mode = 2
+offset_left = 463.0
+offset_right = 530.0
 offset_bottom = 31.0
 text = "1"
 
 [node name="Add" type="Button" parent="ItemHandler/HBoxContainer"]
-offset_left = 466.0
-offset_right = 486.0
+layout_mode = 2
+offset_left = 534.0
+offset_right = 552.0
 offset_bottom = 31.0
-rect_min_size = Vector2(20, 20)
-hint_tooltip = "Add item to inventory"
-icon = ExtResource( "1" )
+icon = ExtResource("1")
+icon_alignment = 1
 
 [node name="Del" type="Button" parent="ItemHandler/HBoxContainer"]
-offset_left = 490.0
-offset_right = 510.0
+layout_mode = 2
+offset_left = 556.0
+offset_right = 574.0
 offset_bottom = 31.0
-rect_min_size = Vector2(20, 20)
-hint_tooltip = "Delete item from inventory"
-icon = ExtResource( "4" )
+icon = ExtResource("4")
+icon_alignment = 1
 
 [node name="HBoxFill" type="HBoxContainer" parent="ItemHandler"]
-offset_left = 514.0
-offset_right = 1024.0
+layout_mode = 2
+offset_left = 578.0
+offset_right = 1152.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="ScrollPreview" type="ScrollContainer" parent="."]
+layout_mode = 2
 offset_top = 35.0
-offset_right = 1024.0
+offset_right = 1152.0
 offset_bottom = 35.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Preview" type="HBoxContainer" parent="ScrollPreview"]
+layout_mode = 2

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccpg1eq2dix7"]
+
+[ext_resource type="Script" path="res://addons/inventory_editor/test/model/TestInventoryInventories.gd" id="1_s14br"]
+
+[node name="TestInventoryInventories" type="Node"]
+script = ExtResource("1_s14br")

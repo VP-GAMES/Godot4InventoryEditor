@@ -69,6 +69,8 @@ scale = Vector2(0.2, 0.2)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.823529, 0.533333, 0.121569, 1)
 text = "To support dialogues you have to autoload res://addons/dialogue_editor/DialogueManager.gd"
 
@@ -149,6 +151,7 @@ offset_left = -300.0
 offset_top = 100.0
 offset_right = 0.0
 offset_bottom = 400.0
+grow_horizontal = 0
 inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 
 [node name="CanvasButton" type="CanvasLayer" parent="."]
@@ -159,5 +162,6 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -100.0
 offset_bottom = 100.0
+grow_horizontal = 0
 texture_normal = ExtResource("14")
 stretch_mode = 5

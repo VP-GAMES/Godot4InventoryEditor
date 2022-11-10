@@ -4,7 +4,7 @@ extends Resource
 class_name InventoryInventories
 
 @export var inventories = {}
-# {"inventory_uuid": {"items": [{"item_uuid": uuid, "quantity": 0}]}, "stacks":}
+# {"inventory_uuid": {"stacks": [{"item_uuid": uuid, "quantity": 0}]}}
 
 func reset() -> void:
 	inventories = {}

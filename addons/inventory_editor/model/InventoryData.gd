@@ -304,6 +304,7 @@ func copy_item(item: InventoryItem) -> void:
 	var new_item = _create_item()
 	new_item.name = _next_item_name()
 	new_item.stacksize = item.stacksize
+	new_item.stacks = item.stacks
 	new_item.icon = "" + item.icon
 	new_item.properties = item.properties.duplicate(true)
 	if _undo_redo != null:
@@ -565,7 +566,6 @@ func _save_data_inventories() -> void:
 			source_code += ",\n"
 	source_code += "\n]"
 	file.store_string(source_code)
-	file.close()
 
 func _save_data_items() -> void:
 	var file = FileAccess.open(default_path + "InventoryManagerItem.gd", FileAccess.WRITE)
@@ -598,7 +598,6 @@ func _save_data_items() -> void:
 	source_code += "		_:\n"
 	source_code += "			return \"\"\n"
 	file.store_string(source_code)
-	file.close()
 
 # ***** UTILS *****
 func filename(value: String) -> String:

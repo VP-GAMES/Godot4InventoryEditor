@@ -9,6 +9,8 @@ var localization_editor
 
 @onready var _data_ui = $MarginData
 @onready var _stacksize_ui = $MarginData/VBox/HBoxTop/VBox/HBoxStack/Stacksize as LineEdit
+@onready var _stacks_ui = $MarginData/VBox/HBoxTop/VBox/HBoxStacks/Stacks as LineEdit
+@onready var _maxamount_ui = $MarginData/VBox/HBoxTop/VBox/HBoxMaxAmount/MaxAmount as LineEdit
 @onready var _icon_ui = $MarginData/VBox/HBoxTop/VBox/HBoxIcon/Icon as LineEdit
 @onready var _scene_ui = $MarginData/VBox/HBoxTop/VBox/HBoxScene/Scene as LineEdit
 @onready var _open_ui = $MarginData/VBox/HBoxTop/VBox/HBoxScene/Open as Button
@@ -38,7 +40,6 @@ func _dropdown_description_ui_init() -> void:
 	if not localization_editor:
 		var localizationEditorPath = "../LocalizationEditor"
 		if has_node(localizationEditorPath):
-			print("GO")
 			localization_editor = get_node(localizationEditorPath)
 	if localization_editor:
 		var data = localization_editor.get_data()
@@ -84,6 +85,8 @@ func _init_connections() -> void:
 		assert(_data.recipe_selection_changed.connect(_on_recipe_selection_changed) == OK)
 	if not _stacksize_ui.text_changed.is_connected(_on_stacksize_text_changed):
 		assert(_stacksize_ui.text_changed.connect(_on_stacksize_text_changed) == OK)
+	if not _stacks_ui.text_changed.is_connected(_on_stacks_text_changed):
+		assert(_stacks_ui.text_changed.connect(_on_stacks_text_changed) == OK)
 	if not _open_ui.pressed.is_connected(_on_open_pressed):
 		assert(_open_ui.pressed.connect(_on_open_pressed) == OK)
 	if not _description_ui.text_changed.is_connected(_on_description_text_changed):
@@ -110,6 +113,11 @@ func _update_selection_view() -> void:
 
 func _on_stacksize_text_changed(new_text: String) -> void:
 	_recipe.set_stacksize(new_text.to_int())
+	_draw_view_maxamount_ui()
+
+func _on_stacks_text_changed(new_text: String) -> void:
+	_recipe.set_stacks(new_text.to_int())
+	_draw_view_maxamount_ui()
 
 func _on_open_pressed() -> void:
 	if _recipe != null and _recipe.scene != null:
@@ -165,6 +173,8 @@ func _draw_view() -> void:
 	if _recipe:
 		_update_view_data()
 		_draw_view_stacksize_ui()
+		_draw_view_stacks_ui()
+		_draw_view_maxamount_ui()
 		_draw_view_description_ui()
 		_draw_view_ingredients_ui()
 		_draw_view_icon_preview_ui()
@@ -182,6 +192,15 @@ func _update_view_data() -> void:
 
 func _draw_view_stacksize_ui() -> void:
 	_stacksize_ui.text = str(_recipe.stacksize)
+
+func _draw_view_stacks_ui() -> void:
+	_stacks_ui.text = str(_recipe.stacks)
+
+func _draw_view_maxamount_ui() -> void:
+	if _recipe.stacks == 0:
+		_maxamount_ui.text = "- - -"
+	else:
+		_maxamount_ui.text = str(_recipe.stacks * _recipe.stacksize)
 
 func _draw_view_description_ui() -> void:
 	_description_ui.text = _recipe.description
@@ -208,5 +227,4 @@ func _draw_view_icon_preview_ui() -> void:
 	var t = load("res://addons/inventory_editor/icons/Recipe.png")
 	if _recipe != null and _recipe.icon != null and _data.resource_exists(_recipe.icon):
 		t = load(_recipe.icon)
-		t = _data.resize_texture(t, Vector2(100, 100))
 	_icon_preview_ui.texture = t

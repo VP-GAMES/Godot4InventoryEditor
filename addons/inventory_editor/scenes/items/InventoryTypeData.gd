@@ -46,5 +46,4 @@ func _draw_view_icon_preview_ui() -> void:
 	var t = load("res://addons/inventory_editor/icons/Type.png")
 	if _type != null and _type.icon != null and _data.resource_exists(_type.icon):
 		t = load(_type.icon)
-		t = _data.resize_texture(t, Vector2(100, 100))
 	_icon_preview_ui.texture = t

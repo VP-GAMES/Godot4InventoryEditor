@@ -8,6 +8,8 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1")
@@ -17,29 +19,31 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 1152.0
+offset_bottom = 648.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBox" type="HBoxContainer" parent="Margin/VBox"]
 layout_mode = 2
-offset_right = 1920.0
+offset_right = 1152.0
 offset_bottom = 26.0
 size_flags_horizontal = 3
 
 [node name="Add" type="Button" parent="Margin/VBox/HBox"]
 layout_mode = 2
 offset_right = 18.0
-offset_bottom = 18.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+offset_bottom = 26.0
+size_flags_horizontal = 4
 icon = ExtResource("3")
+icon_alignment = 1
 
 [node name="Label" type="Label" parent="Margin/VBox/HBox"]
 layout_mode = 2
@@ -51,21 +55,21 @@ text = "Types"
 [node name="HSeparator" type="HSeparator" parent="Margin/VBox"]
 layout_mode = 2
 offset_top = 30.0
-offset_right = 1920.0
+offset_right = 1152.0
 offset_bottom = 34.0
 
 [node name="Scroll" type="ScrollContainer" parent="Margin/VBox"]
 layout_mode = 2
 offset_top = 38.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 1152.0
+offset_bottom = 648.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Types" type="VBoxContainer" parent="Margin/VBox/Scroll"]
 layout_mode = 2
-offset_right = 1920.0
-offset_bottom = 1042.0
+offset_right = 1152.0
+offset_bottom = 610.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -73,5 +77,5 @@ size_flags_vertical = 3
 layout_mode = 2
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 1920.0
+offset_right = 1152.0
 offset_bottom = 31.0

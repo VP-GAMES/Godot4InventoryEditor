@@ -87,7 +87,6 @@ func _draw_texture() -> void:
 	var texture
 	if _type.icon != null and not _type.icon.is_empty() and _data.resource_exists(_type.icon):
 		texture = load(_type.icon)
-		texture = _data.resize_texture(texture, Vector2(16, 16))
 	else:
 		texture = load("res://addons/inventory_editor/icons/Type.png")
 	_texture_ui.texture = texture

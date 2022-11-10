@@ -71,41 +71,20 @@ func add_item_by_name(inventory_name: String, item_name: String, quantity: int =
 	return add_item(inventory.uuid, item.uuid, quantity)
 
 func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save = true) -> int:
+	if(quantity < 0):
+		printerr("Can't add negative number of items")
 	var remainder = 0 
 	if(quantity < 0):
 		printerr("Can't add negative number of items")
 		return remainder
+	var db_inventory = _db.get_inventory_by_uuid(inventory_uuid)
 	var db_item = _db.get_item_by_uuid(item_uuid)
 	if not db_item:
 		printerr("Can't find item in itemlist")
 		return remainder
-	if _data.inventories.has(inventory_uuid):
-		var items = _data.inventories[inventory_uuid]
-		var item
-		for index in range(items.size()):
-			if items[index].has("item_uuid") and items[index].item_uuid == item_uuid:
-				item = items[index]
-				break
-		if item:
-			if item.quantity + quantity > db_item.stacksize:
-				remainder = item.quantity + quantity - db_item.stacksize
-			var quantity_calc = min(item.quantity + quantity, db_item.stacksize)
-			item.quantity = quantity_calc
-		else:
-			if quantity > db_item.stacksize:
-				remainder = quantity - db_item.stacksize
-			var quantity_calc = min(quantity, db_item.stacksize)
-			var inventory_db = get_inventory_db(inventory_uuid) as InventoryInventory
-			for index in range(inventory_db.stacks):
-				if not items[index].has("item_uuid"):
-					items[index] = {"item_uuid": item_uuid, "quantity": quantity_calc}
-					break
-	else:
+	if not _data.inventories.has(inventory_uuid):
 		create_inventory(inventory_uuid)
-		if quantity > db_item.stacksize:
-			remainder = quantity - db_item.stacksize
-		var quantity_calc = min(quantity, db_item.stacksize)
-		_data.inventories[inventory_uuid][0] = {"item_uuid": item_uuid, "quantity": quantity_calc}
+	_add_item_with_quantity(db_inventory, db_item, quantity)
 	if save:
 		save()
 	emit_signal("inventory_changed", inventory_uuid)
@@ -113,10 +92,42 @@ func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save
 
 func create_inventory(inventory_uuid:String) -> void:
 	var inventory_db = get_inventory_db(inventory_uuid) as InventoryInventory
-	var items = []
+	var stacks = []
 	for index in range(inventory_db.stacks):
-		items.append({})
-	_data.inventories[inventory_uuid] = items
+		stacks.append({})
+	_data.inventories[inventory_uuid] = stacks
+
+func _add_item_with_quantity(db_inventory: InventoryInventory, db_item: InventoryItem, quantity: int = 1) -> int:
+	var stacks_with_item_indexes = _stacks_with_item_indexes(db_inventory.uuid, db_item.uuid)
+	for stack_index in stacks_with_item_indexes:
+		var space = db_item.stacksize - _data.inventories[db_inventory.uuid][stack_index].quantity
+		if space >= quantity:
+			_data.inventories[db_inventory.uuid][stack_index].quantity = _data.inventories[db_inventory.uuid][stack_index].quantity + quantity
+			quantity = 0
+		else:
+			_data.inventories[db_inventory.uuid][stack_index].quantity = db_item.stacksize
+			quantity = quantity - space
+	var stacks_empty_indexes = _stacks_empty_indexes(db_inventory)
+	if quantity > 0 and stacks_with_item_indexes.size() < db_item.stacks and stacks_empty_indexes.size() > 0:
+		_data.inventories[db_inventory.uuid][stacks_empty_indexes[0]]= {"item_uuid": db_item.uuid, "quantity": 0}
+		quantity = _add_item_with_quantity(db_inventory, db_item, quantity)
+	return quantity
+
+func _stacks_with_item_indexes(inventory_uuid: String, db_item_uuid: String) -> Array:
+	var stacks = _data.inventories[inventory_uuid]
+	var stacks_indexes: Array = []
+	for index in range(stacks.size()):
+		if stacks[index].has("item_uuid") and stacks[index].item_uuid == db_item_uuid:
+			stacks_indexes.append(index)
+	return stacks_indexes
+
+func _stacks_empty_indexes(db_inventory: InventoryInventory) -> Array:
+	var stacks = _data.inventories[db_inventory.uuid]
+	var stacks_indexes: Array = []
+	for index in range(stacks.size()):
+		if stacks[index].is_empty():
+			stacks_indexes.append(index)
+	return stacks_indexes
 
 func get_item_properties_by_name(item_name: String) -> Array:
 	return _db.get_item_by_name(item_name).properties
@@ -141,20 +152,25 @@ func remove_item_by_name(inventory_name: String, item_name: String, quantity: in
 func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save = true) -> int:
 	if(quantity < 0):
 		printerr("Can't remove negative number of items")
-	if _data.inventories.has(inventory_uuid):
-		var items = _data.inventories[inventory_uuid]
-		for index in range(items.size()):
-			var item = items[index]
-			if item.has("item_uuid") and item.item_uuid == item_uuid:
-				if item.quantity > quantity:
-					item.quantity -= quantity
-				else:
-					items[index] = {}
-				if save:
-					save()
-				emit_signal("inventory_changed", inventory_uuid)
-				return index
-	return -1
+	_remove_item(inventory_uuid, item_uuid, quantity)
+	if save:
+		save()
+	emit_signal("inventory_changed", inventory_uuid)
+	return quantity
+
+func _remove_item(inventory_uuid: String, item_uuid: String, quantity: int) -> int:
+	var stacks_with_item_indexes = _stacks_with_item_indexes(inventory_uuid, item_uuid)
+	var index = stacks_with_item_indexes[stacks_with_item_indexes.size() - 1]
+	var stack_quantity = _data.inventories[inventory_uuid][index].quantity
+	if stack_quantity > quantity:
+		_data.inventories[inventory_uuid][index].quantity = _data.inventories[inventory_uuid][index].quantity - quantity
+		quantity = 0
+	else:
+		quantity = quantity - _data.inventories[inventory_uuid][index].quantity
+		_data.inventories[inventory_uuid][index] = {}
+	if stacks_with_item_indexes.size() > 0 and quantity > 0:
+		remove_item(inventory_uuid, item_uuid, quantity)
+	return quantity
 
 func move_item_by_names(inventory_name_from: String, from_index: int, inventory_name_to: String, to_index: int) -> void:
 	var inventory_from = _db.get_inventory_by_name(inventory_name_from)

@@ -78,6 +78,16 @@ _global_script_classes=[{
 "class": &"ItemUI",
 "language": &"GDScript",
 "path": "res://addons/inventory_editor/ui/InventoryItemUI.gd"
+}, {
+"base": "UnitTest",
+"class": &"TestInventoryInventories",
+"language": &"GDScript",
+"path": "res://addons/inventory_editor/test/model/TestInventoryInventories.gd"
+}, {
+"base": "Node",
+"class": &"UnitTest",
+"language": &"GDScript",
+"path": "res://addons/inventory_editor/test/test_model/UnitTest.gd"
 }]
 _global_script_class_icons={
 "DropdownItem": "",
@@ -93,7 +103,9 @@ _global_script_class_icons={
 "InventoryUI": "",
 "Item2D": "",
 "Item3D": "",
-"ItemUI": ""
+"ItemUI": "",
+"TestInventoryInventories": "",
+"UnitTest": ""
 }
 
 [application]
@@ -109,7 +121,7 @@ InventoryManager="*res://addons/inventory_editor/InventoryManager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/inventory_editor/plugin.cfg")
 
 [importer_defaults]
 

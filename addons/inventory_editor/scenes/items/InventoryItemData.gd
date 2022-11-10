@@ -9,6 +9,8 @@ var localization_editor
 
 @onready var _data_ui = $MarginData
 @onready var _stacksize_ui = $MarginData/VBox/HBox/VBox/HBoxStack/Stacksize as LineEdit
+@onready var _stacks_ui = $MarginData/VBox/HBox/VBox/HBoxStacks/Stacks as LineEdit
+@onready var _maxamount_ui = $MarginData/VBox/HBox/VBox/HBoxMaxAmount/MaxAmount as LineEdit
 @onready var _icon_ui = $MarginData/VBox/HBox/VBox/HBoxIcon/Icon as LineEdit
 @onready var _add_ui = $MarginData/VBox/HBoxAdd/Add as Button
 @onready var _scene_ui = $MarginData/VBox/HBox/VBox/HBoxScene/Scene as LineEdit
@@ -64,6 +66,8 @@ func _init_connections() -> void:
 		assert(_data.item_selection_changed.connect(_on_item_selection_changed) == OK)
 	if not _stacksize_ui.text_changed.is_connected(_on_stacksize_text_changed):
 		assert(_stacksize_ui.text_changed.connect(_on_stacksize_text_changed) == OK)
+	if not _stacks_ui.text_changed.is_connected(_on_stacks_text_changed):
+		assert(_stacks_ui.text_changed.connect(_on_stacks_text_changed) == OK)
 	if not _open_ui.pressed.is_connected(_on_open_pressed):
 		assert(_open_ui.pressed.connect(_on_open_pressed) == OK)
 	if not _description_ui.text_changed.is_connected(_on_description_text_changed):
@@ -108,6 +112,11 @@ func _on_property_removed() -> void:
 
 func _on_stacksize_text_changed(new_text: String) -> void:
 	_item.set_stacksize(new_text.to_int())
+	_draw_view_maxamount_ui()
+
+func _on_stacks_text_changed(new_text: String) -> void:
+	_item.set_stacks(new_text.to_int())
+	_draw_view_maxamount_ui()
 
 func _on_open_pressed() -> void:
 	if _item != null and _item.scene != null:
@@ -142,6 +151,8 @@ func _draw_view() -> void:
 	if _item:
 		_update_view_data()
 		_draw_view_stacksize_ui()
+		_draw_view_stacks_ui()
+		_draw_view_maxamount_ui()
 		_draw_view_description_ui()
 		_draw_view_properties_ui()
 		_draw_view_icon_preview_ui()
@@ -158,6 +169,15 @@ func _update_view_data() -> void:
 
 func _draw_view_stacksize_ui() -> void:
 	_stacksize_ui.text = str(_item.stacksize)
+
+func _draw_view_stacks_ui() -> void:
+	_stacks_ui.text = str(_item.stacks)
+
+func _draw_view_maxamount_ui() -> void:
+	if _item.stacks == 0:
+		_maxamount_ui.text = "- - -"
+	else:
+		_maxamount_ui.text = str(_item.stacks * _item.stacksize)
 
 func _draw_view_description_ui() -> void:
 	_description_ui.text = _item.description

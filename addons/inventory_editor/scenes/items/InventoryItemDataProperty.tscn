@@ -2,13 +2,6 @@
 
 [ext_resource type="Script" path="res://addons/inventory_editor/scenes/items/InventoryItemDataProperty.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://pd4ccpckdkaf" path="res://addons/inventory_editor/icons/Trash.png" id="2"]
-[ext_resource type="FontData" uid="uid://dk0uyb3ayyxtk" path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" id="3"]
-
-[sub_resource type="Font" id="1"]
-data/0 = ExtResource( "3" )
-
-[sub_resource type="Font" id="2"]
-data/0 = ExtResource( "3" )
 
 [node name="InventoryItemDataProperty" type="HBoxContainer"]
 anchor_right = 1.0
@@ -23,7 +16,6 @@ __meta__ = {
 offset_right = 510.0
 offset_bottom = 600.0
 size_flags_horizontal = 3
-theme_override_fonts/font = SubResource( "1" )
 
 [node name="HBox" type="HBoxContainer" parent="."]
 offset_left = 514.0
@@ -35,8 +27,6 @@ size_flags_horizontal = 3
 offset_right = 486.0
 offset_bottom = 600.0
 size_flags_horizontal = 3
-theme_override_fonts/font = SubResource( "2" )
-
 [node name="Del" type="Button" parent="HBox"]
 offset_left = 490.0
 offset_right = 510.0

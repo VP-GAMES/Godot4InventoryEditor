@@ -19,6 +19,7 @@ const UUID = preload("res://addons/inventory_editor/uuid/uuid.gd")
 signal name_changed(name)
 signal description_changed(description)
 signal stacksize_changed
+signal stacks_changed
 signal icon_changed
 signal scene_changed
 signal property_added
@@ -31,6 +32,7 @@ signal property_value_changed(property)
 @export var name: String
 @export var description: String
 @export var stacksize: int = 1
+@export var stacks: int = 1
 @export var icon: String
 @export var scene: String
 @export var properties: Array
@@ -46,6 +48,10 @@ func change_description(new_description: String):
 func set_stacksize(new_stacksize: int) -> void:
 	stacksize = new_stacksize
 	emit_signal("stacksize_changed")
+
+func set_stacks(new_stacks: int) -> void:
+	stacks = new_stacks
+	emit_signal("stacks_changed")
 
 func set_icon(new_icon_path: String) -> void:
 	icon = new_icon_path

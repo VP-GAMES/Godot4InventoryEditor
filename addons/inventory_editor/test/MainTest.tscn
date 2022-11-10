@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://tiv28o2oco3i"]
+
+[ext_resource type="Script" path="res://addons/inventory_editor/test/MainTest.gd" id="1_6plor"]
+[ext_resource type="Texture2D" uid="uid://dkan2jd08uc4p" path="res://addons/inventory_editor/test/test_model/icons/Fail.svg" id="1_q35y7"]
+[ext_resource type="Texture2D" uid="uid://diy7vtqj0dsb6" path="res://addons/inventory_editor/test/test_model/icons/Success.svg" id="1_st44u"]
+[ext_resource type="PackedScene" uid="uid://ccpg1eq2dix7" path="res://addons/inventory_editor/test/model/TestInventoryInventories.tscn" id="4_o6fqm"]
+
+[node name="MainTest" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_6plor")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 34.0
+size_flags_vertical = 4
+theme_override_constants/margin_top = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 1152.0
+offset_bottom = 34.0
+
+[node name="ButtonFail" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+offset_right = 24.0
+offset_bottom = 31.0
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("1_q35y7")
+
+[node name="ButtonSuccess" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 28.0
+offset_right = 52.0
+offset_bottom = 31.0
+toggle_mode = true
+icon = ExtResource("1_st44u")
+
+[node name="Restart" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 56.0
+offset_right = 131.0
+offset_bottom = 31.0
+text = "RESTART"
+
+[node name="Class" type="CheckBox" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 135.0
+offset_right = 203.0
+offset_bottom = 31.0
+button_pressed = true
+text = "Class"
+
+[node name="Method" type="CheckBox" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 207.0
+offset_right = 296.0
+offset_bottom = 31.0
+button_pressed = true
+text = "Method"
+
+[node name="Assert" type="CheckBox" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 300.0
+offset_right = 377.0
+offset_bottom = 31.0
+text = "Assert"
+
+[node name="Result" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 381.0
+offset_top = 2.0
+offset_right = 430.0
+offset_bottom = 28.0
+text = "Result"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 2
+offset_top = 38.0
+offset_right = 1152.0
+offset_bottom = 65.0
+
+[node name="Tree" type="Tree" parent="."]
+layout_mode = 2
+offset_top = 69.0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TestList" type="Node" parent="."]
+
+[node name="TestInventoryInventories" parent="TestList" instance=ExtResource("4_o6fqm")]

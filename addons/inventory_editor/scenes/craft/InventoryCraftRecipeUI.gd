@@ -87,7 +87,6 @@ func _draw_texture() -> void:
 	var texture
 	if _recipe.icon != null and not _recipe.icon.is_empty() and _data.resource_exists(_recipe.icon):
 		texture = load(_recipe.icon)
-		texture = _data.resize_texture(texture, Vector2(16, 16))
 	else:
 		texture = load("res://addons/inventory_editor/icons/Recipe.png")
 	_texture_ui.texture = texture

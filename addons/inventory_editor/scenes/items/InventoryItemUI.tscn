@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b8h8yvx6l14h3" path="res://addons/inventory_editor/icons/Copy.png" id="5"]
 
 [node name="InventoryItemUI" type="MarginContainer"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -17,19 +18,22 @@ theme_override_constants/margin_bottom = 0
 script = ExtResource("3")
 
 [node name="Panel" type="Panel" parent="."]
-offset_right = 1024.0
-offset_bottom = 600.0
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBox" type="HBoxContainer" parent="."]
-offset_right = 1024.0
+layout_mode = 2
+offset_right = 1152.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
 [node name="Texture" type="TextureRect" parent="HBox"]
 custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
 offset_right = 16.0
 offset_bottom = 31.0
 texture = ExtResource("2")
@@ -37,21 +41,24 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Name" type="LineEdit" parent="HBox"]
+layout_mode = 2
 offset_left = 20.0
-offset_right = 980.0
+offset_right = 1108.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="Copy" type="Button" parent="HBox"]
-offset_left = 984.0
-offset_right = 1002.0
+layout_mode = 2
+offset_left = 1112.0
+offset_right = 1130.0
 offset_bottom = 31.0
-hint_tooltip = "Copy item"
 icon = ExtResource("5")
+icon_alignment = 1
 
 [node name="Del" type="Button" parent="HBox"]
-offset_left = 1006.0
-offset_right = 1024.0
+layout_mode = 2
+offset_left = 1134.0
+offset_right = 1152.0
 offset_bottom = 31.0
-hint_tooltip = "Delete item"
 icon = ExtResource("1")
+icon_alignment = 1
