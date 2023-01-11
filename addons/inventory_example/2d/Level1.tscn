@@ -143,7 +143,6 @@ to_inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 [node name="CanvasInventory" type="CanvasLayer" parent="."]
 
 [node name="InventoryAny" parent="CanvasInventory" instance=ExtResource("13")]
-layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

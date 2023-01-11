@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://tiv28o2oco3i"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://addons/inventory_editor/test/MainTest.gd" id="1_6plor"]
-[ext_resource type="Texture2D" uid="uid://dkan2jd08uc4p" path="res://addons/inventory_editor/test/test_model/icons/Fail.svg" id="1_q35y7"]
-[ext_resource type="Texture2D" uid="uid://diy7vtqj0dsb6" path="res://addons/inventory_editor/test/test_model/icons/Success.svg" id="1_st44u"]
+[ext_resource type="Texture2D" uid="uid://dkan2jd08uc4p" path="res://test/test_model/icons/Fail.svg" id="1_q35y7"]
+[ext_resource type="Texture2D" uid="uid://diy7vtqj0dsb6" path="res://test/test_model/icons/Success.svg" id="1_st44u"]
 [ext_resource type="PackedScene" uid="uid://ccpg1eq2dix7" path="res://addons/inventory_editor/test/model/TestInventoryInventories.tscn" id="4_o6fqm"]
 
 [node name="MainTest" type="VBoxContainer"]

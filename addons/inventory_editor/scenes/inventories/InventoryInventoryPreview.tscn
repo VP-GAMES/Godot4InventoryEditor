@@ -8,18 +8,19 @@
 [node name="PreviewData" type="VBoxContainer"]
 anchors_preset = 10
 anchor_right = 1.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2")
 
 [node name="ItemHandler" type="HBoxContainer" parent="."]
 layout_mode = 2
-offset_right = 1152.0
+offset_right = 1920.0
 offset_bottom = 31.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ItemHandler"]
 layout_mode = 2
-offset_right = 574.0
+offset_right = 958.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 
@@ -33,44 +34,46 @@ text = "Item"
 
 [node name="Dropdown" parent="ItemHandler/HBoxContainer" instance=ExtResource("3")]
 layout_mode = 2
+anchors_preset = 0
 anchor_right = 0.0
 offset_left = 124.0
-offset_right = 459.0
+offset_right = 843.0
+grow_horizontal = 1
 
 [node name="Quantity" type="LineEdit" parent="ItemHandler/HBoxContainer"]
 layout_mode = 2
-offset_left = 463.0
-offset_right = 530.0
+offset_left = 847.0
+offset_right = 914.0
 offset_bottom = 31.0
 text = "1"
 
 [node name="Add" type="Button" parent="ItemHandler/HBoxContainer"]
 layout_mode = 2
-offset_left = 534.0
-offset_right = 552.0
+offset_left = 918.0
+offset_right = 936.0
 offset_bottom = 31.0
 icon = ExtResource("1")
 icon_alignment = 1
 
 [node name="Del" type="Button" parent="ItemHandler/HBoxContainer"]
 layout_mode = 2
-offset_left = 556.0
-offset_right = 574.0
+offset_left = 940.0
+offset_right = 958.0
 offset_bottom = 31.0
 icon = ExtResource("4")
 icon_alignment = 1
 
 [node name="HBoxFill" type="HBoxContainer" parent="ItemHandler"]
 layout_mode = 2
-offset_left = 578.0
-offset_right = 1152.0
+offset_left = 962.0
+offset_right = 1920.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="ScrollPreview" type="ScrollContainer" parent="."]
 layout_mode = 2
 offset_top = 35.0
-offset_right = 1152.0
+offset_right = 1920.0
 offset_bottom = 35.0
 size_flags_horizontal = 3
 size_flags_vertical = 3

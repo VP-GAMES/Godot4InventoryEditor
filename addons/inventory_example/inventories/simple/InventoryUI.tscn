@@ -5,40 +5,37 @@
 [ext_resource type="PackedScene" uid="uid://do5m1vbsy45nd" path="res://addons/inventory_example/inventories/simple/ItemUI.tscn" id="2_chjke"]
 
 [node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 300.0
 offset_bottom = 300.0
-min_size = Vector2(400, 400)
-script = ExtResource( "1_x28gn" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("1_x28gn")
+Item = ExtResource("2_chjke")
 inventory = ""
-Item = ExtResource( "2_chjke" )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( "1" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1")
 
 [node name="Margin" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_top = 10
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Grid" type="GridContainer" parent="NinePatchRect/Margin"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 390.0
-offset_bottom = 390.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 4

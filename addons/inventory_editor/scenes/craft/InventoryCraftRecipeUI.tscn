@@ -8,20 +8,22 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 script = ExtResource("3")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBox" type="HBoxContainer" parent="."]
 layout_mode = 2
-offset_right = 1152.0
+offset_right = 1920.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -38,14 +40,14 @@ stretch_mode = 5
 [node name="Name" type="LineEdit" parent="HBox"]
 layout_mode = 2
 offset_left = 20.0
-offset_right = 1130.0
+offset_right = 1898.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="Del" type="Button" parent="HBox"]
 layout_mode = 2
-offset_left = 1134.0
-offset_right = 1152.0
+offset_left = 1902.0
+offset_right = 1920.0
 offset_bottom = 31.0
 icon = ExtResource("1")
 icon_alignment = 1

@@ -39,23 +39,29 @@ func _dropdown_ui_init() -> void:
 		var localizationEditorPath = "../../../../../../../../../LocalizationEditor"
 		if has_node(localizationEditorPath):
 			localization_editor = get_node(localizationEditorPath)
-	if localization_editor:
+	if localization_editor != null:
 		var data = localization_editor.get_data()
 		if data:
 			if not data.data_changed.is_connected(_on_localization_data_changed):
 				data.data_changed.connect(_on_localization_data_changed)
 			if not data.data_key_value_changed.is_connected(_on_localization_data_changed):
 				data.data_key_value_changed.connect(_on_localization_data_changed)
+			if not _data.locale_changed.is_connected(_locale_changed):
+				_data.locale_changed.connect(_locale_changed)
 			_on_localization_data_changed()
+
+func _locale_changed(_locale: String):
+	_on_localization_data_changed()
 
 func _on_localization_data_changed() -> void:
 	_fill_dropdown_description_ui()
 
 func _fill_dropdown_description_ui() -> void:
-	if _dropdown_description_ui:
+	if _dropdown_description_ui and localization_editor != null:
 		_dropdown_description_ui.clear()
-		for key in localization_editor.get_data().data.keys:
-			_dropdown_description_ui.add_item_as_string(key.value)
+		var localization_data = localization_editor.get_data()
+		for key in localization_data.data.keys:
+			_dropdown_description_ui.add_item_as_string(key.value, localization_data.value_by_locale_key(_data.get_locale(), key.value))
 		if _item and not _item.description.is_empty():
 			_dropdown_description_ui.set_selected_by_value(_item.description)
 

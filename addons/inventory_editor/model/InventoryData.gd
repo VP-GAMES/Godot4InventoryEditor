@@ -24,6 +24,23 @@ const UUID = preload("res://addons/inventory_editor/uuid/uuid.gd")
 
 const default_path = "res://inventory/"
 
+# ***** LOCALIZATION *****
+var _locale
+
+signal locale_changed(locale)
+
+func get_locale() -> String:
+	_locale = setting_dialogue_editor_locale()
+	if _locale == null:
+		_locale = TranslationServer.get_locale()
+	return _locale
+
+func set_locale(locale: String) -> void:
+	_locale = locale
+	setting_dialogue_editor_locale_put(_locale)
+	TranslationServer.set_locale(_locale)
+	emit_signal("locale_changed", _locale)
+
 # ***** INVENTORY *****
 signal inventory_added(inventory)
 signal inventory_removed(inventory)
@@ -478,6 +495,7 @@ const SETTINGS_ITEMS_SPLIT_OFFSET = "inventory_editor/items_split_offset"
 const SETTINGS_ITEMS_SPLIT_OFFSET_DEFAULT = 215
 const SETTINGS_CRAFT_SPLIT_OFFSET = "inventory_editor/craft_split_offset"
 const SETTINGS_CRAFT_SPLIT_OFFSET_DEFAULT = 215
+const SETTINGS_INVENTORY_EDITOR_LOCALE = "inventory_editor/inventory_editor_locale"
 const SUPPORTED_IMAGE_RESOURCES = ["bmp", "jpg", "jpeg", "png", "svg", "svgz", "tres"]
 
 func setting_inventories_split_offset() -> int:
@@ -518,6 +536,15 @@ func setting_craft_split_offset() -> int:
 
 func setting_craft_split_offset_put(offset: int) -> void:
 	ProjectSettings.set_setting(SETTINGS_CRAFT_SPLIT_OFFSET, offset)
+	ProjectSettings.save()
+
+func setting_dialogue_editor_locale():
+	if ProjectSettings.has_setting(SETTINGS_INVENTORY_EDITOR_LOCALE):
+		return ProjectSettings.get_setting(SETTINGS_INVENTORY_EDITOR_LOCALE)
+	return null
+
+func setting_dialogue_editor_locale_put(locale: String) -> void:
+	ProjectSettings.set_setting(SETTINGS_INVENTORY_EDITOR_LOCALE, locale)
 	ProjectSettings.save()
 
 func setting_localization_editor_enabled() -> bool:

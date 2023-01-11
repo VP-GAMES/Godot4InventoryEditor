@@ -8,6 +8,7 @@ var _data: InventoryData
 var _manager: InventoryManager
 var _item_selected
 var _items: Array
+var localization_editor
 
 @onready var _dropdown_ui = $ItemHandler/HBoxContainer/Dropdown
 @onready var _quantity_ui = $ItemHandler/HBoxContainer/Quantity as LineEdit
@@ -24,6 +25,32 @@ func set_data(data: InventoryData) -> void:
 	_init_connections()
 	_draw_view()
 	_check_view()
+
+func _process(delta: float) -> void:
+	if not localization_editor:
+		_dropdown_ui_init()
+
+func _dropdown_ui_init() -> void:
+	if not localization_editor:
+		var localizationEditorPath = "../../../../../../../LocalizationEditor"
+		if has_node(localizationEditorPath):
+			localization_editor = get_node(localizationEditorPath)
+	if localization_editor:
+		var data = localization_editor.get_data()
+		if data:
+			if not data.data_changed.is_connected(_on_localization_data_changed):
+				data.data_changed.connect(_on_localization_data_changed)
+			if not data.data_key_value_changed.is_connected(_on_localization_data_changed):
+				data.data_key_value_changed.connect(_on_localization_data_changed)
+			if not _data.locale_changed.is_connected(_locale_changed):
+				_data.locale_changed.connect(_locale_changed)
+			_on_localization_data_changed()
+
+func _locale_changed(_locale: String):
+	_on_localization_data_changed()
+
+func _on_localization_data_changed() -> void:
+	_update_items_ui()
 
 func _init_manger() -> void:
 	if not _manager:
@@ -99,7 +126,14 @@ func _update_items_ui() -> void:
 		var icon = null
 		if item.icon != null and _data.resource_exists(item.icon):
 			icon = load(item.icon)
-		var item_d = DropdownItem.new(item.name, item.uuid, item.description, icon)
+		var item_d
+		if localization_editor != null:
+			var localization_data = localization_editor.get_data()
+			var description = localization_data.value_by_locale_key(_data.get_locale(), item.description)
+			var name = item.name + "(" + description + ")"
+			item_d = DropdownItem.new(name, item.uuid, description, icon)
+		else:
+			item_d = DropdownItem.new(item.name, item.uuid, item.description, icon)
 		_dropdown_ui.add_item(item_d)
 
 func _clear_preview() -> void:

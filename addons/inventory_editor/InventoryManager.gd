@@ -160,6 +160,8 @@ func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, s
 
 func _remove_item(inventory_uuid: String, item_uuid: String, quantity: int) -> int:
 	var stacks_with_item_indexes = _stacks_with_item_indexes(inventory_uuid, item_uuid)
+	if stacks_with_item_indexes.size() <= 0:
+		return 0
 	var index = stacks_with_item_indexes[stacks_with_item_indexes.size() - 1]
 	var stack_quantity = _data.inventories[inventory_uuid][index].quantity
 	if stack_quantity > quantity:

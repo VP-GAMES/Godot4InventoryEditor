@@ -38,26 +38,32 @@ func _process(delta: float) -> void:
 
 func _dropdown_description_ui_init() -> void:
 	if not localization_editor:
-		var localizationEditorPath = "../LocalizationEditor"
+		var localizationEditorPath = "../../../../../../LocalizationEditor"
 		if has_node(localizationEditorPath):
 			localization_editor = get_node(localizationEditorPath)
-	if localization_editor:
+	if localization_editor != null:
 		var data = localization_editor.get_data()
 		if data:
 			if not data.data_changed.is_connected(_on_localization_data_changed):
 				data.data_changed.connect(_on_localization_data_changed)
 			if not data.data_key_value_changed.is_connected(_on_localization_data_changed):
 				data.data_key_value_changed.connect(_on_localization_data_changed)
+			if not _data.locale_changed.is_connected(_locale_changed):
+				_data.locale_changed.connect(_locale_changed)
 			_on_localization_data_changed()
+
+func _locale_changed(_locale: String):
+	_on_localization_data_changed()
 
 func _on_localization_data_changed() -> void:
 	_fill_dropdown_description_ui()
 
 func _fill_dropdown_description_ui() -> void:
-	if _dropdown_description_ui:
+	if _dropdown_description_ui and localization_editor != null:
 		_dropdown_description_ui.clear()
-		for key in localization_editor.get_data().data.keys:
-			_dropdown_description_ui.add_item_as_string(key.value)
+		var localization_data = localization_editor.get_data()
+		for key in localization_data.data.keys:
+			_dropdown_description_ui.add_item_as_string(key.value, localization_data.value_by_locale_key(_data.get_locale(), key.value))
 		if _recipe:
 			_dropdown_description_ui.set_selected_by_value(_recipe.description)
 
@@ -68,7 +74,10 @@ func _dropdown_item_update() -> void:
 	if _dropdown_item_ui:
 		_dropdown_item_ui.clear()
 		for item in _data.all_items():
-			var item_d = DropdownItem.new(item.name, item.uuid, item.name, load(item.icon))
+			var item_icon = null
+			if item.icon != null and not item.icon.is_empty():
+				item_icon = load(item.icon)
+			var item_d = DropdownItem.new(item.name, item.uuid, item.name, item_icon)
 			_dropdown_item_ui.add_item(item_d)
 		if _recipe:
 			_dropdown_item_ui.set_selected_by_value(_recipe.item)
