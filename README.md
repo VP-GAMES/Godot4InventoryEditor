@@ -3,7 +3,7 @@ Inventory editor plugin for Godot Engine 4.+
 
 This is a Godot Editor plugin to manage inventories and items in godot. The plugin allows you to quickly and easily manage all your inventories and items. You can also create your own inventory and items ui. Resources are assigned very easily using drag and drop. The assigned resources can be viewed in preview window, to check them. You can also test all your inventories and items in preview mode.
 
-Version: 0.1.5 Testet in Godot 4 alpha 10
+Version: 0.1.5 Testet in Godot 4 rc1
 
 The following screenshots show the working areas of the plugin:
 

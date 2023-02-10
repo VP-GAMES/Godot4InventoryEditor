@@ -45,7 +45,7 @@ func _dropdown_item_update() -> void:
 			var item_icon = null
 			if item.icon != null and not item.icon.is_empty():
 				item_icon = load(item.icon)
-			var item_d = DropdownItem.new(item.name, item.uuid, item.name, item_icon)
+			var item_d = DropdownItem.new(item.uuid, item.name, item.name, item_icon)
 			_dropdown_ui.add_item(item_d)
 		_dropdown_ui.set_selected_by_value(_ingredient.uuid)
 

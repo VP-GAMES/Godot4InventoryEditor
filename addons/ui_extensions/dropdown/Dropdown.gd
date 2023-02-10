@@ -2,6 +2,7 @@
 # @author Vladimir Petrenko
 @tool
 extends VBoxContainer
+class_name Dropdown
 
 signal selection_changed(item: DropdownItem)
 

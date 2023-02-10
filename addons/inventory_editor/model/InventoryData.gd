@@ -571,7 +571,7 @@ func save(update_script_classes = false) -> void:
 	_save_data_inventories()
 	_save_data_items()
 	if update_script_classes:
-		_editor.get_editor_interface().get_resource_filesystem().update_script_classes()
+		_editor.get_editor_interface().get_resource_filesystem().scan()
 
 func _save_data_inventories() -> void:
 	var directory:= DirAccess.open(default_path)

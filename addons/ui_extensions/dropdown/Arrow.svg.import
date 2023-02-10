@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djxyaxf1fbq8u"
-path="res://.godot/imported/Arrow.svg-816d4443297a52708a870f9505b7455d.ctex"
+uid="uid://bb76dl3aocsjo"
+path="res://.godot/imported/Arrow.svg-e4a7a75ac3bf7e30d5e37f222d3ad4c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/inventory_editor/ui_extensions/dropdown/Arrow.svg"
-dest_files=["res://.godot/imported/Arrow.svg-816d4443297a52708a870f9505b7455d.ctex"]
+source_file="res://addons/ui_extensions/dropdown/Arrow.svg"
+dest_files=["res://.godot/imported/Arrow.svg-e4a7a75ac3bf7e30d5e37f222d3ad4c0.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

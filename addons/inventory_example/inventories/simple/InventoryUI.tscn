@@ -11,7 +11,6 @@ offset_right = 300.0
 offset_bottom = 300.0
 script = ExtResource("1_x28gn")
 Item = ExtResource("2_chjke")
-inventory = ""
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1

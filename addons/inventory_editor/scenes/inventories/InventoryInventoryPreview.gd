@@ -131,9 +131,9 @@ func _update_items_ui() -> void:
 			var localization_data = localization_editor.get_data()
 			var description = localization_data.value_by_locale_key(_data.get_locale(), item.description)
 			var name = item.name + "(" + description + ")"
-			item_d = DropdownItem.new(name, item.uuid, description, icon)
+			item_d = DropdownItem.new(item.uuid, name, description, icon)
 		else:
-			item_d = DropdownItem.new(item.name, item.uuid, item.description, icon)
+			item_d = DropdownItem.new(item.uuid, item.name, item.description, icon)
 		_dropdown_ui.add_item(item_d)
 
 func _clear_preview() -> void:

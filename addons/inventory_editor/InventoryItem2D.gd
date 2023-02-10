@@ -14,6 +14,7 @@ const questManagerName = "QuestManager"
 @export var to_inventory: String # inventory_uuid
 @export var quantity: int = 1
 @export var remove_collected: bool = true
+@export var autosave: bool = true
 
 func _ready() -> void:
 	if get_tree().get_root().has_node(InventoryManagerName):
@@ -36,7 +37,7 @@ func _on_body_entered(body: Node) -> void:
 		queue_free()
 		if questManager and questManager.is_quest_started():
 			var quest = questManager.started_quest()
-			var task = questManager.get_task_and_update_quest_state(quest, item_put, quantity)
+			var task = questManager.get_task_and_update_quest_state(quest, item_put, quantity, autosave)
 
 func _on_body_exited(body: Node) -> void:
 	inside = false

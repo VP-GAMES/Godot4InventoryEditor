@@ -8,106 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Object",
-"class": &"DropdownItem",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/ui_extensions/dropdown/DropdownItem.gd"
-}, {
-"base": "Resource",
-"class": &"InventoryData",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/model/InventoryData.gd"
-}, {
-"base": "EditorProperty",
-"class": &"InventoryInspectorEditorInventory",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/InventoryInspectorPluginEditorInventory.gd"
-}, {
-"base": "EditorProperty",
-"class": &"InventoryInspectorEditorItem",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/InventoryInspectorPluginEditorItem.gd"
-}, {
-"base": "EditorProperty",
-"class": &"InventoryInspectorEditorType",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/InventoryInspectorPluginEditorType.gd"
-}, {
-"base": "Resource",
-"class": &"InventoryInventories",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/InventoryManagerInventories.gd"
-}, {
-"base": "Resource",
-"class": &"InventoryInventory",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/model/InventoryInventory.gd"
-}, {
-"base": "Resource",
-"class": &"InventoryItem",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/model/InventoryItem.gd"
-}, {
-"base": "InventoryItem",
-"class": &"InventoryRecipe",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/model/InventoryRecipe.gd"
-}, {
-"base": "Resource",
-"class": &"InventoryType",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/model/InventoryType.gd"
-}, {
-"base": "Control",
-"class": &"InventoryUI",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/ui/InventoryInventoryUI.gd"
-}, {
-"base": "Node2D",
-"class": &"Item2D",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/InventoryItem2D.gd"
-}, {
-"base": "Node3D",
-"class": &"Item3D",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/InventoryItem3D.gd"
-}, {
-"base": "TextureRect",
-"class": &"ItemUI",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/ui/InventoryItemUI.gd"
-}, {
-"base": "UnitTest",
-"class": &"TestInventoryInventories",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/test/model/TestInventoryInventories.gd"
-}, {
-"base": "Node",
-"class": &"UnitTest",
-"language": &"GDScript",
-"path": "res://addons/inventory_editor/test/test_model/UnitTest.gd"
-}]
-_global_script_class_icons={
-"DropdownItem": "",
-"InventoryData": "",
-"InventoryInspectorEditorInventory": "",
-"InventoryInspectorEditorItem": "",
-"InventoryInspectorEditorType": "",
-"InventoryInventories": "",
-"InventoryInventory": "",
-"InventoryItem": "",
-"InventoryRecipe": "",
-"InventoryType": "",
-"InventoryUI": "",
-"Item2D": "",
-"Item3D": "",
-"ItemUI": "",
-"TestInventoryInventories": "",
-"UnitTest": ""
-}
-
 [application]
 
 config/name="Godot4InventoryEditor"
@@ -149,8 +49,8 @@ texture={
 
 ui_accept={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":16777221,"physical_keycode":0,"unicode":16777221,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":16777222,"physical_keycode":0,"unicode":16777222,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":16777221,"physical_keycode":0,"key_label":0,"unicode":16777221,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":16777222,"physical_keycode":0,"key_label":0,"unicode":16777222,"echo":false,"script":null)
 ]
 }
 ui_select={
@@ -160,32 +60,32 @@ ui_select={
 }
 move_left={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 move_right={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 move_up={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 move_bottom={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 action={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 cancel={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }

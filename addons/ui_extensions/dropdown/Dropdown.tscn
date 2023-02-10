@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf8spgpdsxfdb"]
+[gd_scene load_steps=4 format=3 uid="uid://ov647hx6yjxa"]
 
-[ext_resource type="Script" path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.gd" id="1_wq5x0"]
-[ext_resource type="Texture2D" uid="uid://djxyaxf1fbq8u" path="res://addons/quest_editor/ui_extensions/dropdown/Arrow.svg" id="2_16dxe"]
-[ext_resource type="Texture2D" uid="uid://dhc2m24gbwp23" path="res://addons/inventory_editor/icons/Item.png" id="2_td7fs"]
-[ext_resource type="Texture2D" uid="uid://dob6kvdq3q3to" path="res://addons/quest_editor/ui_extensions/dropdown/Cancel.svg" id="3_ph0xc"]
+[ext_resource type="Script" path="res://addons/ui_extensions/dropdown/Dropdown.gd" id="1_ah183"]
+[ext_resource type="Texture2D" uid="uid://btxlurvr45t4y" path="res://addons/ui_extensions/dropdown/Cancel.svg" id="1_l2sby"]
+[ext_resource type="Texture2D" uid="uid://bb76dl3aocsjo" path="res://addons/ui_extensions/dropdown/Arrow.svg" id="2_ims8p"]
 
 [node name="DropdownContent" type="VBoxContainer"]
 anchors_preset = 10
@@ -11,41 +10,30 @@ anchor_right = 1.0
 offset_bottom = 31.0
 grow_horizontal = 2
 size_flags_horizontal = 3
-script = ExtResource("1_wq5x0")
+script = ExtResource("1_ah183")
 
 [node name="HBox" type="HBoxContainer" parent="."]
 layout_mode = 2
-offset_right = 1920.0
-offset_bottom = 24.0
 
 [node name="Icon" type="TextureRect" parent="HBox"]
-custom_minimum_size = Vector2(16, 0)
+visible = false
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-offset_right = 16.0
-offset_bottom = 24.0
-texture = ExtResource("2_td7fs")
-ignore_texture_size = true
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Selector" type="Button" parent="HBox"]
 layout_mode = 2
-offset_left = 20.0
-offset_right = 1920.0
-offset_bottom = 24.0
 size_flags_horizontal = 3
-tooltip_text = "Select item"
-icon = ExtResource("2_16dxe")
+icon = ExtResource("2_ims8p")
 alignment = 0
 icon_alignment = 2
 
 [node name="Clear" type="Button" parent="HBox"]
 visible = false
 layout_mode = 2
-offset_left = 1896.0
-offset_right = 1920.0
-offset_bottom = 24.0
 size_flags_vertical = 3
-icon = ExtResource("3_ph0xc")
+icon = ExtResource("1_l2sby")
 icon_alignment = 1
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
@@ -60,28 +48,16 @@ size_flags_vertical = 3
 
 [node name="Filter" type="LineEdit" parent="PopupPanel/VBoxPanel"]
 layout_mode = 2
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 68.0
-offset_bottom = 35.0
 
 [node name="Scroll" type="ScrollContainer" parent="PopupPanel/VBoxPanel"]
 layout_mode = 2
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 96.0
-offset_bottom = 96.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScrollVBox" type="VBoxContainer" parent="PopupPanel/VBoxPanel/Scroll"]
 layout_mode = 2
-offset_right = 92.0
-offset_bottom = 92.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox" type="VBoxContainer" parent="PopupPanel/VBoxPanel/Scroll/ScrollVBox"]
 layout_mode = 2
-offset_right = 40.0
-offset_bottom = 40.0

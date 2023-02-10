@@ -3,7 +3,7 @@
 extends EditorProperty
 class_name InventoryInspectorEditorInventory
 
-const Dropdown = preload("res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn")
+const Dropdown = preload("res://addons/ui_extensions/dropdown/Dropdown.tscn")
 
 var updating = false
 var dropdown = Dropdown.instantiate()
@@ -26,7 +26,7 @@ func _update_dropdown() -> void:
 		var inventory_icon = null
 		if inventory.icon != null and not inventory.icon.is_empty():
 			inventory_icon = load(inventory.icon)
-		var item_d = DropdownItem.new(inventory.name, inventory.uuid, inventory.name, inventory_icon)
+		var item_d = DropdownItem.new(inventory.uuid, inventory.name, inventory.name, inventory_icon)
 		dropdown.add_item(item_d)
 
 func _on_selection_changed(item: DropdownItem):

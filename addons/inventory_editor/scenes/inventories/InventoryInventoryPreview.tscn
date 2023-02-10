@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dnw1xbg83c5pu" path="res://addons/inventory_editor/icons/Add.png" id="1"]
 [ext_resource type="Script" path="res://addons/inventory_editor/scenes/inventories/InventoryInventoryPreview.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://cf8spgpdsxfdb" path="res://addons/quest_editor/ui_extensions/dropdown/Dropdown.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://ov647hx6yjxa" path="res://addons/ui_extensions/dropdown/Dropdown.tscn" id="2_a6el8"]
 [ext_resource type="Texture2D" uid="uid://csnxfw6mmjma6" path="res://addons/inventory_editor/icons/Del.png" id="4"]
 
 [node name="PreviewData" type="VBoxContainer"]
@@ -15,66 +15,39 @@ script = ExtResource("2")
 
 [node name="ItemHandler" type="HBoxContainer" parent="."]
 layout_mode = 2
-offset_right = 1920.0
-offset_bottom = 31.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ItemHandler"]
 layout_mode = 2
-offset_right = 958.0
-offset_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="ItemHandler/HBoxContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-offset_top = 2.0
-offset_right = 120.0
-offset_bottom = 28.0
 text = "Item"
 
-[node name="Dropdown" parent="ItemHandler/HBoxContainer" instance=ExtResource("3")]
+[node name="Dropdown" parent="ItemHandler/HBoxContainer" instance=ExtResource("2_a6el8")]
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-offset_left = 124.0
-offset_right = 843.0
-grow_horizontal = 1
 
 [node name="Quantity" type="LineEdit" parent="ItemHandler/HBoxContainer"]
 layout_mode = 2
-offset_left = 847.0
-offset_right = 914.0
-offset_bottom = 31.0
 text = "1"
 
 [node name="Add" type="Button" parent="ItemHandler/HBoxContainer"]
 layout_mode = 2
-offset_left = 918.0
-offset_right = 936.0
-offset_bottom = 31.0
 icon = ExtResource("1")
 icon_alignment = 1
 
 [node name="Del" type="Button" parent="ItemHandler/HBoxContainer"]
 layout_mode = 2
-offset_left = 940.0
-offset_right = 958.0
-offset_bottom = 31.0
 icon = ExtResource("4")
 icon_alignment = 1
 
 [node name="HBoxFill" type="HBoxContainer" parent="ItemHandler"]
 layout_mode = 2
-offset_left = 962.0
-offset_right = 1920.0
-offset_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="ScrollPreview" type="ScrollContainer" parent="."]
 layout_mode = 2
-offset_top = 35.0
-offset_right = 1920.0
-offset_bottom = 35.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

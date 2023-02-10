@@ -4,23 +4,22 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ksvamia5t5co"
 path.s3tc="res://.godot/imported/Shields.png-3ee3fac91fffe863de32c40a880ae804.s3tc.ctex"
-path.etc2="res://.godot/imported/Shields.png-3ee3fac91fffe863de32c40a880ae804.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/inventory_example/textures/shields/Shields.png"
-dest_files=["res://.godot/imported/Shields.png-3ee3fac91fffe863de32c40a880ae804.s3tc.ctex", "res://.godot/imported/Shields.png-3ee3fac91fffe863de32c40a880ae804.etc2.ctex"]
+dest_files=["res://.godot/imported/Shields.png-3ee3fac91fffe863de32c40a880ae804.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

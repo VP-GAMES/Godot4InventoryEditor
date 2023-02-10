@@ -4,23 +4,22 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ciuqf2dhdp2dc"
 path.s3tc="res://.godot/imported/helmet_knight.png-50176ba02f1cf0e990d7d73a6bf3cc01.s3tc.ctex"
-path.etc2="res://.godot/imported/helmet_knight.png-50176ba02f1cf0e990d7d73a6bf3cc01.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/inventory_example/textures/recipes/helmet_knight.png"
-dest_files=["res://.godot/imported/helmet_knight.png-50176ba02f1cf0e990d7d73a6bf3cc01.s3tc.ctex", "res://.godot/imported/helmet_knight.png-50176ba02f1cf0e990d7d73a6bf3cc01.etc2.ctex"]
+dest_files=["res://.godot/imported/helmet_knight.png-50176ba02f1cf0e990d7d73a6bf3cc01.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

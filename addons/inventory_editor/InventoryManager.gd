@@ -70,7 +70,7 @@ func add_item_by_name(inventory_name: String, item_name: String, quantity: int =
 	var item = _db.get_inventory_by_name(item_name)
 	return add_item(inventory.uuid, item.uuid, quantity)
 
-func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save = true) -> int:
+func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, do_save = true) -> int:
 	if(quantity < 0):
 		printerr("Can't add negative number of items")
 	var remainder = 0 
@@ -85,7 +85,7 @@ func add_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save
 	if not _data.inventories.has(inventory_uuid):
 		create_inventory(inventory_uuid)
 	_add_item_with_quantity(db_inventory, db_item, quantity)
-	if save:
+	if do_save:
 		save()
 	emit_signal("inventory_changed", inventory_uuid)
 	return remainder
@@ -114,6 +114,8 @@ func _add_item_with_quantity(db_inventory: InventoryInventory, db_item: Inventor
 	return quantity
 
 func _stacks_with_item_indexes(inventory_uuid: String, db_item_uuid: String) -> Array:
+	if not _data.inventories.has(inventory_uuid):
+		return []
 	var stacks = _data.inventories[inventory_uuid]
 	var stacks_indexes: Array = []
 	for index in range(stacks.size()):
@@ -149,11 +151,19 @@ func remove_item_by_name(inventory_name: String, item_name: String, quantity: in
 	var item = _db.get_inventory_by_name(item_name)
 	remove_item(inventory.uuid, item.uuid, quantity)
 
-func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save = true) -> int:
+func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, do_save = true) -> int:
 	if(quantity < 0):
 		printerr("Can't remove negative number of items")
 	_remove_item(inventory_uuid, item_uuid, quantity)
-	if save:
+	if do_save:
+		save()
+	emit_signal("inventory_changed", inventory_uuid)
+	return quantity
+
+func remove_all_items(inventory_uuid: String, item_uuid: String, do_save = true) -> int:
+	var quantity = inventory_item_quantity(inventory_uuid, item_uuid)
+	_remove_item(inventory_uuid, item_uuid, quantity)
+	if do_save:
 		save()
 	emit_signal("inventory_changed", inventory_uuid)
 	return quantity
